@@ -1,4 +1,4 @@
-#include "vector.h"
+#include "cvector.h"
 
 void allocate(void** ptr, unsigned size, unsigned new_size){
     if(size != new_size){
@@ -6,14 +6,14 @@ void allocate(void** ptr, unsigned size, unsigned new_size){
 
         *ptr = malloc(new_size);
         memcpy(*ptr, cptr, size);
-        free(cptr);
+        if(!size) free(cptr);
     }
 }
 
 // =========================
 
-vector* Vector(unsigned size, unsigned n_block){
-    vector* vec = malloc(sizeof(vector));
+cvector* CVector(unsigned size, unsigned n_block){
+    cvector* vec = malloc(sizeof(cvector));
 
     vec->_size = 0;
     vec->_capacity = n_block;
@@ -25,19 +25,23 @@ vector* Vector(unsigned size, unsigned n_block){
     return vec;
 }
 
-unsigned size_of(const vector* vec){
+unsigned size_of(const cvector* vec){
     return vec->_size;
 }
 
-unsigned capacity_of(const vector* vec){
+unsigned capacity_of(const cvector* vec){
     return vec->_capacity;
 }
 
-void clear(vector* vec){
+void clear(cvector* vec){
     vec->_size = 0;
 }
 
-void delete_vector(vector* vec){
+void copy_cvector(cvector* dest, const cvector* src){
+    ;
+}
+
+void delete_cvector(cvector* vec){
     vec->_size = vec->_capacity = 0;
     free(vec->_data);
     vec->_data = NULL;

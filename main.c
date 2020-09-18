@@ -8,36 +8,23 @@ typedef struct{
 
 int main(){
 
-    vector* vec = Vector(sizeof(Person), 5);
+    cstring* str = CString(5);
 
-    for(int i=0; i<30; ++i){
-        Person* p = malloc(sizeof(Person));
-        p->age = i+1;
-        push_back(vec, p, Person);
-        // printf("age: %d\n", p->age);
-        printf("size: %u, capacity: %u, block size: %u, added %d\n", vec->_size, vec->_capacity, vec->_block_size, (*get_ptr(vec, i, Person)).age);
-    }
+    concat(str, (const char*)"Hello C-Library!\n", 0);
+    concat(str, (const char*)"\tOk...\n", 0);
 
-    printf("\nBEFORE ===============\n");
-    for(unsigned i=0; i<vec->_size; ++i){
-        if(!get_ptr(vec, i, Person)){
-            printf("problem!\n");
-            exit(1);
-        }
-        printf("%u, age: %d\n", i, (*get_ptr(vec, i, Person)).age);
-    }
+    cstring* str2 = CString(1);
 
-    printf("\nAFTER ===============\n");
-    Person* p = malloc(sizeof(Person));
-    p->age = -1;
-    erase(vec, 2, Person);
-    insert(vec, 2, p, Person);
-    insert(vec, 29, p, Person);
-    for(unsigned i=0; i<vec->_size; ++i){
-        printf("%u, age: %d\n", i, (*get_ptr(vec, i, Person)).age);
-    }
+    concat(str2, (const char*)"Hello ", 0);
 
-    delete_vector(vec);
+    printf("%s\n--------------\n%s\n", get_strptr(str), get_strptr(str2));
+    printf("comparison: %d\n", compare(str, str2, 0));
+    printf("comparison: %d\n", compare(str2, str, 0));
+    printf("comparison: %d\n", compare(str, str2, 6));
+    printf("comparison: %d\n", compare(str, str2, 7));
+
+    printf("%u\n", str->_str->_size);
+    printf("%u\n", str2->_str->_size);
 
     return 0;
 }

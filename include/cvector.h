@@ -2,12 +2,22 @@
 #ifndef _VECTOR_
 #define _VECTOR_
 
-#include "type.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <memory.h>
+
+typedef enum{
+    Char = 0,
+    Int,
+    Float,
+    Double,
+    String
+}__Type;
 
 typedef struct{
     unsigned _size, _capacity, _block_size;
     void* _data;
-}vector;
+}cvector;
 
 #define push_back(vec, data, _type)                                     \
     if(vec->_size >= vec->_capacity){                                   \
@@ -49,10 +59,11 @@ typedef struct{
 void allocate(void** ptr, unsigned size, unsigned new_size);
 // =======================
 
-vector* Vector(unsigned size, unsigned n_block);
-unsigned size_of(const vector* vec);
-unsigned capacity_of(const vector* vec);
-void clear(vector* vec);
-void delete_vector(vector* vec);
+cvector* CVector(unsigned size, unsigned n_block);
+unsigned size_of(const cvector* vec);
+unsigned capacity_of(const cvector* vec);
+void clear(cvector* vec);
+void copy_cvector(cvector* dest, const cvector* src);
+void delete_cvector(cvector* vec);
 
 #endif
