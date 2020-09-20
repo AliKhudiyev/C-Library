@@ -5,13 +5,16 @@ CMakeFiles/main.dir/main.c.o: ../include/cdictionary.h
 CMakeFiles/main.dir/main.c.o: ../include/cpplib.h
 CMakeFiles/main.dir/main.c.o: ../include/cset.h
 CMakeFiles/main.dir/main.c.o: ../include/cstring.h
+CMakeFiles/main.dir/main.c.o: ../include/ctypes.h
 CMakeFiles/main.dir/main.c.o: ../include/cvector.h
 CMakeFiles/main.dir/main.c.o: ../main.c
 
 CMakeFiles/main.dir/src/cdictionary.c.o: ../include/cdictionary.h
+CMakeFiles/main.dir/src/cdictionary.c.o: ../include/cvector.h
 CMakeFiles/main.dir/src/cdictionary.c.o: ../src/cdictionary.c
 
 CMakeFiles/main.dir/src/cset.c.o: ../include/cset.h
+CMakeFiles/main.dir/src/cset.c.o: ../include/cvector.h
 CMakeFiles/main.dir/src/cset.c.o: ../src/cset.c
 
 CMakeFiles/main.dir/src/cstring.c.o: ../include/cstring.h

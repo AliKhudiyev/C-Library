@@ -6,5 +6,6 @@
 #include "cstring.h"
 #include "cdictionary.h"
 #include "cset.h"
+#include "ctypes.h"
 
 #endif

@@ -20,17 +20,17 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/CMakeLanguageInformation.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/CMakeSystemSpecificInformation.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake"
-  "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Compiler/AppleClang-C.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Compiler/AppleClang-CXX.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Compiler/Clang.cmake"
+  "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Compiler/GNU-C.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Compiler/GNU.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Internal/CMakeCheckCompilerFlag.cmake"
-  "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake"
-  "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Platform/Apple-Clang-C.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Platform/Apple-Clang.cmake"
+  "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Platform/Apple-GNU-C.cmake"
+  "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Platform/Apple-GNU.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Platform/Darwin-Initialize.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Platform/Darwin.cmake"
   "/usr/local/Cellar/cmake/3.18.0/share/cmake/Modules/Platform/UnixPaths.cmake"
@@ -49,5 +49,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/main.dir/DependInfo.cmake"
+  "CMakeFiles/test.dir/DependInfo.cmake"
   )

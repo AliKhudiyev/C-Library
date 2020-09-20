@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 ../include/cdictionary.h
+cvector.h
+../include/cvector.h
 
 ../include/cpplib.h
 cvector.h
@@ -17,12 +19,18 @@ cdictionary.h
 ../include/cdictionary.h
 cset.h
 ../include/cset.h
+ctypes.h
+../include/ctypes.h
 
 ../include/cset.h
+cvector.h
+../include/cvector.h
 
 ../include/cstring.h
 cvector.h
 ../include/cvector.h
+
+../include/ctypes.h
 
 ../include/cvector.h
 stdlib.h
