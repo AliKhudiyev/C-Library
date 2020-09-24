@@ -76,74 +76,74 @@ include CMakeFiles/test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test.dir/flags.make
 
-CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o: CMakeFiles/test.dir/flags.make
-CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c
+CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c
 
-CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.i"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c > CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.i
+CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c > CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.i
 
-CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.s"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.s
+CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.s
 
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c
 
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c > CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c > CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i
 
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s
 
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c
 
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c > CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c > CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i
 
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s
 
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
 
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c > CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c > CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i
 
 CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c -o CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s
 
 CMakeFiles/test.dir/test_vector.c.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/test_vector.c.o: ../test_vector.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/test.dir/test_vector.c.o"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/test_vector.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_vector.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/test_vector.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_vector.c
 
 CMakeFiles/test.dir/test_vector.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.dir/test_vector.c.i"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_vector.c > CMakeFiles/test.dir/test_vector.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_vector.c > CMakeFiles/test.dir/test_vector.c.i
 
 CMakeFiles/test.dir/test_vector.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.dir/test_vector.c.s"
-	/usr/local/bin/gcc-10 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_vector.c -o CMakeFiles/test.dir/test_vector.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_vector.c -o CMakeFiles/test.dir/test_vector.c.s
 
 # Object files for target test
 test_OBJECTS = \
-"CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o" \
+"CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o" \
 "CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o" \
 "CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o" \
 "CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o" \
@@ -152,7 +152,7 @@ test_OBJECTS = \
 # External object files for target test
 test_EXTERNAL_OBJECTS =
 
-test: CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o
+test: CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o
 test: CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
 test: CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o
 test: CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o

@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/alikhudiyev/Desktop/Projects/C-Library/main.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/main.c.o"
-  "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/src/cdictionary.c.o"
+  "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/src/cpair.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/src/cset.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/src/cstring.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/src/cvector.c.o"

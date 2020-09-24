@@ -89,18 +89,18 @@ CMakeFiles/main.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/main.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/main.c -o CMakeFiles/main.dir/main.c.s
 
-CMakeFiles/main.dir/src/cdictionary.c.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/cdictionary.c.o: ../src/cdictionary.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/cdictionary.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/cdictionary.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c
+CMakeFiles/main.dir/src/cpair.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/cpair.c.o: ../src/cpair.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/cpair.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/cpair.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c
 
-CMakeFiles/main.dir/src/cdictionary.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/cdictionary.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c > CMakeFiles/main.dir/src/cdictionary.c.i
+CMakeFiles/main.dir/src/cpair.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/cpair.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c > CMakeFiles/main.dir/src/cpair.c.i
 
-CMakeFiles/main.dir/src/cdictionary.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/cdictionary.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c -o CMakeFiles/main.dir/src/cdictionary.c.s
+CMakeFiles/main.dir/src/cpair.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/cpair.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c -o CMakeFiles/main.dir/src/cpair.c.s
 
 CMakeFiles/main.dir/src/cset.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/cset.c.o: ../src/cset.c
@@ -144,7 +144,7 @@ CMakeFiles/main.dir/src/cvector.c.s: cmake_force
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.c.o" \
-"CMakeFiles/main.dir/src/cdictionary.c.o" \
+"CMakeFiles/main.dir/src/cpair.c.o" \
 "CMakeFiles/main.dir/src/cset.c.o" \
 "CMakeFiles/main.dir/src/cstring.c.o" \
 "CMakeFiles/main.dir/src/cvector.c.o"
@@ -153,7 +153,7 @@ main_OBJECTS = \
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.c.o
-main: CMakeFiles/main.dir/src/cdictionary.c.o
+main: CMakeFiles/main.dir/src/cpair.c.o
 main: CMakeFiles/main.dir/src/cset.c.o
 main: CMakeFiles/main.dir/src/cstring.c.o
 main: CMakeFiles/main.dir/src/cvector.c.o

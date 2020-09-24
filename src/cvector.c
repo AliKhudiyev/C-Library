@@ -22,44 +22,61 @@ cvector* CVector(unsigned block_size, unsigned n_block){
     cvector* vec = malloc(sizeof(cvector));
 
     vec->_size = 0;
-    vec->_capacity = n_block;
-    vec->_block_size = block_size;
+    vec->_capacity = n_block ? n_block : 1;
+    vec->_block_size = block_size ? block_size : 1;
 
-    unsigned sz = block_size * n_block? block_size * n_block : 1;
-    __allocate(&vec->_data, 0, sz);
+    __allocate(&vec->_data, 0, vec->_block_size * vec->_capacity);
 
     return vec;
 }
 
-unsigned size_of_cvector(const cvector* vec){
+void CV_push_back(cvector* vec, const void* data){
+    if(vec->_size >= vec->_capacity){
+        vec->_capacity *= 2;
+        __allocate(&vec->_data,
+                 vec->_capacity*vec->_block_size/2,
+                 vec->_capacity*vec->_block_size);
+    }
+    memcpy((char*)vec->_data+vec->_block_size*(vec->_size++), data, vec->_block_size);
+}
+
+unsigned CV_size_of(const cvector* vec){
     return vec->_size;
 }
 
-unsigned capacity_of_cvector(const cvector* vec){
+unsigned CV_capacity_of(const cvector* vec){
     return vec->_capacity;
 }
 
-void clear_cvector(cvector* vec){
+void CV_clear(cvector* vec){
     vec->_size = 0;
 }
 
-void copy_cvector(cvector* dest, const cvector* src){
+void CV_copy(cvector* dest, const cvector* src){
     if(dest->_capacity < src->_size){
         __allocate(&dest->_data, dest->_capacity, src->_capacity);
         dest->_capacity = src->_capacity;
     }   memcpy(dest->_data, src->_data, src->_size * src->_block_size);
     dest->_size = src->_size;
     dest->_block_size = src->_block_size;
-
-    printf("%u ; %u\n", src->_size, src->_block_size);
 }
 
-void deep_copy_vector(cvector* dest, const cvector* src){
+void CV_deep_copy(cvector* dest, const cvector* src){
     ;
 }
 
-void delete_cvector(cvector* vec){
-    vec->_size = vec->_capacity = 0;
+unsigned CV_find(const cvector* vec, const void* data){
+    for(unsigned i=0; i<vec->_size; ++i){
+        if(!memcmp(vec->_data+vec->_block_size*i, data, vec->_block_size)) return i;
+    }
+    return -1;
+}
+
+void CV_delete(cvector* vec){
+    vec->_size = vec->_capacity = vec->_block_size = 0;
     free(vec->_data);
+    free(vec);
+    
     vec->_data = NULL;
+    vec = NULL;
 }

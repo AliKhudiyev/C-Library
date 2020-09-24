@@ -8,24 +8,25 @@ typedef struct{
     cvector* _elems;
 }cset;
 
-#define add_element(set, data, _type)                           \
+#define MCSet_add(set, data, _type)                           \
     {                                                           \
         bool_t result;                                          \
         exists(set->_elems, data, _type, result);               \
         if(!result){ push_back(set->_elems, data, _type); }     \
     }
 
-#define get_valptr(set, index, _type)                           \
+#define MCSet_get_valptr(set, index, _type)                           \
     get_ptr(set->_elems, index, _type)
 
-#define get_vptr(set)                                           \
+#define MCSet_get_vptr(set)                                           \
     set->_elems;
 
-#define force_find_element(set, element, _type, _result)        \
+#define MCSet_force_find(set, element, _type, _result)        \
         force_find(set->_elems, element, _type, _result)
 
-cset* CSet();
-// bool_t add_element(cset* set, void*);
-void free_cset(cset* set);
+cset* CSet(unsigned block_size);
+bool_t CSet_exists(const cset* set, const void* element);
+bool_t CSet_add(cset* set, const void* element);
+void CSet_free(cset* set);
 
 #endif

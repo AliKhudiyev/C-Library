@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../../include/cdictionary.h
+../../include/cpair.h
 cvector.h
 ../../include/cvector.h
 
@@ -18,6 +18,8 @@ cvector.h
 cvector.h
 ../../include/cvector.h
 
+../../include/ctypes.h
+
 ../../include/cvector.h
 stdlib.h
 -
@@ -25,10 +27,12 @@ unistd.h
 -
 memory.h
 -
+ctypes.h
+../../include/ctypes.h
 
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c
-cdictionary.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c
+cpair.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.h
 
 /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c
 cset.h
@@ -53,6 +57,8 @@ stdio.h
 -
 stdio.h
 -
+cvector.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/tests/cvector.h
 
 /usr/local/include/CUnit/Basic.h
 CUnit.h

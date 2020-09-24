@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o"
+  "CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o"
   "CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o"
   "CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o"
   "CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o"

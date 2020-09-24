@@ -169,32 +169,32 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.s
 .PHONY : main.c.s
 
-src/cdictionary.o: src/cdictionary.c.o
+src/cpair.o: src/cpair.c.o
 
-.PHONY : src/cdictionary.o
+.PHONY : src/cpair.o
 
 # target to build an object file
-src/cdictionary.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cdictionary.c.o
-.PHONY : src/cdictionary.c.o
+src/cpair.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cpair.c.o
+.PHONY : src/cpair.c.o
 
-src/cdictionary.i: src/cdictionary.c.i
+src/cpair.i: src/cpair.c.i
 
-.PHONY : src/cdictionary.i
+.PHONY : src/cpair.i
 
 # target to preprocess a source file
-src/cdictionary.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cdictionary.c.i
-.PHONY : src/cdictionary.c.i
+src/cpair.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cpair.c.i
+.PHONY : src/cpair.c.i
 
-src/cdictionary.s: src/cdictionary.c.s
+src/cpair.s: src/cpair.c.s
 
-.PHONY : src/cdictionary.s
+.PHONY : src/cpair.s
 
 # target to generate assembly for a file
-src/cdictionary.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cdictionary.c.s
-.PHONY : src/cdictionary.c.s
+src/cpair.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cpair.c.s
+.PHONY : src/cpair.c.s
 
 src/cset.o: src/cset.c.o
 
@@ -289,9 +289,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/cdictionary.o"
-	@echo "... src/cdictionary.i"
-	@echo "... src/cdictionary.s"
+	@echo "... src/cpair.o"
+	@echo "... src/cpair.i"
+	@echo "... src/cpair.s"
 	@echo "... src/cset.o"
 	@echo "... src/cset.i"
 	@echo "... src/cset.s"

@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o"
+  "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_vector.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test.dir/test_vector.c.o"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH

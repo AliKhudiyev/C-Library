@@ -142,32 +142,32 @@ test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
 .PHONY : test/fast
 
-Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.o: Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.o: Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o
 
-.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.o
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.o
 
 # target to build an object file
-Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o
-.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.o
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o
 
-Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.i: Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.i
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.i: Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.i
 
-.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.i
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.i
 
 # target to preprocess a source file
-Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.i
-.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.i
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.i
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.i
 
-Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.s: Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.s
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.s: Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.s
 
-.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.s
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.s
 
 # target to generate assembly for a file
-Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.s
-.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.c.s
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.s
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.s
 
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.o: Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
 
@@ -286,9 +286,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.o"
-	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.i"
-	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cdictionary.s"
+	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.o"
+	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.i"
+	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.s"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.o"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.i"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.s"
