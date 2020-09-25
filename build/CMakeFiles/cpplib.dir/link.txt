@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libcpplib.a CMakeFiles/cpplib.dir/src/cpair.c.o CMakeFiles/cpplib.dir/src/cset.c.o CMakeFiles/cpplib.dir/src/cstring.c.o CMakeFiles/cpplib.dir/src/cvector.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libcpplib.a

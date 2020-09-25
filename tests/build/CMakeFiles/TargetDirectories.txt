@@ -1,3 +1,6 @@
-/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/rebuild_cache.dir
 /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/edit_cache.dir
-/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test.dir
+/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test_set.dir
+/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/rebuild_cache.dir
+/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test_pair.dir
+/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test_string.dir
+/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles/test_vector.dir

@@ -142,6 +142,19 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+#=============================================================================
+# Target rules for targets named cpp
+
+# Build rule for target.
+cpp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cpp
+.PHONY : cpp
+
+# fast build rule for target.
+cpp/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/build
+.PHONY : cpp/fast
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -176,6 +189,7 @@ src/cpair.o: src/cpair.c.o
 # target to build an object file
 src/cpair.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cpair.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cpair.c.o
 .PHONY : src/cpair.c.o
 
 src/cpair.i: src/cpair.c.i
@@ -185,6 +199,7 @@ src/cpair.i: src/cpair.c.i
 # target to preprocess a source file
 src/cpair.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cpair.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cpair.c.i
 .PHONY : src/cpair.c.i
 
 src/cpair.s: src/cpair.c.s
@@ -194,6 +209,7 @@ src/cpair.s: src/cpair.c.s
 # target to generate assembly for a file
 src/cpair.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cpair.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cpair.c.s
 .PHONY : src/cpair.c.s
 
 src/cset.o: src/cset.c.o
@@ -203,6 +219,7 @@ src/cset.o: src/cset.c.o
 # target to build an object file
 src/cset.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cset.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cset.c.o
 .PHONY : src/cset.c.o
 
 src/cset.i: src/cset.c.i
@@ -212,6 +229,7 @@ src/cset.i: src/cset.c.i
 # target to preprocess a source file
 src/cset.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cset.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cset.c.i
 .PHONY : src/cset.c.i
 
 src/cset.s: src/cset.c.s
@@ -221,6 +239,7 @@ src/cset.s: src/cset.c.s
 # target to generate assembly for a file
 src/cset.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cset.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cset.c.s
 .PHONY : src/cset.c.s
 
 src/cstring.o: src/cstring.c.o
@@ -230,6 +249,7 @@ src/cstring.o: src/cstring.c.o
 # target to build an object file
 src/cstring.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cstring.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cstring.c.o
 .PHONY : src/cstring.c.o
 
 src/cstring.i: src/cstring.c.i
@@ -239,6 +259,7 @@ src/cstring.i: src/cstring.c.i
 # target to preprocess a source file
 src/cstring.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cstring.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cstring.c.i
 .PHONY : src/cstring.c.i
 
 src/cstring.s: src/cstring.c.s
@@ -248,6 +269,7 @@ src/cstring.s: src/cstring.c.s
 # target to generate assembly for a file
 src/cstring.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cstring.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cstring.c.s
 .PHONY : src/cstring.c.s
 
 src/cvector.o: src/cvector.c.o
@@ -257,6 +279,7 @@ src/cvector.o: src/cvector.c.o
 # target to build an object file
 src/cvector.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cvector.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cvector.c.o
 .PHONY : src/cvector.c.o
 
 src/cvector.i: src/cvector.c.i
@@ -266,6 +289,7 @@ src/cvector.i: src/cvector.c.i
 # target to preprocess a source file
 src/cvector.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cvector.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cvector.c.i
 .PHONY : src/cvector.c.i
 
 src/cvector.s: src/cvector.c.s
@@ -275,6 +299,7 @@ src/cvector.s: src/cvector.c.s
 # target to generate assembly for a file
 src/cvector.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cvector.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cvector.c.s
 .PHONY : src/cvector.c.s
 
 # Help Target
@@ -285,6 +310,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... cpp"
 	@echo "... main"
 	@echo "... main.o"
 	@echo "... main.i"

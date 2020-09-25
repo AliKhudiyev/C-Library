@@ -1,5 +1,5 @@
-#include </usr/local/include/CUnit/CUnit.h>
-#include </usr/local/include/CUnit/Basic.h>
+#include <CUnit/CUnit.h>
+#include <CUnit/Basic.h>
 
 #include <stdio.h>
 
@@ -51,8 +51,8 @@ void test_constructor_destructor(){
     CU_ASSERT_PTR_NOT_NULL(vec);
     CU_ASSERT_PTR_NOT_NULL(ptr);
 
-    CU_ASSERT_EQUAL(vec->_size, 0);
-    CU_ASSERT_EQUAL(vec->_capacity, 1);
+    CU_ASSERT_EQUAL(CV_size_of(vec), 0);
+    CU_ASSERT_EQUAL(CV_capacity_of(vec), 1);
     CU_ASSERT_EQUAL(vec->_block_size, sizeof(float*));
 
     CV_delete(vec);
