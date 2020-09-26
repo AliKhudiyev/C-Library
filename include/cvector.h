@@ -36,16 +36,16 @@ void* CV_end(const cvector* vec);
 const void* CV_cbegin(const cvector* vec);
 const void* CV_cend(const cvector* vec);
 
-#define MCV_begin(vec, _type) \
+#define MCV_begin(vec, _type)                                               \
     (_type*)CV_begin(vec);
 
-#define MCV_end(vec, _type) \
+#define MCV_end(vec, _type)                                                 \
     (_type*)CV_end(vec);
 
-#define MCV_cbegin(vec, _type) \
+#define MCV_cbegin(vec, _type)                                              \
     (const _type*)CV_cbegin(vec);
 
-#define MCV_cend(vec, _type) \
+#define MCV_cend(vec, _type)                                                \
     (const _type*)CV_cend(vec);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -81,8 +81,6 @@ void CV_insert(cvector* vec, size_t position, const void* val);
 void CV_erase(cvector* vec, size_t position);
 void CV_swap(cvector* vec1, cvector* vec2);
 void CV_clear(cvector* vec);
-void CV_emplace(cvector* vec, size_t position, ...);
-void CV_emplace_back(cvector* vec, ...);
 
 #define MCV_force_push_back(vec, val, _type)                                \
     {                                                                       \
@@ -94,6 +92,18 @@ void CV_emplace_back(cvector* vec, ...);
     {                                                                       \
         _type tmp = val;                                                    \
         CV_insert(vec, position, (const void*)&tmp);                                     \
+    }
+
+#define MCV_emplace(vec, position, _type, ...)                              \
+    {                                                                       \
+        _type tmp = { __VA_ARGS__ };                                        \
+        CV_insert(vec, position, &tmp);                                     \
+    }
+
+#define MCV_emplace_back(vec, _type, ...)                                   \
+    {                                                                       \
+        _type tmp = { __VA_ARGS__ };                                        \
+        CV_push_back(vec, &tmp);                                            \
     }
 // = = = = = = = = = = = = = = = = = = = = = = =
 

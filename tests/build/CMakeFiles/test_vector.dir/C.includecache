@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 ../../include/ctypes.h
+stdarg.h
+-
 
 ../../include/cvector.h
 stdlib.h
@@ -17,12 +19,6 @@ memory.h
 -
 ctypes.h
 ../../include/ctypes.h
-
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
-cvector.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.h
-stdio.h
--
 
 /Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_vector.c
 CUnit/CUnit.h

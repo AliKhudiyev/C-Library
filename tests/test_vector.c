@@ -61,15 +61,47 @@ void test_constructor_destructor(){
 
 // Capacity
 void test_size(){
-    ;
+    cvector* vec = CVector(sizeof(char), 1);
+
+    for(size_t i=0; i<100; ++i){
+        CU_ASSERT_EQUAL(CV_size(vec), i);
+        MCV_force_push_back(vec, 'a', char);
+    }
+
+    for(size_t i=0; i<50; ++i){
+        CU_ASSERT_EQUAL(CV_size(vec), 100-i);
+        if(i%2) CV_pop_back(vec);
+        else CV_erase(vec, i);
+    }
+
+    CV_delete(vec);
 }
 
 void test_resize(){
-    ;
+    cvector* vec = CVector(sizeof(char), 2);
+
+    CU_ASSERT_EQUAL(CV_capacity(vec), 2);
+
+    CV_resize(vec, 1);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 2);
+
+    CV_resize(vec, 3);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 3);
+
+    CV_delete(vec);
 }
 
 void test_capacity(){
-    ;
+    cvector* vec = CVector(sizeof(char), 0);
+
+    size_t capacity = 1;
+    for(size_t i=0; i<100; ++i){
+        CU_ASSERT_EQUAL(CV_capacity(vec), capacity);
+        MCV_force_push_back(vec, 'a', char);
+        if(capacity <= i) capacity *= 2;
+    }
+    
+    CV_delete(vec);
 }
 
 void test_empty(){
@@ -88,27 +120,70 @@ void test_empty(){
 }
 
 void test_shrink_to_fit(){
-    ;
+    cvector* vec = CVector(sizeof(char), 1);
+
+    MCV_emplace_back(vec, char, 'a');
+    MCV_emplace_back(vec, char, 'b');
+    MCV_emplace_back(vec, char, 'c');
+
+    CU_ASSERT_EQUAL(CV_capacity(vec), 4);
+    CV_shrink_to_fit(vec);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 3);
+
+    CV_delete(vec);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Element access
 void test_at(){
-    ;
+    cvector* vec = CVector(sizeof(int), 5);
+
+    for(unsigned i=0; i<5; ++i){
+        CU_ASSERT_PTR_EQUAL(CV_at(vec, i), NULL);
+        CV_push_back(vec, &i);
+        CU_ASSERT_PTR_EQUAL(CV_at(vec, i), vec->_data+i*vec->_block_size);
+    }
+
+    CV_delete(vec);
 }
 
 void test_front(){
-    ;
+    cvector* vec = CVector(sizeof(int), 5);
+
+    CU_ASSERT_PTR_EQUAL(CV_front(vec), NULL);
+    MCV_force_push_back(vec, 0, int);
+    CU_ASSERT_PTR_EQUAL(CV_front(vec), vec->_data);
+    MCV_force_push_back(vec, 1, int);
+    CU_ASSERT_PTR_EQUAL(CV_front(vec), vec->_data);
+
+    CV_delete(vec);
 }
 
 void test_back(){
-    ;
+    cvector* vec = CVector(sizeof(int), 5);
+
+    CU_ASSERT_PTR_EQUAL(CV_back(vec), NULL);
+    MCV_force_push_back(vec, 0, int);
+    CU_ASSERT_PTR_EQUAL(CV_back(vec), vec->_data);
+    MCV_force_push_back(vec, 1, int);
+    CU_ASSERT_PTR_EQUAL(CV_back(vec), vec->_data+vec->_block_size);
+
+    CV_delete(vec);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Modifiers
 void test_push_back(){
-    ;
+    cvector* vec = CVector(sizeof(char), 2);
+
+    for(unsigned i=0; i<10; ++i){
+        char tmp = 64+i;
+        CU_ASSERT_EQUAL(CV_size(vec), i);
+        CV_push_back(vec, (const void*)&tmp);
+        CU_ASSERT_EQUAL(*MCV_back(vec, char), tmp);
+    }
+
+    CV_delete(vec);
 }
 
 void test_pop_back(){
@@ -191,6 +266,8 @@ void test_erase(){
     CV_erase(vec, 0);
     CV_erase(vec, 10);
 
+    CU_ASSERT_EQUAL(CV_size(vec), 0);
+
     MCV_force_push_back(vec, 'a', char);
     MCV_force_push_back(vec, 'b', char);
     MCV_force_push_back(vec, 'c', char);
@@ -198,10 +275,15 @@ void test_erase(){
     MCV_force_push_back(vec, 'e', char);
 
     CV_erase(vec, 0);
+    CU_ASSERT_EQUAL(CV_size(vec), 4);
     CV_erase(vec, 1);
+    CU_ASSERT_EQUAL(CV_size(vec), 3);
     CV_erase(vec, CV_size(vec)-1);
+    CU_ASSERT_EQUAL(CV_size(vec), 2);
 
-    // TO DO
+    CU_ASSERT_EQUAL(*MCV_at(vec, 0, char), 'b');
+    CU_ASSERT_EQUAL(*MCV_at(vec, 1, char), 'd');
+    CU_ASSERT_PTR_EQUAL(MCV_at(vec, 2, char), NULL);
 
     CV_delete(vec);
 }
@@ -240,21 +322,76 @@ void test_swap(){
 }
 
 void test_clear(){
-    ;
+    cvector* vec = CVector(sizeof(int), 1);
+
+    for(unsigned i=0; i<10; ++i){
+        CV_push_back(vec, &i);
+    }
+    CU_ASSERT_EQUAL(CV_size(vec), 10);
+    CV_clear(vec);
+    CU_ASSERT_EQUAL(CV_size(vec), 0);
+
+    CV_delete(vec);
 }
 
 void test_emplace(){
-    ;
+    cvector* vec = CVector(sizeof(Struct), 1);
+
+    CU_ASSERT_PTR_EQUAL(MCV_front(vec, int), NULL);
+    MCV_emplace(vec, 0, Struct, "Testing Emplace 1", 2.5);
+    MCV_emplace(vec, 0, Struct, "Testing Emplace 2", 3);
+    MCV_emplace(vec, 1, Struct, "Testing Emplace 3", 3.5);
+    MCV_emplace(vec, 3, Struct, "Testing Emplace 4", 4);
+
+    CU_ASSERT_EQUAL(strcmp(MCV_front(vec, Struct)->name, "Testing Emplace 2"), 0);
+    CU_ASSERT_DOUBLE_EQUAL(MCV_front(vec, Struct)->weight, 3, epsilon);
+
+    CU_ASSERT_EQUAL(strcmp(MCV_at(vec, 1, Struct)->name, "Testing Emplace 3"), 0);
+    CU_ASSERT_DOUBLE_EQUAL(MCV_at(vec, 1, Struct)->weight, 3.5, epsilon);
+
+    CU_ASSERT_EQUAL(strcmp(MCV_at(vec, 2, Struct)->name, "Testing Emplace 1"), 0);
+    CU_ASSERT_DOUBLE_EQUAL(MCV_at(vec, 2, Struct)->weight, 2.5, epsilon);
+
+    CU_ASSERT_EQUAL(strcmp(MCV_back(vec, Struct)->name, "Testing Emplace 4"), 0);
+    CU_ASSERT_DOUBLE_EQUAL(MCV_back(vec, Struct)->weight, 4, epsilon);
+
+    CV_delete(vec);
 }
 
 void test_emplace_back(){
-    ;
+    cvector* vec = CVector(sizeof(Struct), 1);
+
+    CU_ASSERT_PTR_EQUAL(MCV_front(vec, int), NULL);
+    MCV_emplace_back(vec, Struct, "Testing Emplace Back", 2.3);
+    CU_ASSERT_EQUAL(strcmp(MCV_front(vec, Struct)->name, "Testing Emplace Back"), 0);
+    CU_ASSERT_DOUBLE_EQUAL(MCV_front(vec, Struct)->weight, 2.3, epsilon);
+
+    CV_delete(vec);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Additional
 void test_enlarge(){
-    CU_ASSERT(1);
+    cvector* vec = CVector(sizeof(char), 1);
+
+    CU_ASSERT_EQUAL(CV_capacity(vec), 1);
+    CV_enlarge(vec, 1);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 1);
+    CV_enlarge(vec, 2);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 2);
+    CV_enlarge(vec, 1);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 2);
+    CV_enlarge(vec, 2);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 2);
+    CV_enlarge(vec, 3);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 3);
+    CV_enlarge(vec, 3);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 3);
+    MCV_force_push_back(vec, 'a', char);
+    CV_enlarge(vec, 3);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 4);
+
+    CV_delete(vec);
 }
 
 void test_sort(){

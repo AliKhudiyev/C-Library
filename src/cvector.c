@@ -4,17 +4,15 @@
 
 // Allocator
 void __allocate(void** ptr, unsigned size, unsigned new_size){
-    if(size != new_size){
-        void* cptr = *ptr;
+    void* cptr = *ptr;
 
-        *ptr = malloc(new_size);
-        if(*ptr == NULL){
-            fprintf(stderr, "%s", "__allocate: failed to allocate!\n");
-            exit(1);
-        }
-        memcpy(*ptr, cptr, size);
-        if(size) free(cptr);
+    *ptr = malloc(new_size);
+    if(*ptr == NULL){
+        fprintf(stderr, "%s", "__allocate: failed to allocate!\n");
+        exit(1);
     }
+    memcpy(*ptr, cptr, size);
+    if(size) free(cptr);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -65,9 +63,9 @@ size_t CV_size(const cvector* vec){
 }
 
 void CV_resize(cvector* vec, size_t n){
-    if(n > vec->_capacity){
-        __allocate(&vec->_data, vec->_capacity, n);
+    if(vec->_capacity < n){
         vec->_capacity = n;
+        __allocate(&vec->_data, vec->_capacity, n);
     }
 }
 
@@ -81,7 +79,8 @@ bool_t CV_empty(const cvector* vec){
 
 void CV_shrink_to_fit(cvector* vec){
     if(vec->_capacity > vec->_size){
-        ;
+        vec->_capacity = vec->_size;
+        __allocate(&vec->_data, vec->_size*vec->_block_size, vec->_size*vec->_block_size);
     }
 }
 
@@ -99,10 +98,12 @@ void* CV_at(const cvector* vec, size_t position){
 }
 
 void* CV_front(const cvector* vec){
+    if(!vec->_size) return NULL;
     return vec->_data;
 }
 
 void* CV_back(const cvector* vec){
+    if(!vec->_size) return NULL;
     return vec->_data+(vec->_size-1)*vec->_block_size;
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
@@ -165,23 +166,15 @@ void CV_swap(cvector* vec1, cvector* vec2){
 void CV_clear(cvector* vec){
     vec->_size = 0;
 }
-
-void CV_emplace(cvector* vec, size_t position, ...){
-    ;
-}
-
-void CV_emplace_back(cvector* vec, ...){
-    // CV_emplace(vec, vec->_size, ...);
-}
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Additional
 void CV_enlarge(cvector* vec, size_t n){
     if(vec->_size+n-1 >= vec->_capacity){
-        vec->_capacity += n;
+        vec->_capacity = vec->_size+n;
         __allocate(&vec->_data,
-                 (vec->_capacity-n)*vec->_block_size,
-                 vec->_capacity*vec->_block_size);
+                   vec->_size*vec->_block_size,
+                   vec->_capacity*vec->_block_size);
     }
 }
 
