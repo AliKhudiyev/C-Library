@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../../include/cstring.h
-cvector.h
-../../include/cvector.h
-
 ../../include/ctypes.h
 
 ../../include/cvector.h
@@ -22,55 +18,9 @@ memory.h
 ctypes.h
 ../../include/ctypes.h
 
-/Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_string.c
-CUnit/CUnit.h
--
-CUnit/Basic.h
--
-stdio.h
--
-cstring.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/tests/cstring.h
-
-/usr/local/include/CUnit/Basic.h
-CUnit.h
-/usr/local/include/CUnit/CUnit.h
-TestDB.h
-/usr/local/include/CUnit/TestDB.h
-
-/usr/local/include/CUnit/CUError.h
-errno.h
--
-CUnit.h
-/usr/local/include/CUnit/CUnit.h
-
-/usr/local/include/CUnit/CUnit.h
-string.h
--
-math.h
--
-CUError.h
-/usr/local/include/CUnit/CUError.h
-TestDB.h
-/usr/local/include/CUnit/TestDB.h
-TestRun.h
-/usr/local/include/CUnit/TestRun.h
-
-/usr/local/include/CUnit/TestDB.h
-setjmp.h
--
-CUnit.h
-/usr/local/include/CUnit/CUnit.h
-CUError.h
-/usr/local/include/CUnit/CUError.h
-
-/usr/local/include/CUnit/TestRun.h
-CUnit.h
-/usr/local/include/CUnit/CUnit.h
-CUError.h
-/usr/local/include/CUnit/CUError.h
-TestDB.h
-/usr/local/include/CUnit/TestDB.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
+cvector.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.h
 stdio.h
 -
 

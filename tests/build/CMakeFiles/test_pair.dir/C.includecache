@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../../include/cpair.h
-cvector.h
-../../include/cvector.h
-
-../../include/cset.h
-cvector.h
-../../include/cvector.h
-
-../../include/cstring.h
-cvector.h
-../../include/cvector.h
-
 ../../include/ctypes.h
 
 ../../include/cvector.h
@@ -30,27 +18,9 @@ memory.h
 ctypes.h
 ../../include/ctypes.h
 
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c
-cpair.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.h
-
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c
-cset.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.h
-
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c
-cstring.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.h
-stdio.h
--
-
 /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
 cvector.h
 /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.h
-stdio.h
--
-
-/Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_pair.c
 stdio.h
 -
 

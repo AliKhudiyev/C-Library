@@ -7,15 +7,15 @@ cstring* CString(unsigned size){
     return str;
 }
 
-void CS_concat(cstring* str, const char* chars, unsigned size){
+void CS_append(cstring* str, const char* chars, unsigned size){
     unsigned sz = size? size : strlen(chars);
     
     if(str->_str->_size){
-        MCV_erase(str->_str, str->_str->_size-1, char);
+        CV_erase(str->_str, str->_str->_size-1);
     }
     for(unsigned i=0; i<sz; ++i){
-        MCV_push_back(str->_str, chars+i, char);
-    }   MCV_push_back(str->_str, "\0", char);
+        CV_push_back(str->_str, chars+i);
+    }   CV_push_back(str->_str, "\0");
 }
 
 char CS_compare(const cstring* str1, const cstring* str2, unsigned size){
@@ -31,10 +31,10 @@ char CS_compare(const cstring* str1, const cstring* str2, unsigned size){
     }
 
     for(unsigned i=0; i<sz; ++i){
-        if(*MCV_get_ptr(str1->_str, i, char) > *MCV_get_ptr(str2->_str, i, char)){
+        if(*MCV_at(str1->_str, i, char) > *MCV_at(str2->_str, i, char)){
             return 1;
         }
-        if(*MCV_get_ptr(str1->_str, i, char) < *MCV_get_ptr(str2->_str, i, char)){
+        if(*MCV_at(str1->_str, i, char) < *MCV_at(str2->_str, i, char)){
             return -1;
         }
     }
@@ -47,7 +47,7 @@ void CS_copy(cstring* dest, const cstring* src){
 
 // void convert_to(const string* str, __Type type);
 
-cstring* CS_substring(const cstring* str, unsigned beg, unsigned end){
+cstring* CS_substr(const cstring* str, unsigned beg, unsigned end){
     return 0;
 }
 
@@ -56,11 +56,19 @@ cstring* CS_find(const cstring* str, const cstring* token, unsigned offset){
 }
 
 char CS_get_char(const cstring* str, unsigned index){
-    return (char)*MCV_get_ptr(str->_str, index, char);
+    return *MCV_at(str->_str, index, char);
 }
 
 const char* CS_get_strptr(const cstring* str){
     return (const char*)str->_str->_data;
+}
+
+unsigned CS_size_of(const cstring* str){
+    return str->_str->_size;
+}
+
+unsigned CS_capacity(const cstring* str){
+    return str->_str->_capacity;
 }
 
 void CS_delete(cstring* str){

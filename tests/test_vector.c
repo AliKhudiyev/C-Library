@@ -12,7 +12,6 @@ typedef struct{
     double weight;
 }Struct;
 
-cvector *vec1, *vec2;
 cvector *v1, *v2;
 
 int my_sorter(Struct s1, Struct s2){
@@ -25,8 +24,6 @@ int compare_doubles(const void* a, const void* b){
 }
 
 int init_suite1(void){
-    vec1 = CVector(sizeof(double), 0);
-    vec2 = CVector(sizeof(double*), 5);
 
     v1 = CVector(sizeof(Struct*), 1);
     v2 = CVector(sizeof(Struct), 5);
@@ -35,8 +32,6 @@ int init_suite1(void){
 }
 
 int clean_suite1(void){
-    CV_delete(vec1);
-    CV_delete(vec2);
 
     CV_delete(v1);
     CV_delete(v2);
@@ -44,6 +39,7 @@ int clean_suite1(void){
     return 0;
 }
 
+// Consturctor and Destructor
 void test_constructor_destructor(){
     cvector* vec = CVector(sizeof(float*), 0);
     void* ptr = vec->_data;
@@ -51,8 +47,8 @@ void test_constructor_destructor(){
     CU_ASSERT_PTR_NOT_NULL(vec);
     CU_ASSERT_PTR_NOT_NULL(ptr);
 
-    CU_ASSERT_EQUAL(CV_size_of(vec), 0);
-    CU_ASSERT_EQUAL(CV_capacity_of(vec), 1);
+    CU_ASSERT_EQUAL(CV_size(vec), 0);
+    CU_ASSERT_EQUAL(CV_capacity(vec), 1);
     CU_ASSERT_EQUAL(vec->_block_size, sizeof(float*));
 
     CV_delete(vec);
@@ -61,81 +57,204 @@ void test_constructor_destructor(){
     CU_ASSERT_EQUAL(vec->_capacity, 0);
     CU_ASSERT_EQUAL(vec->_block_size, 0);
 }
+// = = = = = = = = = = = = = = = = = = = = = = =
 
-void test_push(){
-    double val1 = -3.8;
-    CV_push_back(vec1, &val1);
-
-    CU_ASSERT_EQUAL(vec1->_size, 1);
-    CU_ASSERT_EQUAL(vec1->_capacity, 1);
-    CU_ASSERT_EQUAL(vec1->_block_size, sizeof(double));
-
-    for(unsigned i=0; i<CV_size_of(vec1); ++i){
-        double tmp = *MCV_get_ptr(vec1, i, double);
-        CU_ASSERT_DOUBLE_EQUAL(tmp, -3.8, epsilon);
-    }
-
-    MCV_force_push_back(vec1, 1.4, double);
-
-    CU_ASSERT_EQUAL(vec1->_size, 2);
-    CU_ASSERT_EQUAL(vec1->_capacity, 2);
-    CU_ASSERT_EQUAL(vec1->_block_size, sizeof(double));
-
-    for(unsigned i=0; i<CV_size_of(vec1); ++i){
-        double tmp = *MCV_get_ptr(vec1, i, double);
-        CU_ASSERT_DOUBLE_EQUAL(tmp, !i? -3.8 : 1.4, epsilon);
-    }
-
-    unsigned capacity = 1;
-    for(unsigned i=0; i<10; ++i){
-        Struct* s = malloc(sizeof(Struct));
-        s->weight = i/10.0;
-        MCV_push_back(v1, &s, Struct*);
-
-        Struct** tmp = MCV_get_ptr(v1, i, Struct*);
-
-        if(i+1 > capacity) capacity *= 2;
-
-        CU_ASSERT_DOUBLE_EQUAL(s->weight, (**tmp).weight, epsilon);
-        CU_ASSERT_PTR_EQUAL(s, *tmp);
-
-        CU_ASSERT_EQUAL(i+1, CV_size_of(v1));
-        CU_ASSERT_EQUAL(v1->_capacity, capacity);
-        CU_ASSERT_EQUAL(v1->_block_size, sizeof(Struct*));
-    }
-}
-
-void test_erase(){
+// Capacity
+void test_size(){
     ;
-    CU_ASSERT(1);
 }
 
-void test_enlarge(){
-    CU_ASSERT(1);
+void test_resize(){
+    ;
+}
+
+void test_capacity(){
+    ;
+}
+
+void test_empty(){
+    cvector* vec = CVector(sizeof(char), 2);
+
+    CU_ASSERT(CV_empty(vec));
+    MCV_force_push_back(vec, 'a', char);
+    CU_ASSERT(!CV_empty(vec));
+    MCV_force_push_back(vec, 'b', char);
+    CV_pop_back(vec);
+    CU_ASSERT(!CV_empty(vec));
+    CV_pop_back(vec);
+    CU_ASSERT(CV_empty(vec));
+
+    CV_delete(vec);
+}
+
+void test_shrink_to_fit(){
+    ;
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Element access
+void test_at(){
+    ;
+}
+
+void test_front(){
+    ;
+}
+
+void test_back(){
+    ;
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Modifiers
+void test_push_back(){
+    ;
+}
+
+void test_pop_back(){
+    cvector* vec = CVector(sizeof(char), 3);
+
+    MCV_force_push_back(vec, 'a', char);
+    CU_ASSERT_EQUAL('a', *MCV_back(vec, char));
+
+    MCV_force_push_back(vec, 'b', char);
+    CU_ASSERT_EQUAL('b', *MCV_back(vec, char));
+
+    MCV_force_push_back(vec, 'c', char);
+    CU_ASSERT_EQUAL('c', *MCV_back(vec, char));
+
+    CU_ASSERT_EQUAL(3, CV_size(vec));
+
+    CV_pop_back(vec);
+    CU_ASSERT_EQUAL(2, CV_size(vec));
+    CU_ASSERT_EQUAL('b', *MCV_back(vec, char));
+
+    CV_pop_back(vec);
+    CU_ASSERT_EQUAL(1, CV_size(vec));
+    CU_ASSERT_EQUAL('a', *MCV_back(vec, char));
+
+    CV_pop_back(vec);
+    CU_ASSERT_EQUAL(0, CV_size(vec));
+    CU_ASSERT_PTR_EQUAL(NULL, MCV_back(vec, char));
+
+    CV_delete(vec);
 }
 
 void test_insert(){
-    CU_ASSERT(1);
+    cvector* vec = CVector(sizeof(double), 3);
+    
+    MCV_force_insert(vec, -1, 0.5, double);
+    CU_ASSERT_EQUAL(CV_size(vec), 0);
+    CU_ASSERT_PTR_EQUAL(MCV_at(vec, 0, double), NULL);
+    
+    MCV_force_insert(vec, 1, 1, double);
+    CU_ASSERT_EQUAL(CV_size(vec), 0);
+    CU_ASSERT_PTR_EQUAL(MCV_at(vec, 0, double), NULL);
+    
+    MCV_force_insert(vec, 3, 1.5, double);
+    CU_ASSERT_EQUAL(CV_size(vec), 0);
+    CU_ASSERT_PTR_EQUAL(MCV_at(vec, 0, double), NULL);
+
+    MCV_force_insert(vec, 0, 2, double);
+    CU_ASSERT_EQUAL(CV_size(vec), 1);
+    CU_ASSERT_DOUBLE_EQUAL(*MCV_at(vec, 0, double), 2, epsilon);
+    CU_ASSERT_PTR_EQUAL(MCV_at(vec, 1, double), NULL);
+
+    MCV_force_insert(vec, 0, 2.5, double);
+    CU_ASSERT_EQUAL(CV_size(vec), 2);
+    CU_ASSERT_DOUBLE_EQUAL(*MCV_at(vec, 0, double), 2.5, epsilon);
+    CU_ASSERT_DOUBLE_EQUAL(*MCV_at(vec, 1, double), 2, epsilon);
+    CU_ASSERT_PTR_EQUAL(MCV_at(vec, 2, double), NULL);
+
+    MCV_force_insert(vec, 1, 3, double);
+    CU_ASSERT_EQUAL(CV_size(vec), 3);
+    CU_ASSERT_DOUBLE_EQUAL(*MCV_at(vec, 0, double), 2.5, epsilon);
+    CU_ASSERT_DOUBLE_EQUAL(*MCV_at(vec, 1, double), 3, epsilon);
+    CU_ASSERT_DOUBLE_EQUAL(*MCV_at(vec, 2, double), 2, epsilon);
+    CU_ASSERT_PTR_EQUAL(MCV_at(vec, 3, double), NULL);
+
+    MCV_force_insert(vec, 3, 3.5, double);
+    CU_ASSERT_EQUAL(CV_size(vec), 4);
+    CU_ASSERT_DOUBLE_EQUAL(*MCV_at(vec, 0, double), 2.5, epsilon);
+    CU_ASSERT_DOUBLE_EQUAL(*MCV_at(vec, 1, double), 3, epsilon);
+    CU_ASSERT_DOUBLE_EQUAL(*MCV_at(vec, 2, double), 2, epsilon);
+    CU_ASSERT_DOUBLE_EQUAL(*MCV_at(vec, 3, double), 3.5, epsilon);
+    CU_ASSERT_PTR_EQUAL(MCV_at(vec, 4, double), NULL);
+
+    CV_delete(vec);
+}
+
+void test_erase(){
+    cvector* vec = CVector(sizeof(char), 5);
+
+    CV_erase(vec, -1);
+    CV_erase(vec, 0);
+    CV_erase(vec, 10);
+
+    MCV_force_push_back(vec, 'a', char);
+    MCV_force_push_back(vec, 'b', char);
+    MCV_force_push_back(vec, 'c', char);
+    MCV_force_push_back(vec, 'd', char);
+    MCV_force_push_back(vec, 'e', char);
+
+    CV_erase(vec, 0);
+    CV_erase(vec, 1);
+    CV_erase(vec, CV_size(vec)-1);
+
+    // TO DO
+
+    CV_delete(vec);
 }
 
 void test_swap(){
-    CU_ASSERT(1);
+    cvector* vec1 = CVector(sizeof(int), 3);
+    cvector* vec2 = CVector(sizeof(char), 4);
+
+    MCV_force_push_back(vec1, -1, int);
+    MCV_force_push_back(vec2, 'a', char);
+    MCV_force_push_back(vec1, 0, int);
+    MCV_force_push_back(vec2, 'b', char);
+    MCV_force_push_back(vec1, 1, int);
+    MCV_force_push_back(vec2, 'c', char);
+    MCV_force_push_back(vec1, 2, int);
+    MCV_force_push_back(vec2, 'd', char);
+    MCV_force_push_back(vec1, 3, int);
+    MCV_force_push_back(vec2, 'e', char);
+    MCV_force_push_back(vec2, 'f', char);
+
+    CV_swap(vec1, vec2);
+
+    CU_ASSERT_EQUAL(CV_size(vec1), 6);
+    CU_ASSERT_EQUAL(CV_size(vec2), 5);
+
+    CU_ASSERT_EQUAL(CV_capacity(vec1), 8);
+    CU_ASSERT_EQUAL(CV_capacity(vec2), 6);
+
+    CU_ASSERT_EQUAL(CV_block_size(vec1), sizeof(char));
+    CU_ASSERT_EQUAL(CV_block_size(vec2), sizeof(int));
+
+    // CU_ASSERT_EQUAL(*MCV_at())
+
+    CV_delete(vec1);
+    CV_delete(vec2);
 }
 
-void test_check(){
-    cvector* vec = CVector(sizeof(Struct*), 3);
-    Struct* s[15];
+void test_clear(){
+    ;
+}
 
-    for(int i=0; i<15; ++i){
-        s[i] = malloc(sizeof(Struct));
-        MCV_push_back(vec, &s, Struct*);
-    }
+void test_emplace(){
+    ;
+}
 
-    int result;
-    MCV_check(vec, s+2, result);
-    CU_ASSERT(result);
-    
-    CV_delete(vec);
+void test_emplace_back(){
+    ;
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Additional
+void test_enlarge(){
+    CU_ASSERT(1);
 }
 
 void test_sort(){
@@ -145,18 +264,19 @@ void test_sort(){
 
     for(int i=0; i<50; ++i){
         s[i].weight = weights[i] = rand()%100;
-        MCV_push_back(vec, s+i, Struct);
+        CV_push_back(vec, s+i);
     }
 
     MCV_sort(vec, my_sorter, Struct);
     qsort(weights, 50, sizeof(double), compare_doubles);
 
     for(int i=0; i<50; ++i){
-        CU_ASSERT_DOUBLE_EQUAL(MCV_get_ptr(vec, i, Struct)->weight, weights[i], epsilon);
+        CU_ASSERT_DOUBLE_EQUAL(MCV_at(vec, i, Struct)->weight, weights[i], epsilon);
     }
     
     CV_delete(vec);
 }
+// = = = = = = = = = = = = = = = = = = = = = = =
 
 int main(){
     
@@ -167,7 +287,7 @@ int main(){
         return CU_get_error();
 
     /* add a suite to the registry */
-    pSuite = CU_add_suite("Suite_1", init_suite1, clean_suite1);
+    pSuite = CU_add_suite("Vector Suite", init_suite1, clean_suite1);
     if (NULL == pSuite) {
         CU_cleanup_registry();
         return CU_get_error();
@@ -176,12 +296,27 @@ int main(){
     /* add the tests to the suite */
     /* NOTE - ORDER IS IMPORTANT - MUST TEST fread() AFTER fprintf() */
     if ((NULL == CU_add_test(pSuite, "test of constructor and destructor", test_constructor_destructor)) ||
-        (NULL == CU_add_test(pSuite, "test of push_back()", test_push)) ||
-        (NULL == CU_add_test(pSuite, "test of erase()", test_erase)) ||
-        (NULL == CU_add_test(pSuite, "test of enlarge()", test_enlarge)) ||
+        
+        (NULL == CU_add_test(pSuite, "test of size()", test_size)) ||
+        (NULL == CU_add_test(pSuite, "test of resize()", test_resize)) ||
+        (NULL == CU_add_test(pSuite, "test of capacity()", test_capacity)) ||
+        (NULL == CU_add_test(pSuite, "test of empty()", test_empty)) ||
+        (NULL == CU_add_test(pSuite, "test of shrink_to_fit()", test_shrink_to_fit)) ||
+
+        (NULL == CU_add_test(pSuite, "test of at()", test_at)) ||
+        (NULL == CU_add_test(pSuite, "test of front()", test_front)) ||
+        (NULL == CU_add_test(pSuite, "test of back()", test_back)) ||
+
+        (NULL == CU_add_test(pSuite, "test of push_back()", test_push_back)) ||
+        (NULL == CU_add_test(pSuite, "test of pop_back()", test_pop_back)) ||
         (NULL == CU_add_test(pSuite, "test of insert()", test_insert)) ||
+        (NULL == CU_add_test(pSuite, "test of erase()", test_erase)) ||
         (NULL == CU_add_test(pSuite, "test of swap()", test_swap)) ||
-        (NULL == CU_add_test(pSuite, "test of check()", test_check)) ||
+        (NULL == CU_add_test(pSuite, "test of clear()", test_clear)) ||
+        (NULL == CU_add_test(pSuite, "test of emplace()", test_emplace)) ||
+        (NULL == CU_add_test(pSuite, "test of emplace_back()", test_emplace_back)) ||
+
+        (NULL == CU_add_test(pSuite, "test of enlarge()", test_enlarge)) ||
         (NULL == CU_add_test(pSuite, "test of sort()", test_sort)))
     {
         CU_cleanup_registry();

@@ -24,7 +24,10 @@ int compare_doubles(const void* a, const void* b){
 }
 
 int init_suite1(void){
-    ;
+    str1 = CString(0);
+    str2 = CString(1);
+
+    CU_ASSERT(1);
 
     return 0;
 }
@@ -60,14 +63,14 @@ void test_sort(){
 
     for(int i=0; i<50; ++i){
         s[i].weight = weights[i] = rand()%100;
-        MCV_push_back(vec, s+i, Struct);
+        CV_push_back(vec, s+i);
     }
 
     MCV_sort(vec, my_sorter, Struct);
     qsort(weights, 50, sizeof(double), compare_doubles);
 
     for(int i=0; i<50; ++i){
-        CU_ASSERT_DOUBLE_EQUAL(MCV_get_ptr(vec, i, Struct)->weight, weights[i], epsilon);
+        CU_ASSERT_DOUBLE_EQUAL((*MCV_at(vec, i, Struct)).weight, weights[i], epsilon);
     }
     
     CV_delete(vec);

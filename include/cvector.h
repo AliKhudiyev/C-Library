@@ -17,86 +17,104 @@ typedef enum{
 }__Type;
 
 typedef struct{
-    unsigned _size, _capacity, _block_size;
+    size_t _size, _capacity, _block_size;
     void* _data;
 }cvector;
 
-#define MCV_push_back(vec, data, _type)                                     \
-    if(vec->_size >= vec->_capacity){                                   \
-        vec->_capacity *= 2;                                            \
-        __allocate(&vec->_data,                                         \
-                 vec->_capacity*vec->_block_size/2,                     \
-                 vec->_capacity*vec->_block_size);                      \
-    }   memcpy((_type*)vec->_data+vec->_size++, data, sizeof(_type));
+// Allocator
+void __allocate(void** ptr, unsigned size, unsigned new_size);
+// =======================
 
-#define MCV_force_push_back(vec, data, _type)                               \
-    {                                                                   \
-        _type tmp = data;                                               \
-        MCV_push_back(vec, &tmp, _type);                                    \
+// Constructor and Destructor
+cvector* CVector(unsigned block_size, unsigned n_block);
+void CV_delete(cvector* vec);
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Iterators
+void* CV_begin(const cvector* vec);
+void* CV_end(const cvector* vec);
+const void* CV_cbegin(const cvector* vec);
+const void* CV_cend(const cvector* vec);
+
+#define MCV_begin(vec, _type) \
+    (_type*)CV_begin(vec);
+
+#define MCV_end(vec, _type) \
+    (_type*)CV_end(vec);
+
+#define MCV_cbegin(vec, _type) \
+    (const _type*)CV_cbegin(vec);
+
+#define MCV_cend(vec, _type) \
+    (const _type*)CV_cend(vec);
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Capacity
+size_t CV_size(const cvector* vec);
+void CV_resize(cvector* vec, size_t n);
+size_t CV_capacity(const cvector* vec);
+bool_t CV_empty(const cvector* vec);
+void CV_shrink_to_fit(cvector* vec);
+size_t CV_block_size(const cvector* vec);
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Element access
+void* CV_at(const cvector* vec, size_t position);
+void* CV_front(const cvector* vec);
+void* CV_back(const cvector* vec);
+
+#define MCV_at(vec, position, _type) \
+    ((_type*)(position < vec->_size? (_type*)vec->_data+position : NULL))
+
+#define MCV_front(vec, _type) \
+    MCV_at(vec, 0, _type)
+
+#define MCV_back(vec, _type) \
+    MCV_at(vec, vec->_size-1, _type)
+
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Modifiers
+void CV_push_back(cvector* vec, const void* val);
+void CV_pop_back(cvector* vec);
+void CV_insert(cvector* vec, size_t position, const void* val);
+void CV_erase(cvector* vec, size_t position);
+void CV_swap(cvector* vec1, cvector* vec2);
+void CV_clear(cvector* vec);
+void CV_emplace(cvector* vec, size_t position, ...);
+void CV_emplace_back(cvector* vec, ...);
+
+#define MCV_force_push_back(vec, val, _type)                                \
+    {                                                                       \
+        _type tmp = val;                                                    \
+        CV_push_back(vec, (const void*)&tmp);                                            \
     }
 
-#define MCV_get_ptr(vec, index, _type)                                      \
-    ((_type*)(index < vec->_size? (_type*)vec->_data+index : NULL))
+#define MCV_force_insert(vec, position, val, _type)                         \
+    {                                                                       \
+        _type tmp = val;                                                    \
+        CV_insert(vec, position, (const void*)&tmp);                                     \
+    }
+// = = = = = = = = = = = = = = = = = = = = = = =
 
-#define MCV_enlarge(vec, n, _type)                                          \
-    if(vec->_size+n-1 >= vec->_capacity){                               \
-        vec->_capacity += n;                                            \
-        __allocate(&vec->_data,                                         \
-                 (vec->_capacity-n)*vec->_block_size,                   \
-                 vec->_capacity*vec->_block_size);                      \
+// Additional
+void CV_enlarge(cvector* vec, size_t n);
+void CV_swap_val(cvector* vec, size_t pos1, size_t pos2);
+void CV_copy(cvector* dest, const cvector* src);
+void CV_deep_copy(cvector* dest, const cvector* src);
+unsigned CV_find(const cvector* vec, const void* data);
+
+#define MCV_force_find(vec, data, _type, _result)                            \
+    {                                                                        \
+        _type tmp = data;                                                    \
+        _result = CV_find(vec, &tmp);                                        \
     }
 
-#define MCV_insert(vec, index, data, _type)                                 \
-    if(index >= 0 && index <= vec->_size)                               \
-    {                                                                   \
-        MCV_enlarge(vec, 1, _type)                                          \
-        for(unsigned i=0; i<vec->_size-index; ++i){                     \
-            memcpy((_type*)vec->_data+vec->_size-i,                     \
-                (_type*)vec->_data+vec->_size-1-i,                      \
-                sizeof(_type));                                         \
-        }   memcpy((_type*)vec->_data+index, data, sizeof(_type));      \
-        ++vec->_size;                                                   \
-    }
-
-#define MCV_pop_back(vec, _type)                                            \
-    MCV_get_ptr(vec, --vec->_size, _type)
-
-#define MCV_erase(vec, index, _type)                                                \
-    for(unsigned i=index; index >= 0 && i<vec->_size-1; ++i){                   \
-        memcpy((_type*)vec->_data+i, (_type*)vec->_data+i+1, sizeof(_type));    \
-    }   --vec->_size;
-
-#define MCV_force_find(vec, data, _type, _result)                                   \
-    {                                                                           \
-        _type tmp = data;                                                       \
-        _result = CV_find(vec, &tmp)                                \
-    }
-
-#define MCV_check(vec, data, _result)                                       \
-    _result = CV_find(vec, data); \
-    if(_result == -1){ _result = 0; }                                           \
-    else{ _result = 1; }
-
-#define MCV_force_check(vec, data, _type, _result)\
-    MCV_force_find(vec, data, _type, _result) \
-    if(_result == -1){ _result = 0; }                                           \
-    else{ _result = 1; }
-
-#define MCV_swap(vec, index1, index2, _type)                                                \
-    if(index1 < vec->_size && index2 < vec->_size)                                      \
-    {                                                                                   \
-        _type* tmp = malloc(sizeof(_type));                                             \
-        memcpy(tmp, (_type*)vec->_data+index1, sizeof(_type));                          \
-        memcpy((_type*)vec->_data+index1, (_type*)vec->_data+index2, sizeof(_type));    \
-        memcpy(((_type*)vec->_data)+index2, tmp, sizeof(_type));                        \
-        free((void*)tmp);                                                               \
-    }
-
-#define MCV_sort(vec, _sorter, _type)                                                   \
+#define MCV_sort(vec, _sorter, _type)                                               \
     for(unsigned i=0; i<vec->_size; ++i){                                           \
         for(unsigned j=0; j<vec->_size-1; ++j){                                     \
             if(_sorter(((_type*)vec->_data)[j], ((_type*)vec->_data)[j+1])){        \
-                MCV_swap(vec, j, j+1, _type);                                           \
+                CV_swap_val(vec, j, j+1);                                       \
             }                                                                       \
         }                                                                           \
     }
@@ -107,18 +125,6 @@ typedef struct{
 #define MCV_apply(function) \
     function(vec->_data, vec->_size, vec->_capacity, vec->_block_size)
 
-//
-void __allocate(void** ptr, unsigned size, unsigned new_size);
-// =======================
-
-cvector* CVector(unsigned block_size, unsigned n_block);
-void CV_push_back(cvector* vec, const void* data);
-unsigned CV_size_of(const cvector* vec);
-unsigned CV_capacity_of(const cvector* vec);
-void CV_clear(cvector* vec);
-void CV_copy(cvector* dest, const cvector* src);
-void CV_deep_copy(cvector* dest, const cvector* src);
-unsigned CV_find(const cvector* vec, const void* data);
-void CV_delete(cvector* vec);
+// = = = = = = = = = = = = = = = = = = = = = = =
 
 #endif
