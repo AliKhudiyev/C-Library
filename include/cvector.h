@@ -19,15 +19,16 @@ typedef enum{
 typedef struct{
     size_t _size, _capacity, _block_size;
     void* _data;
+    void (*_delete)(void* _ptr);
 }cvector;
 
 // Allocator
-void __allocate(void** ptr, unsigned size, unsigned new_size);
+void __allocate(void** ptr, size_t size, size_t new_size);
 // =======================
 
 // Constructor and Destructor
 cvector* CVector(unsigned block_size, unsigned n_block);
-void CV_delete(cvector* vec);
+void CV_delete(void* vec);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Iterators
@@ -109,6 +110,7 @@ void CV_clear(cvector* vec);
 
 // Additional
 void CV_enlarge(cvector* vec, size_t n);
+void CV_set_destructor(cvector* vec, void (*destructor)(void*));
 void CV_swap_val(cvector* vec, size_t pos1, size_t pos2);
 void CV_copy(cvector* dest, const cvector* src);
 void CV_deep_copy(cvector* dest, const cvector* src);

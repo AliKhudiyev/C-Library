@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 // Allocator
-void __allocate(void** ptr, unsigned size, unsigned new_size){
+void __allocate(void** ptr, size_t size, size_t new_size){
     void* cptr = *ptr;
 
     *ptr = malloc(new_size);
@@ -12,7 +12,7 @@ void __allocate(void** ptr, unsigned size, unsigned new_size){
         exit(1);
     }
     memcpy(*ptr, cptr, size);
-    if(size) free(cptr);
+    if(size){ free(cptr); }
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -23,19 +23,30 @@ cvector* CVector(unsigned block_size, unsigned n_block){
     vec->_size = 0;
     vec->_capacity = n_block ? n_block : 1;
     vec->_block_size = block_size ? block_size : 1;
+    vec->_delete = NULL;
 
     __allocate(&vec->_data, 0, vec->_block_size * vec->_capacity);
 
     return vec;
 }
 
-void CV_delete(cvector* vec){
-    vec->_size = vec->_capacity = vec->_block_size = 0;
-    free(vec->_data);
-    free(vec);
-    
-    vec->_data = NULL;
-    vec = NULL;
+void CV_delete(void* vec){
+    // cvector* ve = (cvector*)vec;
+    cvector* _vec = (cvector*)vec;
+    // printf("=== Vector Destructor ===\n");
+    if(_vec->_delete){
+        // printf("Deleting data... %zu, %zu, %zu\n", ve->_size, ve->_capacity, ve->_block_size);
+        for(size_t i=0; i<_vec->_size; ++i){
+            // printf(" > %zu\n", i);
+            _vec->_delete(_vec->_data+(_vec->_size-1-i)*_vec->_block_size);
+            // printf("done\n");
+        }
+    }
+    // printf("Finalizing... %p\n", vec);
+    free(_vec->_data);
+    _vec->_size = _vec->_capacity = _vec->_block_size = 0;
+    _vec->_data = NULL;
+    // printf(" >>> Destructed.\n");
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -110,13 +121,13 @@ void* CV_back(const cvector* vec){
 
 // Modifiers
 void CV_push_back(cvector* vec, const void* data){
-    if(vec->_size >= vec->_capacity){
+    if(vec->_size == vec->_capacity){
         vec->_capacity *= 2;
         __allocate(&vec->_data,
                  vec->_capacity*vec->_block_size/2,
                  vec->_capacity*vec->_block_size);
     }
-    memcpy((char*)vec->_data+vec->_block_size*(vec->_size++), data, vec->_block_size);
+    memcpy(vec->_data+(vec->_size++)*vec->_block_size, data, vec->_block_size);
 }
 
 void CV_pop_back(cvector* vec){
@@ -176,6 +187,10 @@ void CV_enlarge(cvector* vec, size_t n){
                    vec->_size*vec->_block_size,
                    vec->_capacity*vec->_block_size);
     }
+}
+
+void CV_set_destructor(cvector* vec, void (*destructor)(void*)){
+    vec->_delete = destructor;
 }
 
 void CV_swap_val(cvector* vec, size_t pos1, size_t pos2){

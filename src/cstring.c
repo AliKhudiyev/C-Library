@@ -8,7 +8,7 @@ cstring* CString(unsigned size){
 }
 
 void CS_append(cstring* str, const char* chars, unsigned size){
-    unsigned sz = size? size : strlen(chars);
+    unsigned sz = (size != -1? size : strlen(chars));
     
     if(str->_str->_size){
         CV_erase(str->_str, str->_str->_size-1);
@@ -71,8 +71,10 @@ unsigned CS_capacity(const cstring* str){
     return str->_str->_capacity;
 }
 
-void CS_delete(cstring* str){
-    CV_delete(str->_str);
-    free((void*)str);
-    str = NULL;
+void CS_delete(void* str){
+    cstring* str_ = (cstring*)str;
+    CV_delete(str_->_str);
+    free(str_->_str);
+    // free((void*)str);
+    // str = NULL;
 }

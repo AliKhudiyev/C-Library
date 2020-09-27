@@ -19,6 +19,6 @@ char CS_get_char(const cstring* str, unsigned index);
 const char* CS_get_strptr(const cstring* str);
 unsigned CS_size(const cstring* str);
 unsigned CS_capacity(const cstring* str);
-void CS_delete(cstring* str);
+void CS_delete(void* str);
 
 #endif

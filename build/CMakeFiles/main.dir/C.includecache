@@ -31,6 +31,8 @@ cvector.h
 ../include/cvector.h
 
 ../include/ctypes.h
+stdarg.h
+-
 
 ../include/cvector.h
 stdlib.h
@@ -47,24 +49,4 @@ stdio.h
 -
 cpplib.h
 /Users/alikhudiyev/Desktop/Projects/C-Library/cpplib.h
-
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c
-cpair.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.h
-
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c
-cset.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.h
-
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c
-cstring.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.h
-stdio.h
--
-
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
-cvector.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.h
-stdio.h
--
 
