@@ -111,6 +111,7 @@ void CV_clear(cvector* vec);
 // Additional
 void CV_enlarge(cvector* vec, size_t n);
 void CV_set_destructor(cvector* vec, void (*destructor)(void*));
+void CV_delete_elements(cvector* vec);
 void CV_swap_val(cvector* vec, size_t pos1, size_t pos2);
 void CV_copy(cvector* dest, const cvector* src);
 void CV_deep_copy(cvector* dest, const cvector* src);

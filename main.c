@@ -28,8 +28,6 @@ CSV* read_csv(const char* filepath){
 
     csv->_lines = CVector(sizeof(cvector), 1);
     CV_set_destructor(csv->_lines, CV_delete);
-    // cvector* vec = CVector(sizeof(cstring), 1);
-    // cstring* str = CString(1);
     for(unsigned i=0; i<5; ++i){
         cvector* vec = CVector(sizeof(cstring), 1);
         CV_set_destructor(vec, CS_delete);
@@ -53,20 +51,48 @@ void func(void* ptr){
 
 int main(){
 
-    CSV* csv = read_csv("hey.txt");
+    // CSV* csv = read_csv("hey.txt");
 
-    printf("\n\nStatus: %lu (%lu), %lu (%lu)\n", CV_size(csv->_lines), CV_block_size(csv->_lines), CV_size(MCV_front(csv->_lines, cvector)), CV_block_size(MCV_front(csv->_lines, cvector)));
-    printf("Printing...\n\n");
+    // printf("\n\nStatus: %lu (%lu), %lu (%lu)\n", CV_size(csv->_lines), CV_block_size(csv->_lines), CV_size(MCV_front(csv->_lines, cvector)), CV_block_size(MCV_front(csv->_lines, cvector)));
+    // printf("Printing...\n\n");
 
-    for(unsigned i=0; i<5; ++i){
-        for(unsigned j=0; j<2; ++j){
-            printf("%s, ", CS_get_strptr(MCV_at(MCV_at(csv->_lines, i, cvector), j, cstring)));
-        }   printf("\n");
+    // for(unsigned i=0; i<5; ++i){
+    //     for(unsigned j=0; j<2; ++j){
+    //         printf("%s, ", CS_get_strptr(MCV_at(MCV_at(csv->_lines, i, cvector), j, cstring)));
+    //     }   printf("\n");
+    // }
+
+    // CV_delete(csv->_lines);
+    // free(csv->_lines);
+    // free(csv);
+
+    cvector* v1 = CVector(sizeof(cvector), 1);
+    cvector* v2 = CVector(sizeof(cvector), 1);
+    cvector* v3 = CVector(sizeof(int), 1);
+
+    CV_set_destructor(v1, CV_delete);
+    CV_set_destructor(v2, CV_delete);
+    CV_set_destructor(v3, NULL);
+
+    MCV_force_push_back(v3, 5, int);
+    CV_push_back(v1, v3);
+    CV_push_back(v2, v3);
+
+    // CV_delete(v3);
+    free(v3);
+    printf("%d, %d\n", 
+        *MCV_front(MCV_front(v1, cvector), int), 
+        *MCV_front(MCV_front(v2, cvector), int));
+
+    CV_delete(v1);
+    free(v1);
+    
+    for(size_t i=0; i<CV_size(v2); ++i){
+        CV_delete(CV_at(v2, i));
     }
 
-    CV_delete(csv->_lines);
-    free(csv->_lines);
-    free(csv);
-    
+    CV_delete(v2);
+    free(v2);
+
     return 0;
 }

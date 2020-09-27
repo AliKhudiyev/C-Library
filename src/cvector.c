@@ -31,22 +31,20 @@ cvector* CVector(unsigned block_size, unsigned n_block){
 }
 
 void CV_delete(void* vec){
-    // cvector* ve = (cvector*)vec;
+    if(!vec) return ;
+
     cvector* _vec = (cvector*)vec;
-    // printf("=== Vector Destructor ===\n");
-    if(_vec->_delete){
-        // printf("Deleting data... %zu, %zu, %zu\n", ve->_size, ve->_capacity, ve->_block_size);
-        for(size_t i=0; i<_vec->_size; ++i){
-            // printf(" > %zu\n", i);
-            _vec->_delete(_vec->_data+(_vec->_size-1-i)*_vec->_block_size);
-            // printf("done\n");
-        }
-    }
-    // printf("Finalizing... %p\n", vec);
+    // if(_vec->_delete){
+    //     printf("Deleting data... %zu, %zu, %zu\n", _vec->_size, _vec->_capacity, _vec->_block_size);
+    //     for(size_t i=0; i<_vec->_size; ++i){
+    //         printf(" > %zu\n", i);
+    //         _vec->_delete(_vec->_data+(_vec->_size-1-i)*_vec->_block_size);
+    //         printf("done\n");
+    //     }
+    // }
     free(_vec->_data);
     _vec->_size = _vec->_capacity = _vec->_block_size = 0;
     _vec->_data = NULL;
-    // printf(" >>> Destructed.\n");
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -191,6 +189,13 @@ void CV_enlarge(cvector* vec, size_t n){
 
 void CV_set_destructor(cvector* vec, void (*destructor)(void*)){
     vec->_delete = destructor;
+}
+
+void CV_delete_elements(cvector* vec){
+    if(!vec->_delete) return ;
+    for(size_t i=0; i<vec->_size; ++i){
+        vec->_delete(CV_at(vec, i));
+    }
 }
 
 void CV_swap_val(cvector* vec, size_t pos1, size_t pos2){

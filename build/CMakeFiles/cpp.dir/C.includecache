@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../include/cstring.h
-cvector.h
-../include/cvector.h
-
 ../include/ctypes.h
 stdarg.h
 -
@@ -24,9 +20,9 @@ memory.h
 ctypes.h
 ../include/ctypes.h
 
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c
-cstring.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
+cvector.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.h
 stdio.h
 -
 
