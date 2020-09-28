@@ -8,17 +8,10 @@
 
 #include "ctypes.h"
 
-typedef enum{
-    Char = 0,
-    Int,
-    Float,
-    Double,
-    String
-}__Type;
-
 typedef struct{
     size_t _size, _capacity, _block_size;
     void* _data;
+    void (*_copy)(void* _dest, const void* _src, size_t _n_byte);
     void (*_delete)(void* _ptr);
 }cvector;
 
@@ -27,8 +20,11 @@ void __allocate(void** ptr, size_t size, size_t new_size);
 // =======================
 
 // Constructor and Destructor
-cvector* CVector(unsigned block_size, unsigned n_block);
-void CV_delete(void* vec);
+cvector* CVector(size_t block_size, size_t n_block);
+void CV_init(cvector* vec, size_t block_size, size_t n_block);
+void CV_delete(cvector* vec);
+void CV_delete_elements(cvector* vec);
+void CV_delete_recursive(void* vec);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Iterators
@@ -65,13 +61,13 @@ void* CV_front(const cvector* vec);
 void* CV_back(const cvector* vec);
 
 #define MCV_at(vec, position, _type) \
-    ((_type*)(position < vec->_size? (_type*)vec->_data+position : NULL))
+    ((_type*)(position < (vec)->_size? (_type*)(vec)->_data+position : NULL))
 
 #define MCV_front(vec, _type) \
-    MCV_at(vec, 0, _type)
+    MCV_at((vec), 0, _type)
 
 #define MCV_back(vec, _type) \
-    MCV_at(vec, vec->_size-1, _type)
+    MCV_at((vec), vec->_size-1, _type)
 
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -111,7 +107,7 @@ void CV_clear(cvector* vec);
 // Additional
 void CV_enlarge(cvector* vec, size_t n);
 void CV_set_destructor(cvector* vec, void (*destructor)(void*));
-void CV_delete_elements(cvector* vec);
+void CV_set_deep_copy(cvector* vec, void (*copy)(void* dest, const void* src, size_t n_byte));
 void CV_swap_val(cvector* vec, size_t pos1, size_t pos2);
 void CV_copy(cvector* dest, const cvector* src);
 void CV_deep_copy(cvector* dest, const cvector* src);
