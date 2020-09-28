@@ -182,35 +182,35 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.s
 .PHONY : main.c.s
 
-src/cpair.o: src/cpair.c.o
+src/calgorithm.o: src/calgorithm.c.o
 
-.PHONY : src/cpair.o
+.PHONY : src/calgorithm.o
 
 # target to build an object file
-src/cpair.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cpair.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cpair.c.o
-.PHONY : src/cpair.c.o
+src/calgorithm.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/calgorithm.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/calgorithm.c.o
+.PHONY : src/calgorithm.c.o
 
-src/cpair.i: src/cpair.c.i
+src/calgorithm.i: src/calgorithm.c.i
 
-.PHONY : src/cpair.i
+.PHONY : src/calgorithm.i
 
 # target to preprocess a source file
-src/cpair.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cpair.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cpair.c.i
-.PHONY : src/cpair.c.i
+src/calgorithm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/calgorithm.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/calgorithm.c.i
+.PHONY : src/calgorithm.c.i
 
-src/cpair.s: src/cpair.c.s
+src/calgorithm.s: src/calgorithm.c.s
 
-.PHONY : src/cpair.s
+.PHONY : src/calgorithm.s
 
 # target to generate assembly for a file
-src/cpair.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cpair.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cpair.c.s
-.PHONY : src/cpair.c.s
+src/calgorithm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/calgorithm.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/calgorithm.c.s
+.PHONY : src/calgorithm.c.s
 
 src/cset.o: src/cset.c.o
 
@@ -272,6 +272,36 @@ src/cstring.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cstring.c.s
 .PHONY : src/cstring.c.s
 
+src/ctuple.o: src/ctuple.c.o
+
+.PHONY : src/ctuple.o
+
+# target to build an object file
+src/ctuple.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/ctuple.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/ctuple.c.o
+.PHONY : src/ctuple.c.o
+
+src/ctuple.i: src/ctuple.c.i
+
+.PHONY : src/ctuple.i
+
+# target to preprocess a source file
+src/ctuple.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/ctuple.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/ctuple.c.i
+.PHONY : src/ctuple.c.i
+
+src/ctuple.s: src/ctuple.c.s
+
+.PHONY : src/ctuple.s
+
+# target to generate assembly for a file
+src/ctuple.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/ctuple.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/ctuple.c.s
+.PHONY : src/ctuple.c.s
+
 src/cvector.o: src/cvector.c.o
 
 .PHONY : src/cvector.o
@@ -315,15 +345,18 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/cpair.o"
-	@echo "... src/cpair.i"
-	@echo "... src/cpair.s"
+	@echo "... src/calgorithm.o"
+	@echo "... src/calgorithm.i"
+	@echo "... src/calgorithm.s"
 	@echo "... src/cset.o"
 	@echo "... src/cset.i"
 	@echo "... src/cset.s"
 	@echo "... src/cstring.o"
 	@echo "... src/cstring.i"
 	@echo "... src/cstring.s"
+	@echo "... src/ctuple.o"
+	@echo "... src/ctuple.i"
+	@echo "... src/ctuple.s"
 	@echo "... src/cvector.o"
 	@echo "... src/cvector.i"
 	@echo "... src/cvector.s"

@@ -6,9 +6,23 @@
 
 #IncludeRegexTransform: 
 
+../include/calgorithm.h
+stdlib.h
+-
+unistd.h
+-
+memory.h
+-
+
+../include/ctuple.h
+cvector.h
+../include/cvector.h
+
 ../include/ctypes.h
 stdarg.h
 -
+calgorithm.h
+../include/calgorithm.h
 
 ../include/cvector.h
 stdlib.h
@@ -20,9 +34,7 @@ memory.h
 ctypes.h
 ../include/ctypes.h
 
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
-cvector.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.h
-stdio.h
--
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c
+ctuple.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.h
 

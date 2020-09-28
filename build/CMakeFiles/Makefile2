@@ -95,12 +95,12 @@ clean: CMakeFiles/cpp.dir/clean
 CMakeFiles/main.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=6,7,8,9,10,11 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=7,8,9,10,11,12,13 "Built target main"
 .PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles 0
 .PHONY : CMakeFiles/main.dir/rule
@@ -122,12 +122,12 @@ CMakeFiles/main.dir/clean:
 CMakeFiles/cpp.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target cpp"
 .PHONY : CMakeFiles/cpp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles 0
 .PHONY : CMakeFiles/cpp.dir/rule

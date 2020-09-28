@@ -3,9 +3,9 @@
 
 // Constructor and Destructor
 cstring* CString(size_t size){
-    cstring* str;
+    cstring* str = NULL;
 
-    __allocate(&str, 0, sizeof(cstring));
+    __allocate((void**)&str, 0, sizeof(cstring));
     CS_init(str, size);
 
     return str;
@@ -71,7 +71,7 @@ void CS_shrink_to_fit(cstring* str){
 
 // Element access
 char CS_at(const cstring* str, size_t position){
-    if(position >= CS_size(str)) return NULL;
+    if(position >= CS_size(str)) return 0;
     return *(CS_cbegin(str)+position);
 }
 
@@ -92,8 +92,8 @@ void CS_append(cstring* str, const char* chars, size_t size){
         CV_erase(&str->_str, str->_str._size-1);
     }
     for(unsigned i=0; i<sz; ++i){
-        CV_push_back(&str->_str, chars+i);
-    }   CV_push_back(&str->_str, '\0');
+        CS_push_back(str, chars[i]);
+    }   CS_push_back(str, '\0');
 }
 
 void CS_push_back(cstring* str, char c){
@@ -128,8 +128,9 @@ void CS_replace(cstring* str, size_t position, size_t size, const char* chars){
     if(size == -1) size = CS_size(str) - position;
 
     for(size_t i=0; i<size; ++i){
-        ;
-    }
+        CS_erase(str, position+i);
+    }   CS_insert(str, position, chars, strlen(chars));
+    // TO DO: Optimize this function!
 }
 
 void CS_swap(cstring* str1, cstring* str2){
@@ -150,10 +151,10 @@ void* CS_data(const cstring* str){
     return CV_data(&str->_str);
 }
 
-void CS_copy(cstring* str, const char* buffer, size_t size, size_t position){
+void CS_copy(cstring* str, char* buffer, size_t size, size_t position){
     if(position >= CS_size(str) || position + size > CS_size(str)) return ;
     
-    memcpy(buffer, CS_c_str(str)+position, size);
+    memcpy((void*)buffer, CS_c_str(str)+position, size);
 }
 
 size_t CS_find(const cstring* str, const char* chars, size_t position){
@@ -177,25 +178,28 @@ cstring* CS_substr(const cstring* str, size_t position, size_t size){
 }
 
 char CS_compare(const cstring* str1, const cstring* str2, unsigned size){
-    unsigned sz = (size <= CS_size(&str1->_str)? size : CS_size(&str1->_str));
-
-    if(!size){
-        sz = CV_size(&str1->_str);
-        if(CV_size(&str1->_str) > CV_size(&str2->_str)) return 1;
-        else if(CV_size(&str1->_str) < CV_size(&str2->_str)) return -1;
-    } else if(size > CV_size(&str1->_str) || size > CV_size(&str2->_str)){
-        if(CV_size(&str1->_str) > CV_size(&str2->_str)) return 1;
-        else if(CV_size(&str1->_str) < CV_size(&str2->_str)) return -1;
-    }
-
-    for(unsigned i=0; i<sz; ++i){
-        if(*MCV_at(&str1->_str, i, char) > *MCV_at(&str2->_str, i, char)){
-            return 1;
-        }
-        if(*MCV_at(&str1->_str, i, char) < *MCV_at(&str2->_str, i, char)){
+    size_t sz1 = CS_size(str1), sz2 = CS_size(str2);
+    size_t sz = (size <= sz1? (size <= sz2? size : sz2) : (sz1 <= sz2? sz1 : sz2));
+    
+    if(size == -1){
+        if(sz1 < sz2){
             return -1;
+        } else if(sz1 > sz2){
+            return 1;
+        } else{
+            for(size_t i=0; i<sz1; ++i){
+                if(CS_at(str1, i) < CS_at(str2, i)) return -1;
+                if(CS_at(str1, i) > CS_at(str2, i)) return -1;
+            }
+            return 0;
         }
     }
+
+    for(size_t i=0; i<sz1; ++i){
+        if(CS_at(str1, i) < CS_at(str2, i)) return -1;
+        if(CS_at(str1, i) > CS_at(str2, i)) return 1;
+    }
+
     return 0;
 }
 // = = = = = = = = = = = = = = = = = = = = = = =

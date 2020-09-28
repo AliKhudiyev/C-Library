@@ -1,25 +1,84 @@
 #include "cset.h"
 
-cset* CSet(unsigned block_size){
-    cset* set;
-    __allocate((void**)&set, 0, sizeof(cset));
-
-    set->_elems = CVector(block_size, 1);
-
-    return set;
+// Constructor and Destructor
+cset* CSet(size_t block_size, size_t n_block){
+    ;
 }
 
-bool_t CSet_exists(const cset* set, const void* element){
-    return CV_find(set->_elems, element) == -1? False : True;
-}
-
-bool_t CSet_add(cset* set, const void* element){
-    if(CSet_exists(set, element)) return False;
-    CV_push_back(set->_elems, element);
-    return True;
+void CSet_init(cset* set, size_t block_size, size_t n_block){
+    ;
 }
 
 void CSet_delete(cset* set){
-    CV_delete(set->_elems);
-    free((void*)set);
+    ;
 }
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Iterators
+void* CSet_begin(const cset* set){
+    ;
+}
+
+void* CSet_end(const cset* set){
+    ;
+}
+
+const void* CSet_cbegin(const cset* set){
+    ;
+}
+
+const void* CSet_cend(const cset* set){
+    ;
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Capacity
+bool_t CSet_empty(const cset* set){
+    ;
+}
+
+size_t CSet_size(const cset* set){
+    ;
+}
+
+size_t CSet_max_size(const cset* set){
+    ;
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Modifiers
+void CSet_insert(cset* set, const void* element){
+    ;
+}
+
+void CSet_erase(cset* set, const void* element){
+    ;
+}
+
+void CSet_swap(cset* set1, cset* set2){
+    ;
+}
+
+void CSet_clear(cset* set){
+    ;
+}
+
+#define MCSet_emplace(set, _type, ...)          \
+    {                                           \
+        _type tmp = { __VA_ARGS__ };            \
+        CSet_insert(set, (const void*)&tmp);    \
+    }
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Operations
+size_t CSet_find(const cset* set, const void* element){
+    ;
+}
+
+size_t CSet_count(const cset* set, const void* element){
+    ;
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Additional
+// = = = = = = = = = = = = = = = = = = = = = = =

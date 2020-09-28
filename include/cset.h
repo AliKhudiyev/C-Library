@@ -5,28 +5,47 @@
 #include "cvector.h"
 
 typedef struct{
-    cvector* _elems;
+    cvector _elems;
 }cset;
 
-#define MCSet_add(set, data, _type)                           \
-    {                                                           \
-        bool_t result;                                          \
-        exists(set->_elems, data, _type, result);               \
-        if(!result){ push_back(set->_elems, data, _type); }     \
+// Constructor and Destructor
+cset* CSet(size_t block_size, size_t n_block);
+void CSet_init(cset* set, size_t block_size, size_t n_block);
+void CSet_delete(cset* set);
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Iterators
+void* CSet_begin(const cset* set);
+void* CSet_end(const cset* set);
+const void* CSet_cbegin(const cset* set);
+const void* CSet_cend(const cset* set);
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Capacity
+bool_t CSet_empty(const cset* set);
+size_t CSet_size(const cset* set);
+size_t CSet_max_size(const cset* set);
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Modifiers
+void CSet_insert(cset* set, const void* element);
+void CSet_erase(cset* set, const void* element);
+void CSet_swap(cset* set1, cset* set2);
+void CSet_clear(cset* set);
+
+#define MCSet_emplace(set, _type, ...)          \
+    {                                           \
+        _type tmp = { __VA_ARGS__ };            \
+        CSet_insert(set, (const void*)&tmp);    \
     }
+// = = = = = = = = = = = = = = = = = = = = = = =
 
-#define MCSet_get_valptr(set, index, _type)                           \
-    get_ptr(set->_elems, index, _type)
+// Operations
+size_t CSet_find(const cset* set, const void* element);
+size_t CSet_count(const cset* set, const void* element);
+// = = = = = = = = = = = = = = = = = = = = = = =
 
-#define MCSet_get_vptr(set)                                           \
-    set->_elems;
-
-#define MCSet_force_find(set, element, _type, _result)        \
-        force_find(set->_elems, element, _type, _result)
-
-cset* CSet(unsigned block_size);
-bool_t CSet_exists(const cset* set, const void* element);
-bool_t CSet_add(cset* set, const void* element);
-void CSet_free(cset* set);
+// Additional
+// = = = = = = = = = = = = = = = = = = = = = = =
 
 #endif

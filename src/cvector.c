@@ -5,20 +5,20 @@
 // Allocator
 void __allocate(void** ptr, size_t size, size_t new_size){
     void* cptr = *ptr;
-    printf(" >>> allocating...\n");
+    
     *ptr = malloc(new_size);
     if(*ptr == NULL){
         fprintf(stderr, "%s", "__allocate: failed to allocate!\n");
         exit(1);
     }
     memcpy(*ptr, cptr, size);
-    if(size){ printf("freed: %zu\n", size); free(cptr); }
+    if(size){ free(cptr); }
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Constructor and Destructor
 cvector* CVector(size_t block_size, size_t n_block){
-    cvector* vec;
+    cvector* vec = NULL;
 
     __allocate((void**)&vec, 0, sizeof(cvector));
     CV_init(vec, block_size, n_block);
@@ -33,6 +33,7 @@ void CV_init(cvector* vec, size_t block_size, size_t n_block){
     vec->_capacity = n_block ? n_block : 1;
     vec->_block_size = block_size ? block_size : 1;
     vec->_data = NULL;
+    vec->_copy = NULL;
     vec->_delete = NULL;
     __allocate(&vec->_data, 0, vec->_block_size * vec->_capacity);
 }

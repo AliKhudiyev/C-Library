@@ -6,14 +6,36 @@ typedef struct{
     int* age;
 }Person;
 
+typedef struct{
+    int id;
+}Struct;
+
 bool_t my_sorter(int a, int b){
     return a >= b;
 }
 
 typedef struct{
+    cstring _context;
+}File;
+
+typedef struct{
     size_t _nrow, _ncol;
-    cvector* _lines;
+    cvector* _context;
 }CSV;
+
+File* read_file(const char* filepath){
+    File* file = (File*)malloc(sizeof(File));
+    CS_init(&file->_context, 0);
+
+    FILE* in = fopen(filepath, "r");
+    char c;
+    while((c=fgetc(in)) != EOF){
+        CS_push_back(&file->_context, c);
+    }   CS_push_back(&file->_context, 0);
+    fclose(in);
+
+    return file;
+}
 
 CSV* read_csv(const char* filepath){
     CSV* csv = malloc(sizeof(CSV));
@@ -26,33 +48,39 @@ CSV* read_csv(const char* filepath){
         {"Bye!", "Good bye."}
     };
 
-    csv->_lines = CVector(sizeof(cvector), 1);
+    csv->_context = CVector(sizeof(cvector), 1);
     for(unsigned i=0; i<5; ++i){
-        cvector* vec = CVector(sizeof(cstring), 1);
+        cvector vec;
+        CV_init(&vec, sizeof(cstring), 1);
+
         for(unsigned j=0; j<2; ++j){
-            cstring* str = CString(1);
+            cstring str;
+            CS_init(&str, 1);
+
             printf("%s, ", cells[i][j]);
-            CS_append(str, cells[i][j], -1);
-            CV_push_back(vec, str);
-            free(str);
+            CS_append(&str, cells[i][j], -1);
+            CV_push_back(&vec, &str);
         }   printf("\n");
-        CV_push_back(csv->_lines, vec);
-        free(vec);
+        CV_push_back(csv->_context, &vec);
     }
     
     return csv;
 }
 
 void csv_delete(CSV* csv){
-    for(size_t i=0; i<CV_size(csv->_lines); ++i){
-        for(size_t j=0; j<CV_size(MCV_at(csv->_lines, i, cvector)); ++j){
-            CS_delete(MCV_at(MCV_at(csv->_lines, i, cvector), j, cstring));
+    for(size_t i=0; i<CV_size(csv->_context); ++i){
+        for(size_t j=0; j<CV_size(MCV_at(csv->_context, i, cvector)); ++j){
+            CS_delete(MCV_at(MCV_at(csv->_context, i, cvector), j, cstring));
         }
-        CV_delete(MCV_at(csv->_lines, i, cvector));
+        CV_delete(MCV_at(csv->_context, i, cvector));
     }
-    CV_delete(csv->_lines);
-    free(csv->_lines);
-    free(csv);
+    CV_delete(csv->_context);
+    free(csv->_context);
+    csv->_context = NULL;
+}
+
+void delete_file(File* file){
+    CS_delete(&file->_context);
 }
 
 void func(void* ptr){
@@ -80,81 +108,41 @@ int main(){
 
     // CSV* csv = read_csv("hey.txt");
 
-    // printf("\n\nStatus: %lu (%lu), %lu (%lu)\n", CV_size(csv->_lines), CV_block_size(csv->_lines), CV_size(MCV_front(csv->_lines, cvector)), CV_block_size(MCV_front(csv->_lines, cvector)));
+    // printf("\n\nStatus: %lu (%lu), %lu (%lu)\n", 
+    //     CV_size(csv->_context), 
+    //     CV_block_size(csv->_context), 
+    //     CV_size(MCV_front(csv->_context, cvector)), 
+    //     CV_block_size(MCV_front(csv->_context, cvector)));
     // printf("Printing...\n\n");
 
     // for(unsigned i=0; i<5; ++i){
     //     for(unsigned j=0; j<2; ++j){
-    //         printf("%s, ", CS_get_strptr(MCV_at(MCV_at(csv->_lines, i, cvector), j, cstring)));
+    //         printf("%s, ", CS_c_str(MCV_at(MCV_at(csv->_context, i, cvector), j, cstring)));
     //     }   printf("\n");
     // }
 
     // csv_delete(csv);
+    // free(csv);
 
-    cvector v1, v2;
-    // Person persons[6];
+    // File* file = read_file("../example.txt");
+    // printf("= = = = = = = = = = =\n%s\n= = = = = = = = = =\n", CS_c_str(&file->_context));
+    // delete_file(file);
+    // free(file);
 
-    printf("sizeof Person: %zu\n", sizeof(Person));
+    ctuple tuple;
+    CT_init(&tuple);
 
-    CV_init(&v1, sizeof(Person), 2);
-    CV_init(&v2, sizeof(Person), 4);
-    
-    for(int i=0; i<2; ++i){
-        Person person;
-        person.age = malloc(4);
-        *person.age = i;
-        CV_push_back(&v1, &person);
-    }
-    for(int i=2; i<6; ++i){
-        Person person;
-        person.age = malloc(4);
-        *person.age = i;
-        CV_push_back(&v2, &person);
-    }
+    MCT_force_add(&tuple, int, -1);
+    MCT_force_add(&tuple, double, 5.87);
+    MCT_force_add(&tuple, Struct, 87);
+    MCT_force_add(&tuple, const char*, "Hello there!");
 
-    // CV_push_back(&v1, &persons[0]);
-    // CV_push_back(&v1, &persons[1]);
+    printf("%d\n", *CT_get(&tuple, 0, int));
+    printf("%lf\n", *CT_get(&tuple, 1, double));
+    printf("%d\n", CT_get(&tuple, 2, Struct)->id);
+    printf("%s\n", *CT_get(&tuple, 3, const char*));
 
-    // CV_push_back(&v2, &persons[2]);
-    // CV_push_back(&v2, &persons[3]);
-    // CV_push_back(&v2, &persons[4]);
-    // CV_push_back(&v2, &persons[5]);
-
-    printf("=== Before ===\n");
-    printf("v1: %zu, %zu, %zu\n", CV_size(&v1), CV_capacity(&v1), CV_block_size(&v1));
-    for(int i=0; i<CV_size(&v1); ++i){
-        printf("%d\n", *(MCV_at(&v1, i, Person)->age));
-    }
-    printf("v2: %zu, %zu, %zu\n", CV_size(&v2), CV_capacity(&v2), CV_block_size(&v2));
-    for(int i=0; i<CV_size(&v2); ++i){
-        printf("%d\n", *(MCV_at(&v2, i, Person)->age));
-    }
-
-    CV_set_destructor(&v1, delete);
-    // CV_copy(&v1, &v2);
-    CV_set_deep_copy(&v1, copy);
-    CV_deep_copy(&v1, &v2);
-
-    printf("=== After ===\n");
-    printf("v1: %zu, %zu, %zu\n", CV_size(&v1), CV_capacity(&v1), CV_block_size(&v1));
-    for(int i=0; i<CV_size(&v1); ++i){
-        printf("%d\n", *(MCV_at(&v1, i, Person)->age));
-        free(MCV_at(&v1, i, Person)->age);
-        // *(MCV_at(&v1, i, Person)->age) += 10;
-    }
-
-    printf("v2: %zu, %zu, %zu\n", CV_size(&v2), CV_capacity(&v2), CV_block_size(&v2));
-    for(int i=0; i<CV_size(&v2); ++i){
-        printf("%d\n", *(MCV_at(&v2, i, Person)->age));
-        free(MCV_at(&v2, i, Person)->age);
-    }
-
-    CV_delete(&v1);
-    CV_delete(&v2);
-
-    // for(int i=0; i<2; ++i){
-    //     free(persons[i].age);
-    // }
+    // CT_delete(&tuple);
 
     return 0;
 }

@@ -51,7 +51,7 @@ void CS_pop_back(cstring* str);
 // String operations
 const char* CS_c_str(const cstring* str);
 void* CS_data(const cstring* str);
-void CS_copy(cstring* str, const char* buffer, size_t size, size_t position);
+void CS_copy(cstring* str, char* buffer, size_t size, size_t position);
 size_t CS_find(const cstring* str, const char* chars, size_t position);
 size_t CS_rfind(const cstring* str, const char* chars, size_t position);
 size_t CS_find_first_of(const cstring* str, const char* chars, size_t position);

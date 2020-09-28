@@ -89,18 +89,18 @@ CMakeFiles/main.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/main.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/main.c -o CMakeFiles/main.dir/main.c.s
 
-CMakeFiles/main.dir/src/cpair.c.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/cpair.c.o: ../src/cpair.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/cpair.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/cpair.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c
+CMakeFiles/main.dir/src/calgorithm.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/calgorithm.c.o: ../src/calgorithm.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/calgorithm.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/calgorithm.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c
 
-CMakeFiles/main.dir/src/cpair.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/cpair.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c > CMakeFiles/main.dir/src/cpair.c.i
+CMakeFiles/main.dir/src/calgorithm.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/calgorithm.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c > CMakeFiles/main.dir/src/calgorithm.c.i
 
-CMakeFiles/main.dir/src/cpair.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/cpair.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c -o CMakeFiles/main.dir/src/cpair.c.s
+CMakeFiles/main.dir/src/calgorithm.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/calgorithm.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c -o CMakeFiles/main.dir/src/calgorithm.c.s
 
 CMakeFiles/main.dir/src/cset.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/cset.c.o: ../src/cset.c
@@ -128,9 +128,22 @@ CMakeFiles/main.dir/src/cstring.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/cstring.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c -o CMakeFiles/main.dir/src/cstring.c.s
 
+CMakeFiles/main.dir/src/ctuple.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/ctuple.c.o: ../src/ctuple.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/main.dir/src/ctuple.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/ctuple.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c
+
+CMakeFiles/main.dir/src/ctuple.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/ctuple.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c > CMakeFiles/main.dir/src/ctuple.c.i
+
+CMakeFiles/main.dir/src/ctuple.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/ctuple.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c -o CMakeFiles/main.dir/src/ctuple.c.s
+
 CMakeFiles/main.dir/src/cvector.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/cvector.c.o: ../src/cvector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/main.dir/src/cvector.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/main.dir/src/cvector.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/cvector.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
 
 CMakeFiles/main.dir/src/cvector.c.i: cmake_force
@@ -144,22 +157,24 @@ CMakeFiles/main.dir/src/cvector.c.s: cmake_force
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.c.o" \
-"CMakeFiles/main.dir/src/cpair.c.o" \
+"CMakeFiles/main.dir/src/calgorithm.c.o" \
 "CMakeFiles/main.dir/src/cset.c.o" \
 "CMakeFiles/main.dir/src/cstring.c.o" \
+"CMakeFiles/main.dir/src/ctuple.c.o" \
 "CMakeFiles/main.dir/src/cvector.c.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.c.o
-main: CMakeFiles/main.dir/src/cpair.c.o
+main: CMakeFiles/main.dir/src/calgorithm.c.o
 main: CMakeFiles/main.dir/src/cset.c.o
 main: CMakeFiles/main.dir/src/cstring.c.o
+main: CMakeFiles/main.dir/src/ctuple.c.o
 main: CMakeFiles/main.dir/src/cvector.c.o
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

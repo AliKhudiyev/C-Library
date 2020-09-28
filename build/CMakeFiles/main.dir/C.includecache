@@ -6,21 +6,27 @@
 
 #IncludeRegexTransform: 
 
-../include/cpair.h
-cvector.h
-../include/cvector.h
+../include/calgorithm.h
+stdlib.h
+-
+unistd.h
+-
+memory.h
+-
 
 ../include/cpplib.h
 cvector.h
 ../include/cvector.h
 cstring.h
 ../include/cstring.h
-cpair.h
-../include/cpair.h
+ctuple.h
+../include/ctuple.h
 cset.h
 ../include/cset.h
 ctypes.h
 ../include/ctypes.h
+calgorithm.h
+../include/calgorithm.h
 
 ../include/cset.h
 cvector.h
@@ -30,9 +36,15 @@ cvector.h
 cvector.h
 ../include/cvector.h
 
+../include/ctuple.h
+cvector.h
+../include/cvector.h
+
 ../include/ctypes.h
 stdarg.h
 -
+calgorithm.h
+../include/calgorithm.h
 
 ../include/cvector.h
 stdlib.h

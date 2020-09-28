@@ -1,0 +1,7 @@
+Hello, World!
+This is an example text   with weird    spacing...  
+
+
+Don't forget to read all the lines correctly!
+
+
