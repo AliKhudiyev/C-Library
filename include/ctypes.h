@@ -4,6 +4,8 @@
 
 #include <stdarg.h>
 
+#include "calgorithm.h"
+
 #define False 0
 #define True 1
 

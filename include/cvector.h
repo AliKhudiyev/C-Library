@@ -17,7 +17,7 @@ typedef struct{
 
 // Allocator
 void __allocate(void** ptr, size_t size, size_t new_size);
-// =======================
+// = = = = = = = = = = = = = = = = = = = = = = =
 
 // Constructor and Destructor
 cvector* CVector(size_t block_size, size_t n_block);
@@ -59,6 +59,7 @@ size_t CV_block_size(const cvector* vec);
 void* CV_at(const cvector* vec, size_t position);
 void* CV_front(const cvector* vec);
 void* CV_back(const cvector* vec);
+void* CV_data(const cvector* vec);
 
 #define MCV_at(vec, position, _type) \
     ((_type*)(position < (vec)->_size? (_type*)(vec)->_data+position : NULL))
@@ -72,6 +73,7 @@ void* CV_back(const cvector* vec);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Modifiers
+void CV_assign(cvector* vec1, const cvector* vec2, size_t pos, size_t size);
 void CV_push_back(cvector* vec, const void* val);
 void CV_pop_back(cvector* vec);
 void CV_insert(cvector* vec, size_t position, const void* val);
@@ -111,7 +113,7 @@ void CV_set_deep_copy(cvector* vec, void (*copy)(void* dest, const void* src, si
 void CV_swap_val(cvector* vec, size_t pos1, size_t pos2);
 void CV_copy(cvector* dest, const cvector* src);
 void CV_deep_copy(cvector* dest, const cvector* src);
-unsigned CV_find(const cvector* vec, const void* data);
+size_t CV_find(const cvector* vec, const void* data);
 
 #define MCV_force_find(vec, data, _type, _result)                            \
     {                                                                        \

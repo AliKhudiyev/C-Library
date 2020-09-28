@@ -136,9 +136,31 @@ void* CV_back(const cvector* vec){
     if(!vec->_size) return NULL;
     return vec->_data+(vec->_size-1)*vec->_block_size;
 }
+
+void* CV_data(const cvector* vec){
+    return vec->_data;
+}
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Modifiers
+void CV_assign(cvector* vec1, const cvector* vec2, size_t pos, size_t size){
+    if(vec1->_block_size != vec2->_block_size) return ;
+    if(size == -1) size = vec2->_size;
+    if(pos >= vec2->_size || pos + size > vec2->_size) return ;
+
+    CV_delete_elements(vec1);
+    if(vec1->_capacity < size){
+        __allocate(&vec1->_data, 
+                    vec1->_capacity * vec1->_block_size,
+                    vec2->_capacity * vec2->_block_size);
+        vec1->_capacity = vec2->_capacity;
+    }
+    memcpy(vec1->_data, 
+           vec2->_data + pos * vec2->_block_size, 
+           size * vec2->_block_size);
+    vec1->_size = size;
+}
+
 void CV_push_back(cvector* vec, const void* data){
     if(vec->_size == vec->_capacity){
         vec->_capacity *= 2;
@@ -252,7 +274,7 @@ void CV_deep_copy(cvector* dest, const cvector* src){
     dest->_block_size = src->_block_size;
 }
 
-unsigned CV_find(const cvector* vec, const void* data){
+size_t CV_find(const cvector* vec, const void* data){
     for(unsigned i=0; i<vec->_size; ++i){
         if(!memcmp(vec->_data+vec->_block_size*i, data, vec->_block_size)) return i;
     }

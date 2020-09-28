@@ -1,80 +1,205 @@
 #include "cstring.h"
 #include <stdio.h>
 
-cstring* CString(unsigned size){
-    cstring* str = malloc(sizeof(cstring));
-    str->_str = CVector(sizeof(char), size);
+// Constructor and Destructor
+cstring* CString(size_t size){
+    cstring* str;
+
+    __allocate(&str, 0, sizeof(cstring));
+    CS_init(str, size);
+
     return str;
 }
 
-void CS_append(cstring* str, const char* chars, unsigned size){
-    unsigned sz = (size != -1? size : strlen(chars));
+void CS_init(cstring* str, size_t size){
+    CV_init(&str->_str, sizeof(char), size);
+}
+
+void CS_delete(void* str){
+    cstring* str_ = (cstring*)str;
+    CV_delete(&str_->_str);
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Iterators
+char* CS_begin(const cstring* str){
+    return MCV_begin(&str->_str, char);
+}
+
+char* CS_end(const cstring* str){
+    return MCV_end(&str->_str, char);
+}
+
+const char* CS_cbegin(const cstring* str){
+    return MCV_cbegin(&str->_str, char);
+}
+
+const char* CS_cend(const cstring* str){
+    return MCV_cend(&str->_str, char);
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Capacity
+size_t CS_size(const cstring* str){
+    return CV_size(&str->_str);
+}
+
+void CS_resize(cstring* str, size_t n){
+    CV_resize(&str->_str, n);
+}
+
+size_t CS_capacity(const cstring* str){
+    return CV_capacity(&str->_str);
+}
+
+void CS_reserve(cstring* str){
+    // TO DO
+}
+
+void CS_clear(cstring* str){
+    CV_clear(&str->_str);
+}
+
+bool_t CS_empty(const cstring* str){
+    return CV_empty(&str->_str);
+}
+
+void CS_shrink_to_fit(cstring* str){
+    CV_shrink_to_fit(&str->_str);
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Element access
+char CS_at(const cstring* str, size_t position){
+    if(position >= CS_size(str)) return NULL;
+    return *(CS_cbegin(str)+position);
+}
+
+char CS_front(const cstring* str){
+    return CS_at(str, 0);
+}
+
+char CS_back(const cstring* str){
+    return CS_at(str, CS_size(str)-1);
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// Modifiers
+void CS_append(cstring* str, const char* chars, size_t size){
+    size_t sz = (size != -1? size : strlen(chars));
     
-    if(str->_str->_size){
-        CV_erase(str->_str, str->_str->_size-1);
+    if(str->_str._size){
+        CV_erase(&str->_str, str->_str._size-1);
     }
     for(unsigned i=0; i<sz; ++i){
-        CV_push_back(str->_str, chars+i);
-    }   CV_push_back(str->_str, "\0");
+        CV_push_back(&str->_str, chars+i);
+    }   CV_push_back(&str->_str, '\0');
+}
+
+void CS_push_back(cstring* str, char c){
+    CV_push_back(&str->_str, &c);
+}
+
+void CS_assign(cstring* str, const char* chars, size_t size){
+    if(size == -1) size = strlen(chars);
+
+    cstring str2;
+
+    CS_init(&str2, size);
+    CV_assign(&str->_str, &str2._str, 0, size);
+    CS_delete(&str2);
+}
+
+void CS_insert(cstring* str, size_t position, const char* chars, size_t n){
+    if(n == -1) n = strlen(chars);
+
+    for(size_t i=0; i<n; ++i){
+        CV_insert(&str->_str, position, chars+i);
+    }
+    // TO DO: Optimize this function!
+}
+
+void CS_erase(cstring* str, size_t position){
+    CV_erase(&str->_str, position);
+}
+
+void CS_replace(cstring* str, size_t position, size_t size, const char* chars){
+    if(position >= CS_size(str) || strlen(chars) < size) return ;
+    if(size == -1) size = CS_size(str) - position;
+
+    for(size_t i=0; i<size; ++i){
+        ;
+    }
+}
+
+void CS_swap(cstring* str1, cstring* str2){
+    CV_swap(&str1->_str, &str2->_str);
+}
+
+void CS_pop_back(cstring* str){
+    CV_pop_back(&str->_str);
+}
+// = = = = = = = = = = = = = = = = = = = = = = =
+
+// String operations
+const char* CS_c_str(const cstring* str){
+    return (const char*)str->_str._data;
+}
+
+void* CS_data(const cstring* str){
+    return CV_data(&str->_str);
+}
+
+void CS_copy(cstring* str, const char* buffer, size_t size, size_t position){
+    if(position >= CS_size(str) || position + size > CS_size(str)) return ;
+    
+    memcpy(buffer, CS_c_str(str)+position, size);
+}
+
+size_t CS_find(const cstring* str, const char* chars, size_t position){
+    if(position >= CS_size(str)) return -1;
+
+    return CAlgo_find((const void*)CV_data(&str->_str), 
+                       CS_size(str), 
+                       sizeof(char), 
+                       chars, 
+                       position, 
+                       CS_size(str));
+}
+
+cstring* CS_substr(const cstring* str, size_t position, size_t size){
+    if(position >= CS_size(str) || position + size > CS_size(str)) return NULL;
+
+    cstring* string = CString(size);
+    CS_append(string, CS_c_str(str)+position, size);
+
+    return string;
 }
 
 char CS_compare(const cstring* str1, const cstring* str2, unsigned size){
-    unsigned sz = size<=str1->_str->_size? size : str1->_str->_size;
+    unsigned sz = (size <= CS_size(&str1->_str)? size : CS_size(&str1->_str));
 
     if(!size){
-        sz = str1->_str->_size;
-        if(str1->_str->_size > str2->_str->_size) return 1;
-        else if(str1->_str->_size < str2->_str->_size) return -1;
-    } else if(size > str1->_str->_size || size > str2->_str->_size){
-        if(str1->_str->_size > str2->_str->_size) return 1;
-        else if(str1->_str->_size < str2->_str->_size) return -1;
+        sz = CV_size(&str1->_str);
+        if(CV_size(&str1->_str) > CV_size(&str2->_str)) return 1;
+        else if(CV_size(&str1->_str) < CV_size(&str2->_str)) return -1;
+    } else if(size > CV_size(&str1->_str) || size > CV_size(&str2->_str)){
+        if(CV_size(&str1->_str) > CV_size(&str2->_str)) return 1;
+        else if(CV_size(&str1->_str) < CV_size(&str2->_str)) return -1;
     }
 
     for(unsigned i=0; i<sz; ++i){
-        if(*MCV_at(str1->_str, i, char) > *MCV_at(str2->_str, i, char)){
+        if(*MCV_at(&str1->_str, i, char) > *MCV_at(&str2->_str, i, char)){
             return 1;
         }
-        if(*MCV_at(str1->_str, i, char) < *MCV_at(str2->_str, i, char)){
+        if(*MCV_at(&str1->_str, i, char) < *MCV_at(&str2->_str, i, char)){
             return -1;
         }
     }
     return 0;
 }
+// = = = = = = = = = = = = = = = = = = = = = = =
 
-void CS_copy(cstring* dest, const cstring* src){
-    CV_copy(dest->_str, src->_str);
-}
+// Additional
+// = = = = = = = = = = = = = = = = = = = = = = =
 
-// void convert_to(const string* str, __Type type);
-
-cstring* CS_substr(const cstring* str, unsigned beg, unsigned end){
-    return 0;
-}
-
-cstring* CS_find(const cstring* str, const cstring* token, unsigned offset){
-    return 0;
-}
-
-char CS_get_char(const cstring* str, unsigned index){
-    return *MCV_at(str->_str, index, char);
-}
-
-const char* CS_get_strptr(const cstring* str){
-    return (const char*)str->_str->_data;
-}
-
-unsigned CS_size_of(const cstring* str){
-    return str->_str->_size;
-}
-
-unsigned CS_capacity(const cstring* str){
-    return str->_str->_capacity;
-}
-
-void CS_delete(void* str){
-    cstring* str_ = (cstring*)str;
-    CV_delete(str_->_str);
-    free(str_->_str);
-    // free((void*)str);
-    // str = NULL;
-}

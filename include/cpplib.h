@@ -7,5 +7,6 @@
 #include "cpair.h"
 #include "cset.h"
 #include "ctypes.h"
+#include "calgorithm.h"
 
 #endif
