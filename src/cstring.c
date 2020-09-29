@@ -13,11 +13,11 @@ cstring* CString(size_t size){
 
 void CS_init(cstring* str, size_t size){
     CV_init(&str->_str, sizeof(char), size);
+    // str->_str._delete = CV_delete_recursive;
 }
 
-void CS_delete(void* str){
-    cstring* str_ = (cstring*)str;
-    CV_delete(&str_->_str);
+void CS_delete(cstring* str){
+    CV_delete(&str->_str);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 

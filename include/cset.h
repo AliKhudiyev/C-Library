@@ -27,6 +27,21 @@ size_t CSet_size(const cset* set);
 size_t CSet_max_size(const cset* set);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
+// Element access
+void* CSet_at(const cset* set, size_t position);
+void* CSet_front(const cset* set);
+void* CSet_back(const cset* set);
+
+#define MCSet_at(set, position, _type)  \
+    ((_type*)CSet_at(set, position))
+
+#define MCSet_front(set, _type) \
+    ((_type*)CSet_front(set))
+
+#define MCSet_back(set, _type)  \
+    ((_type*)CSet_back(set))
+// = = = = = = = = = = = = = = = = = = = = = = =
+
 // Modifiers
 void CSet_insert(cset* set, const void* element);
 void CSet_erase(cset* set, const void* element);

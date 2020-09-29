@@ -25,11 +25,19 @@ void CT_swap(ctuple* tuple1, ctuple* tuple2);
 
 // Additional
 void CT_add(ctuple* tuple, const void* element, size_t size);
+size_t CT_find(const ctuple* tuple, const void* element, size_t size);
+size_t CT_size(const ctuple* tuple);
 
-#define MCT_force_add(tuple, _type, ...)         \
+#define MCT_force_add(tuple, _type, ...)        \
     {                                           \
         _type tmp = { __VA_ARGS__ };            \
         CT_add(tuple, &tmp, sizeof(_type));     \
+    }
+
+#define MCT_force_find(_result, tuple, _type, ...)      \
+    {                                                   \
+        _type tmp = { __VA_ARGS__ };                    \
+        _result = CT_find(tuple, &tmp, sizeof(_type));  \
     }
 // = = = = = = = = = = = = = = = = = = = = = = =
 

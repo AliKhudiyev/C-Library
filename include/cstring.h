@@ -11,7 +11,7 @@ typedef struct{
 // Constructor and Destructor
 cstring* CString(size_t size);
 void CS_init(cstring* str, size_t size);
-void CS_delete(void* str);
+void CS_delete(cstring* str);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Iterators

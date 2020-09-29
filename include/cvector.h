@@ -25,6 +25,12 @@ void CV_init(cvector* vec, size_t block_size, size_t n_block);
 void CV_delete(cvector* vec);
 void CV_delete_elements(cvector* vec);
 void CV_delete_recursive(void* vec);
+
+#define MCVector(_type, size)   \
+    CVector(sizeof(_type), size);
+
+#define MCV_init(vec, _type, size)  \
+    CV_init(vec, sizeof(_type), size);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Iterators
@@ -113,7 +119,7 @@ void CV_set_deep_copy(cvector* vec, void (*copy)(void* dest, const void* src, si
 void CV_swap_val(cvector* vec, size_t pos1, size_t pos2);
 void CV_copy(cvector* dest, const cvector* src);
 void CV_deep_copy(cvector* dest, const cvector* src);
-size_t CV_find(const cvector* vec, const void* data);
+size_t CV_find(const cvector* vec, const void* val);
 
 #define MCV_force_find(vec, data, _type, _result)                            \
     {                                                                        \

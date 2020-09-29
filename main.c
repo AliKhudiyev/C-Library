@@ -129,20 +129,31 @@ int main(){
     // delete_file(file);
     // free(file);
 
-    ctuple tuple;
-    CT_init(&tuple);
+    cset set;
+    CSet_init(&set, sizeof(char), 1);
 
-    MCT_force_add(&tuple, int, -1);
-    MCT_force_add(&tuple, double, 5.87);
-    MCT_force_add(&tuple, Struct, 87);
-    MCT_force_add(&tuple, const char*, "Hello there!");
+    for(size_t i=0; i<CSet_size(&set); ++i){
+        printf("- %c ", *MCSet_at(&set, i, char));
+    }   printf("\n");
 
-    printf("%d\n", *CT_get(&tuple, 0, int));
-    printf("%lf\n", *CT_get(&tuple, 1, double));
-    printf("%d\n", CT_get(&tuple, 2, Struct)->id);
-    printf("%s\n", *CT_get(&tuple, 3, const char*));
+    MCSet_emplace(&set, char, 'A');
+    MCSet_emplace(&set, char, 'B');
+    MCSet_emplace(&set, char, 'C');
 
-    // CT_delete(&tuple);
+    for(size_t i=0; i<CSet_size(&set); ++i){
+        printf("- %c ", *MCSet_at(&set, i, char));
+    }   printf("\n");
+
+    MCSet_emplace(&set, char, 'B');
+    MCSet_emplace(&set, char, 'A');
+    MCSet_emplace(&set, char, 'D');
+    MCSet_emplace(&set, char, 'Z');
+
+    for(size_t i=0; i<CSet_size(&set); ++i){
+        printf("- %c ", *MCSet_at(&set, i, char));
+    }   printf("\n");
+
+    CSet_delete(&set);
 
     return 0;
 }

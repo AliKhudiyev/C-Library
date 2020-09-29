@@ -275,9 +275,9 @@ void CV_deep_copy(cvector* dest, const cvector* src){
     dest->_block_size = src->_block_size;
 }
 
-size_t CV_find(const cvector* vec, const void* data){
+size_t CV_find(const cvector* vec, const void* val){
     for(unsigned i=0; i<vec->_size; ++i){
-        if(!memcmp(vec->_data+vec->_block_size*i, data, vec->_block_size)) return i;
+        if(!memcmp(vec->_data+vec->_block_size*i, val, vec->_block_size)) return i;
     }
     return -1;
 }
