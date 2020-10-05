@@ -89,18 +89,18 @@ CMakeFiles/test_string.dir/test_string.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_string.dir/test_string.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_string.c -o CMakeFiles/test_string.dir/test_string.c.s
 
-CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o: CMakeFiles/test_string.dir/flags.make
-CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c
+CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o: CMakeFiles/test_string.dir/flags.make
+CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c
 
-CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c > CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.i
+CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c > CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.i
 
-CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c -o CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.s
+CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c -o CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.s
 
 CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o: CMakeFiles/test_string.dir/flags.make
 CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c
@@ -128,9 +128,22 @@ CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstr
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c -o CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s
 
+CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o: CMakeFiles/test_string.dir/flags.make
+CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c
+
+CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c > CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.i
+
+CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c -o CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.s
+
 CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o: CMakeFiles/test_string.dir/flags.make
 CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
 
 CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i: cmake_force
@@ -144,22 +157,24 @@ CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvec
 # Object files for target test_string
 test_string_OBJECTS = \
 "CMakeFiles/test_string.dir/test_string.c.o" \
-"CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o" \
+"CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o" \
 "CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o" \
 "CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o" \
+"CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o" \
 "CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o"
 
 # External object files for target test_string
 test_string_EXTERNAL_OBJECTS =
 
 test_string: CMakeFiles/test_string.dir/test_string.c.o
-test_string: CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o
+test_string: CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o
 test_string: CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
 test_string: CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o
+test_string: CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o
 test_string: CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o
 test_string: CMakeFiles/test_string.dir/build.make
 test_string: CMakeFiles/test_string.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable test_string"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable test_string"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_string.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

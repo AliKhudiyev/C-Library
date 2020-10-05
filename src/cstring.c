@@ -86,7 +86,7 @@ char CS_back(const cstring* str){
 
 // Modifiers
 void CS_append(cstring* str, const char* chars, size_t size){
-    size_t sz = (size != -1? size : strlen(chars));
+    size_t sz = (size <= strlen(chars)? size : strlen(chars));
     
     if(str->_str._size){
         CV_erase(&str->_str, str->_str._size-1);

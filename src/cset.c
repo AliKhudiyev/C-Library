@@ -74,7 +74,7 @@ void CSet_insert(cset* set, const void* element){
 }
 
 void CSet_erase(cset* set, const void* element){
-    if(CSet_count(&set->_elems, element)) return ;
+    if(CSet_count((const cset*)&set, element)) return ;
 
     size_t position = CSet_find(set, element);
     CV_erase(&set->_elems, position);

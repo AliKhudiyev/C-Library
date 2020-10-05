@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cpair.c.o"
+  "CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o"
   "CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o"
   "CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o"
+  "CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o"
   "CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o"
   "CMakeFiles/test_vector.dir/test_vector.c.o"
   "test_vector"
