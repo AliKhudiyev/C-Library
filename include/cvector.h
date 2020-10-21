@@ -25,6 +25,7 @@ void CV_init(cvector* vec, size_t block_size, size_t n_block);
 void CV_delete(cvector* vec);
 void CV_delete_elements(cvector* vec);
 void CV_delete_recursive(void* vec);
+void CV_destruct(void* vec);
 
 #define MCVector(_type, size)   \
     CVector(sizeof(_type), size);
@@ -74,7 +75,7 @@ void* CV_data(const cvector* vec);
     MCV_at((vec), 0, _type)
 
 #define MCV_back(vec, _type) \
-    MCV_at((vec), vec->_size-1, _type)
+    MCV_at((vec), (vec)->_size-1, _type)
 
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -142,6 +143,17 @@ size_t CV_find(const cvector* vec, const void* val);
 #define MCV_apply(function) \
     function(vec->_data, vec->_size, vec->_capacity, vec->_block_size)
 
+#define MCV_For_Each(vec, iterator, ...)        \
+    for(size_t i=0; i<CV_size(vec); ++i){       \
+        iterator=CV_at(vec, i);                 \
+        __VA_ARGS__                             \
+    }
+
+#define MCV_Enumerate(vec, counter, iterator, ...)              \
+    for(counter=0; counter<CV_size(vec); ++counter){            \
+        iterator=CV_at(vec, counter);                           \
+        __VA_ARGS__                                             \
+    }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 #endif

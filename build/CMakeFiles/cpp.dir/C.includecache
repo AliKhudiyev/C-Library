@@ -18,6 +18,14 @@ memory.h
 cvector.h
 ../include/cvector.h
 
+../include/cstring.h
+cvector.h
+../include/cvector.h
+
+../include/ctuple.h
+cvector.h
+../include/cvector.h
+
 ../include/ctypes.h
 stdarg.h
 -
@@ -37,4 +45,20 @@ ctypes.h
 /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c
 cset.h
 /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.h
+
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c
+cstring.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.h
+stdio.h
+-
+
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c
+ctuple.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.h
+
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
+cvector.h
+/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.h
+stdio.h
+-
 

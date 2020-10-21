@@ -20,6 +20,10 @@ void CT_delete(ctuple* tuple){
     CV_delete(&tuple->_elems);
     // TO DO: Check if the function works!
 }
+
+void CT_destruct(void* tuple){
+    CT_delete((ctuple*)tuple);
+}
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Modifiers
@@ -51,5 +55,11 @@ size_t CT_find(const ctuple* tuple, const void* element, size_t size){
 
 size_t CT_size(const ctuple* tuple){
     return CV_size(&tuple->_elems);
+}
+
+void CT_set_destructor(ctuple* tuple, size_t position, void (*destuctor)(void* ptr)){
+    if(position >= CV_size(&tuple->_elems)) return ;
+
+    CV_set_destructor(CV_at(&tuple->_elems, position), destuctor);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =

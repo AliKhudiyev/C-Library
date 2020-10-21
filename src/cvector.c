@@ -39,8 +39,9 @@ void CV_init(cvector* vec, size_t block_size, size_t n_block){
 }
 
 void CV_delete(cvector* vec){
-    if(!vec) return ;
+    if(!vec){ printf("-\n"); return ;}
 
+    // printf("+\n");
     // CV_delete_elements(vec);
     free(vec->_data);
     vec->_size = vec->_capacity = vec->_block_size = 0;
@@ -59,14 +60,14 @@ void CV_delete_recursive(void* vec){
     if(!vec) return ;
 
     cvector* vec_ = (cvector*)vec;
-    if(vec_->_delete){
-        for(size_t i=0; i<vec_->_size; ++i){
-            vec_->_delete(vec_->_data+(vec_->_size-1-i)*vec_->_block_size);
-        }
-    }
+    CV_delete_elements(vec_);
     free(vec_->_data);
     vec_->_size = vec_->_capacity = vec_->_block_size = 0;
     vec_->_data = NULL;
+}
+
+void CV_destruct(void* vec){
+    CV_delete_recursive(vec);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 

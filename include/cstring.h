@@ -12,6 +12,7 @@ typedef struct{
 cstring* CString(size_t size);
 void CS_init(cstring* str, size_t size);
 void CS_delete(cstring* str);
+void CS_destruct(void* str);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Iterators

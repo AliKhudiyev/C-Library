@@ -19,6 +19,10 @@ void CS_init(cstring* str, size_t size){
 void CS_delete(cstring* str){
     CV_delete(&str->_str);
 }
+
+void CS_destruct(void* str){
+    CS_delete((cstring*)str);
+}
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Iterators
@@ -161,11 +165,11 @@ size_t CS_find(const cstring* str, const char* chars, size_t position){
     if(position >= CS_size(str)) return -1;
 
     return CAlgo_find((const void*)CV_data(&str->_str), 
-                       CS_size(str), 
-                       sizeof(char), 
-                       chars, 
-                       position, 
-                       CS_size(str));
+                      CS_size(str), 
+                      sizeof(char), 
+                      chars, 
+                      position, 
+                      CS_size(str));
 }
 
 cstring* CS_substr(const cstring* str, size_t position, size_t size){
