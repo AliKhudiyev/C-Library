@@ -1,6 +1,12 @@
+sudo: false
+
 language: c
 c:
   - 11
+
 compiler:
  - gcc
  - clang
+
+script:
+ - cmake .
