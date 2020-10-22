@@ -1,3 +1,6 @@
 language: c
 c:
-  - "stable"
+  - 11
+compiler:
+ - gcc
+ - clang
