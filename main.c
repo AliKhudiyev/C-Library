@@ -143,8 +143,33 @@ void delete(void* person){
 }
 
 void my_free(void* ptr){
-    CV_destruct(*((cvector**)ptr));
-    free(*((cvector**)ptr));
+    free(*((int**)ptr));
+}
+
+void my_copy(void* dest, const void* src, size_t n_byte){
+    for(size_t i=0; i<n_byte/sizeof(int*); ++i){
+        int* ptr = malloc(4);
+        memcpy(ptr, *((int**)src+i), 4);
+        memcpy(dest+i*sizeof(int*), &ptr, sizeof(int*));
+    }
+}
+
+typedef struct{
+    int a, *b;
+}My_Class;
+
+void MyClass_destruct(void* ptr){
+    free(((My_Class*)ptr)->b);
+}
+
+void MyClass_copy(void* dest, const void* src, size_t n_byte){
+    for(size_t i=0; i<n_byte/sizeof(My_Class); ++i){
+        memcpy(&((My_Class*)dest)[i].a, &((My_Class*)src)[i].a, sizeof(int));
+    
+        int* ptr = malloc(sizeof(int));
+        memcpy(ptr, ((My_Class*)src)[i].b, sizeof(int));
+        memcpy(&((My_Class*)dest)[i].b, &ptr, sizeof(int*));
+    }
 }
 
 int main(){
@@ -170,54 +195,40 @@ int main(){
     // csv_delete(csv);
     // free(csv);
 
-    cvector vec;
-    cvector str1, str2;
-    CV_init(&vec, sizeof(cstring), 1);
-    CV_init(&str1, 4, 1);
-    CV_init(&str2, 1, 1);
+    cvector vec1, vec2;
 
-    // MCV_force_push_back(&vec, 7, int);
-    // MCV_force_push_back(&vec, -3, int);
-    // MCV_force_push_back(&vec, 2, int);
+    CV_init(&vec1, sizeof(My_Class), 1);
+    CV_init(&vec2, sizeof(My_Class), 1);
 
-    MCV_force_push_back(&str1, 5, int);
-    MCV_force_push_back(&str1, 3, int);
-    MCV_force_push_back(&str1, -2, int);
+    CV_set_deep_copy(&vec1, MyClass_copy);
+    CV_set_deep_copy(&vec2, MyClass_copy);
 
-    MCV_force_push_back(&str2, 'A', char);
-    MCV_force_push_back(&str2, 'l', char);
-    MCV_force_push_back(&str2, 'i', char);
+    CV_set_destructor(&vec1, MyClass_destruct);
+    CV_set_destructor(&vec2, MyClass_destruct);
 
-    CV_push_back(&vec, &str1);
-    CV_push_back(&vec, &str2);
+    My_Class obj1, obj2;
 
-    // int* it;
-    // MCV_For_Each(&vec, it, 
-    //     printf("%d\n", *it);
-    // );
+    obj1.a = 0;
+    obj1.b = malloc(4); *obj1.b = 1;
 
-    cvector* it;
-    size_t i;
-    int sum = 0;
-    MCV_Enumerate(&vec, i, it, 
-        printf("Iteration # %zu\n", i);
-        size_t j;
-        if(CV_block_size(it) == 4){
-            int* num;
-            MCV_For_Each(it, num, 
-                sum += *num;
-            );
-        }
-        else if(i == 1){
-            char* c;
-            MCV_Enumerate(it, j, c, 
-                printf("%zu: %c\n", j, *c);
-            );
-        }
-        // printf("%zu: %d\n", i, *it);
-        // sum += *it;
-    );
-    printf("The sum is %d.\n", sum);
+    obj2.a = 2;
+    obj2.b = malloc(4); *obj2.b = 3;
+
+    CV_push_back(&vec1, &obj1);
+    CV_push_back(&vec2, &obj2);
+
+    printf("%d, %d - %d, %d\n",
+            MCV_front(&vec1, My_Class)->a, *(MCV_front(&vec1, My_Class)->b),
+            MCV_front(&vec2, My_Class)->a, *(MCV_front(&vec2, My_Class)->b));
+
+    CV_deep_copy(&vec1, &vec2);
+
+    printf("%d, %d - %d, %d\n",
+            MCV_front(&vec1, My_Class)->a, *(MCV_front(&vec1, My_Class)->b),
+            MCV_front(&vec2, My_Class)->a, *(MCV_front(&vec2, My_Class)->b));
+
+    CV_destruct(&vec1);
+    CV_destruct(&vec2);
 
     return 0;
 }

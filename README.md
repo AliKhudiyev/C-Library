@@ -1,7 +1,6 @@
 # C-Library
 
-This is a Cpp-like library written in C to support C programs.
+![Logo](logo/C-Library.jpeg)
 
-## Thumb of rule
+This is a "C++ like" library written in C.
 
-**Remember that, any macros or function that take an argument named \[data\], expects a pointer to that \[data\] allocated in heap memory.**

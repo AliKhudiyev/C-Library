@@ -265,7 +265,7 @@ void CV_copy(cvector* dest, const cvector* src){
 
 void CV_deep_copy(cvector* dest, const cvector* src){
     if(!dest->_copy || dest->_block_size != src->_block_size) return ;
-
+    
     CV_delete_elements(dest);
     if(dest->_capacity < src->_size){
         __allocate(&dest->_data, dest->_capacity*dest->_block_size, src->_capacity*src->_block_size);
