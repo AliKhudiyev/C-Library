@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/alikhudiyev/Desktop/Projects/C-Library/main.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/main.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/src/calgorithm.c.o"
+  "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/src/cprinter.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/src/cset.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/src/cstring.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/main.dir/src/ctuple.c.o"

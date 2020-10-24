@@ -64,6 +64,17 @@ char CS_compare(const cstring* str1, const cstring* str2, unsigned size);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Additional
+#define MCS_For_Each(str, iterator, ...)                        \
+    for(size_t i=0; i<CS_size(str); ++i){                       \
+        iterator=CS_at(str, i);                                 \
+        __VA_ARGS__                                             \
+    }
+
+#define MCS_Enumerate(str, counter, iterator, ...)              \
+    for(counter=0; counter<CS_size(str); ++counter){            \
+        iterator=CS_at(str, counter);                           \
+        __VA_ARGS__                                             \
+    }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 #endif

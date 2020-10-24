@@ -18,6 +18,8 @@ void CS_init(cstring* str, size_t size){
 
 void CS_delete(cstring* str){
     CV_delete(&str->_str);
+    
+    CPrinter_delete();
 }
 
 void CS_destruct(void* str){
@@ -110,7 +112,8 @@ void CS_assign(cstring* str, const char* chars, size_t size){
     cstring str2;
 
     CS_init(&str2, size);
-    CV_assign(&str->_str, &str2._str, 0, size);
+    CS_append(&str2, chars, size);
+    CV_copy(&str->_str, &str2._str);
     CS_delete(&str2);
 }
 
@@ -169,7 +172,8 @@ size_t CS_find(const cstring* str, const char* chars, size_t position){
                       sizeof(char), 
                       chars, 
                       position, 
-                      CS_size(str));
+                      CS_size(str),
+                      NULL);
 }
 
 cstring* CS_substr(const cstring* str, size_t position, size_t size){

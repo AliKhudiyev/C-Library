@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/cpp.dir/src/calgorithm.c.o"
+  "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/cpp.dir/src/cprinter.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/cpp.dir/src/cset.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/cpp.dir/src/cstring.c.o"
   "/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c" "/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles/cpp.dir/src/ctuple.c.o"

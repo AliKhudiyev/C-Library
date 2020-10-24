@@ -10,7 +10,8 @@
 #define True 1
 
 typedef unsigned char bool_t;
-typedef void (*f_vvp_t)(void*);
-typedef void (*f_vvpvpul_t)(void*, const void*, size_t);
+typedef void (*f_copy_t)(void*, const void*, size_t);
+typedef void (*f_destructor_t)(void*);
+typedef const char* (*f_printer_t)(void*);
 
 #endif

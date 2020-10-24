@@ -4,6 +4,11 @@
 CMakeFiles/cpp.dir/src/calgorithm.c.o: ../include/calgorithm.h
 CMakeFiles/cpp.dir/src/calgorithm.c.o: ../src/calgorithm.c
 
+CMakeFiles/cpp.dir/src/cprinter.c.o: ../include/calgorithm.h
+CMakeFiles/cpp.dir/src/cprinter.c.o: ../include/ctypes.h
+CMakeFiles/cpp.dir/src/cprinter.c.o: ../include/cvector.h
+CMakeFiles/cpp.dir/src/cprinter.c.o: ../src/cprinter.c
+
 CMakeFiles/cpp.dir/src/cset.c.o: ../include/calgorithm.h
 CMakeFiles/cpp.dir/src/cset.c.o: ../include/cset.h
 CMakeFiles/cpp.dir/src/cset.c.o: ../include/ctypes.h

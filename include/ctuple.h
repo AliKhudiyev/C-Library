@@ -20,8 +20,18 @@ void CT_swap(ctuple* tuple1, ctuple* tuple2);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Element access
-#define CT_get(tuple, position, _type)  \
-    MCV_front(MCV_at(&(tuple)->_elems, position, cvector), _type)
+void* CT_at(const ctuple* tuple, size_t position);
+void* CT_front(const ctuple* tuple, size_t position);
+void* CT_back(const ctuple* tuple, size_t position);
+
+#define MCT_at(tuple, position, _type)      \
+    ((_type*)CT_at(tuple, position))
+
+#define MCT_front(tuple, _type)             \
+    MCT_at(tuple, 0, _type)
+
+#define MCT_back(tuple, _type)              \
+    MCT_at(tuple, CT_size(tuple)-1, _type)
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Additional
@@ -40,6 +50,18 @@ void CT_set_destructor(ctuple* tuple, size_t position, void (*destuctor)(void* p
     {                                                   \
         _type tmp = { __VA_ARGS__ };                    \
         _result = CT_find(tuple, &tmp, sizeof(_type));  \
+    }
+
+#define MCT_For_Each(tuple, iterator, ...)                      \
+    for(size_t i=0; i<CT_size(tuple); ++i){                     \
+        iterator=CT_at(tuple, i);                               \
+        __VA_ARGS__                                             \
+    }
+
+#define MCT_Enumerate(tuple, counter, iterator, ...)            \
+    for(counter=0; counter<CT_size(tuple); ++counter){          \
+        iterator=CT_at(tuple, counter);                         \
+        __VA_ARGS__                                             \
     }
 // = = = = = = = = = = = = = = = = = = = = = = =
 

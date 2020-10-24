@@ -13,10 +13,21 @@ typedef struct{
     void* _data;
     void (*_copy)(void* _dest, const void* _src, size_t _n_byte);
     void (*_delete)(void* _ptr);
+    const char* (*_str)(void* _data);
 }cvector;
 
 // Allocator
 void __allocate(void** ptr, size_t size, size_t new_size);
+
+#define __vallocate(ptr, size, new_size, _type, ...)                        \
+    __allocate(ptr, size, new_size);                                        \
+    if(*(ptr)){                                                             \
+        _type tmp = __VA_ARGS__;                                            \
+        for(size_t i=0; i<(new_size)/sizeof(_type); ++i){                   \
+            memcpy(((_type*)*(ptr))+i, &tmp, sizeof(_type));                \
+        }                                                                   \
+    }
+    
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Constructor and Destructor
@@ -27,11 +38,12 @@ void CV_delete_elements(cvector* vec);
 void CV_delete_recursive(void* vec);
 void CV_destruct(void* vec);
 
-#define MCVector(_type, size)   \
+#define MCVector(_type, size)                                   \
     CVector(sizeof(_type), size);
 
-#define MCV_init(vec, _type, size)  \
-    CV_init(vec, sizeof(_type), size);
+#define MCV_init(vec, _type, size)                              \
+    cvector vec;                                                \
+    CV_init(&vec, sizeof(_type), size);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Iterators
@@ -111,6 +123,20 @@ void CV_clear(cvector* vec);
         _type tmp = { __VA_ARGS__ };                                        \
         CV_push_back(vec, &tmp);                                            \
     }
+
+#define MCV_force_emplace(vec, position, _type, _constructor, ...)          \
+    {                                                                       \
+        _type tmp;                                                          \
+        _constructor( &tmp, __VA_ARGS__ );                                  \
+        CV_insert(vec, position, &tmp);                                     \
+    }
+
+#define MCV_force_emplace_back(vec, _type, _constructor, ...)               \
+    {                                                                       \
+        _type tmp;                                                          \
+        _constructor( &tmp, __VA_ARGS__ );                                  \
+        CV_push_back(vec, &tmp);                                            \
+    }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Additional
@@ -121,6 +147,7 @@ void CV_swap_val(cvector* vec, size_t pos1, size_t pos2);
 void CV_copy(cvector* dest, const cvector* src);
 void CV_deep_copy(cvector* dest, const cvector* src);
 size_t CV_find(const cvector* vec, const void* val);
+void CV_set_printer(cvector* vec, f_printer_t printer);
 
 #define MCV_force_find(vec, data, _type, _result)                            \
     {                                                                        \
@@ -143,10 +170,10 @@ size_t CV_find(const cvector* vec, const void* val);
 #define MCV_apply(function) \
     function(vec->_data, vec->_size, vec->_capacity, vec->_block_size)
 
-#define MCV_For_Each(vec, iterator, ...)        \
-    for(size_t i=0; i<CV_size(vec); ++i){       \
-        iterator=CV_at(vec, i);                 \
-        __VA_ARGS__                             \
+#define MCV_For_Each(vec, iterator, ...)                        \
+    for(size_t i=0; i<CV_size(vec); ++i){                       \
+        iterator=CV_at(vec, i);                                 \
+        __VA_ARGS__                                             \
     }
 
 #define MCV_Enumerate(vec, counter, iterator, ...)              \
@@ -154,6 +181,15 @@ size_t CV_find(const cvector* vec, const void* val);
         iterator=CV_at(vec, counter);                           \
         __VA_ARGS__                                             \
     }
+
+#define MCV_to_str(vec, _type)
+
+#define MCV_str(vec, position)   \
+    ((const char*)((vec)->_str? (vec)->_str(CV_at(vec, position)) : NULL))
 // = = = = = = = = = = = = = = = = = = = = = = =
+
+extern char* CPrinter_get_buffer();
+extern void CPrinter_set_buffer(const char*, size_t);
+extern void CPrinter_delete();
 
 #endif

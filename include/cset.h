@@ -12,6 +12,7 @@ typedef struct{
 cset* CSet(size_t block_size, size_t n_block);
 void CSet_init(cset* set, size_t block_size, size_t n_block);
 void CSet_delete(cset* set);
+void CSet_destruct(void* set);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Iterators
@@ -61,6 +62,20 @@ size_t CSet_count(const cset* set, const void* element);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Additional
+void CSet_set_deep_copy(cset* set, f_copy_t copy);
+void CSet_set_destructor(cset* set, f_destructor_t destructor);
+
+#define MCSet_For_Each(set, iterator, ...)                                    \
+    for(size_t i=0; i<CSet_size(set); ++i){                                   \
+        iterator=CSet_at(set, i);                                             \
+        __VA_ARGS__                                                           \
+    }
+
+#define MCSet_Enumerate(set, counter, iterator, ...)                          \
+    for(counter=0; counter<CV_size(set); ++counter){                          \
+        iterator=CSet_at(set, counter);                                       \
+        __VA_ARGS__                                                           \
+    }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 #endif

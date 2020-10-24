@@ -3,11 +3,6 @@
 #include "cpplib.h"
 
 typedef struct{
-    int* age;
-    char name[30];
-}Person;
-
-typedef struct{
     int id;
 }Struct;
 
@@ -125,23 +120,6 @@ void func(void* ptr){
     printf("=== Empty Destructor ===\n");
 }
 
-// for Person struct
-void copy(void* dest, const void* src, size_t n_byte){
-    if(!dest || !src) return ;
-
-    for(int i=0; i<n_byte/sizeof(Person); ++i){
-        Person person;
-        person.age = malloc(4);
-        *(person.age) = *(((Person*)src+i)->age);
-        memcpy((Person*)dest+i, &person, sizeof(Person));
-    }
-}
-
-// for Person struct
-void delete(void* person){
-    free(((Person*)person)->age);
-}
-
 void my_free(void* ptr){
     free(*((int**)ptr));
 }
@@ -172,6 +150,25 @@ void MyClass_copy(void* dest, const void* src, size_t n_byte){
     }
 }
 
+typedef struct{
+    int ID;
+    cstring name;
+}Person;
+
+void Person_destruct(void* ptr){
+    CS_destruct(&((Person*)ptr)->name);
+}
+
+const char* Person_printer(void* data){
+    Person* person = (Person*)data;
+    char buffer[100];
+    
+    sprintf(buffer, "%d: %s", person->ID, CS_c_str(&person->name));
+    CPrinter_set_buffer(buffer, 100);
+    
+    return CPrinter_get_buffer();
+}
+
 int main(){
 
     // CSV* csv = read_csv("../hey.txt");
@@ -194,41 +191,47 @@ int main(){
 
     // csv_delete(csv);
     // free(csv);
+    
+    // - - - - - - - - - - - - - - - - - - -
 
-    cvector vec1, vec2;
+    // ctuple tuple;
+    // CT_init(&tuple);
 
-    CV_init(&vec1, sizeof(My_Class), 1);
-    CV_init(&vec2, sizeof(My_Class), 1);
+    // cstring* str = CString(10);
+    // CS_append(str, "Hello\tWorld!\n", -1);
 
-    CV_set_deep_copy(&vec1, MyClass_copy);
-    CV_set_deep_copy(&vec2, MyClass_copy);
+    // cstring str2;
+    // CS_init(&str2, 3);
+    // CS_append(&str2, "I am OK!\n", -1);
 
-    CV_set_destructor(&vec1, MyClass_destruct);
-    CV_set_destructor(&vec2, MyClass_destruct);
+    // MCT_force_add(&tuple, int, 5);
+    // MCT_force_add(&tuple, char, 'A');
+    // MCT_force_add(&tuple, float, -3.1415);
+    // CT_add(&tuple, &str, sizeof(cstring*));
+    // CT_add(&tuple, &str2, sizeof(cstring));
 
-    My_Class obj1, obj2;
+    // CS_destruct(str);
+    // CS_destruct(&str2);
+    // free(str);
 
-    obj1.a = 0;
-    obj1.b = malloc(4); *obj1.b = 1;
+    // size_t i;
+    // void* it;
+    // printf("0: %d\n1: %c\n2: %f\n3: %s\n4: %s\n", 
+    //         *MCT_front(&tuple, int), 
+    //         *MCT_at(&tuple, 1, char),
+    //         *MCT_at(&tuple, 2, float),
+    //         CS_c_str(*MCT_at(&tuple, 3, cstring*)),
+    //         CS_c_str(MCT_back(&tuple, cstring)));
 
-    obj2.a = 2;
-    obj2.b = malloc(4); *obj2.b = 3;
+    // CT_set_destructor(&tuple, 3, my_destruct);
+    // CT_set_destructor(&tuple, 4, my_destruct2);
 
-    CV_push_back(&vec1, &obj1);
-    CV_push_back(&vec2, &obj2);
+    // CT_destruct(&tuple);
+    // CS_destruct(str);
+    // CS_destruct(&str2);
+    // free(str);
 
-    printf("%d, %d - %d, %d\n",
-            MCV_front(&vec1, My_Class)->a, *(MCV_front(&vec1, My_Class)->b),
-            MCV_front(&vec2, My_Class)->a, *(MCV_front(&vec2, My_Class)->b));
-
-    CV_deep_copy(&vec1, &vec2);
-
-    printf("%d, %d - %d, %d\n",
-            MCV_front(&vec1, My_Class)->a, *(MCV_front(&vec1, My_Class)->b),
-            MCV_front(&vec2, My_Class)->a, *(MCV_front(&vec2, My_Class)->b));
-
-    CV_destruct(&vec1);
-    CV_destruct(&vec2);
-
+    // - - - - - - - - - - - - - - - - - - -
+    
     return 0;
 }

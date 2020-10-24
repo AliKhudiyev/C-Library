@@ -13,6 +13,11 @@ CMakeFiles/main.dir/main.c.o
 CMakeFiles/main.dir/src/calgorithm.c.o
  ../include/calgorithm.h
  /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c
+CMakeFiles/main.dir/src/cprinter.c.o
+ ../include/calgorithm.h
+ ../include/ctypes.h
+ ../include/cvector.h
+ /Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c
 CMakeFiles/main.dir/src/cset.c.o
  ../include/calgorithm.h
  ../include/cset.h

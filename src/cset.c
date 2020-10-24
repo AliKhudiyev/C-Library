@@ -15,7 +15,13 @@ void CSet_init(cset* set, size_t block_size, size_t n_block){
 }
 
 void CSet_delete(cset* set){
-    CV_delete_recursive(&set->_elems);
+    CV_destruct(&set->_elems);
+
+    CPrinter_delete();
+}
+
+void CSet_destruct(void* set){
+    CSet_delete((cset*)set);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -106,4 +112,11 @@ size_t CSet_count(const cset* set, const void* element){
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Additional
+void CSet_set_deep_copy(cset* set, f_copy_t copy){
+    CV_set_deep_copy(&set->_elems, copy);
+}
+
+void CSet_set_destructor(cset* set, f_destructor_t destructor){
+    CV_set_destructor(&set->_elems, destructor);
+}
 // = = = = = = = = = = = = = = = = = = = = = = =

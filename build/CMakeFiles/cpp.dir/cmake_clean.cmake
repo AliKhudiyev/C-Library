@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cpp.dir/src/calgorithm.c.o"
+  "CMakeFiles/cpp.dir/src/cprinter.c.o"
   "CMakeFiles/cpp.dir/src/cset.c.o"
   "CMakeFiles/cpp.dir/src/cstring.c.o"
   "CMakeFiles/cpp.dir/src/ctuple.c.o"

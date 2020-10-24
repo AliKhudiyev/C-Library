@@ -35,17 +35,18 @@ void CV_init(cvector* vec, size_t block_size, size_t n_block){
     vec->_data = NULL;
     vec->_copy = NULL;
     vec->_delete = NULL;
+    vec->_str = NULL;
     __allocate(&vec->_data, 0, vec->_block_size * vec->_capacity);
 }
 
 void CV_delete(cvector* vec){
-    if(!vec){ printf("-\n"); return ;}
+    if(!vec) return ;
 
-    // printf("+\n");
-    // CV_delete_elements(vec);
     free(vec->_data);
     vec->_size = vec->_capacity = vec->_block_size = 0;
     vec->_data = NULL;
+
+    CPrinter_delete();
 }
 
 void CV_delete_elements(cvector* vec){
@@ -61,9 +62,7 @@ void CV_delete_recursive(void* vec){
 
     cvector* vec_ = (cvector*)vec;
     CV_delete_elements(vec_);
-    free(vec_->_data);
-    vec_->_size = vec_->_capacity = vec_->_block_size = 0;
-    vec_->_data = NULL;
+    CV_delete(vec_);
 }
 
 void CV_destruct(void* vec){
@@ -281,5 +280,9 @@ size_t CV_find(const cvector* vec, const void* val){
         if(!memcmp(vec->_data+vec->_block_size*i, val, vec->_block_size)) return i;
     }
     return -1;
+}
+
+void CV_set_printer(cvector* vec, f_printer_t printer){
+    vec->_str = printer;
 }
 // = = = = = = = = = = = = = = = = = = = = = = =

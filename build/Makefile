@@ -212,6 +212,36 @@ src/calgorithm.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/calgorithm.c.s
 .PHONY : src/calgorithm.c.s
 
+src/cprinter.o: src/cprinter.c.o
+
+.PHONY : src/cprinter.o
+
+# target to build an object file
+src/cprinter.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cprinter.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cprinter.c.o
+.PHONY : src/cprinter.c.o
+
+src/cprinter.i: src/cprinter.c.i
+
+.PHONY : src/cprinter.i
+
+# target to preprocess a source file
+src/cprinter.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cprinter.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cprinter.c.i
+.PHONY : src/cprinter.c.i
+
+src/cprinter.s: src/cprinter.c.s
+
+.PHONY : src/cprinter.s
+
+# target to generate assembly for a file
+src/cprinter.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/cprinter.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/src/cprinter.c.s
+.PHONY : src/cprinter.c.s
+
 src/cset.o: src/cset.c.o
 
 .PHONY : src/cset.o
@@ -348,6 +378,9 @@ help:
 	@echo "... src/calgorithm.o"
 	@echo "... src/calgorithm.i"
 	@echo "... src/calgorithm.s"
+	@echo "... src/cprinter.o"
+	@echo "... src/cprinter.i"
+	@echo "... src/cprinter.s"
 	@echo "... src/cset.o"
 	@echo "... src/cset.i"
 	@echo "... src/cset.s"

@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <memory.h>
 
-size_t CAlgo_find(const void* data, size_t size, size_t block_size, const void* token, size_t beg, size_t end);
+size_t CAlgo_find(const void* data, size_t size, size_t block_size, 
+                  const void* token, size_t beg, size_t end, 
+                  int (*equals)(const void* data, const void* token));
 
 #endif

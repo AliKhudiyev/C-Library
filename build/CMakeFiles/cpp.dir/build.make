@@ -89,9 +89,22 @@ CMakeFiles/cpp.dir/src/calgorithm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cpp.dir/src/calgorithm.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c -o CMakeFiles/cpp.dir/src/calgorithm.c.s
 
+CMakeFiles/cpp.dir/src/cprinter.c.o: CMakeFiles/cpp.dir/flags.make
+CMakeFiles/cpp.dir/src/cprinter.c.o: ../src/cprinter.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/cpp.dir/src/cprinter.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpp.dir/src/cprinter.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c
+
+CMakeFiles/cpp.dir/src/cprinter.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cpp.dir/src/cprinter.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c > CMakeFiles/cpp.dir/src/cprinter.c.i
+
+CMakeFiles/cpp.dir/src/cprinter.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cpp.dir/src/cprinter.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c -o CMakeFiles/cpp.dir/src/cprinter.c.s
+
 CMakeFiles/cpp.dir/src/cset.c.o: CMakeFiles/cpp.dir/flags.make
 CMakeFiles/cpp.dir/src/cset.c.o: ../src/cset.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/cpp.dir/src/cset.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/cpp.dir/src/cset.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpp.dir/src/cset.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c
 
 CMakeFiles/cpp.dir/src/cset.c.i: cmake_force
@@ -104,7 +117,7 @@ CMakeFiles/cpp.dir/src/cset.c.s: cmake_force
 
 CMakeFiles/cpp.dir/src/cstring.c.o: CMakeFiles/cpp.dir/flags.make
 CMakeFiles/cpp.dir/src/cstring.c.o: ../src/cstring.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/cpp.dir/src/cstring.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/cpp.dir/src/cstring.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpp.dir/src/cstring.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c
 
 CMakeFiles/cpp.dir/src/cstring.c.i: cmake_force
@@ -117,7 +130,7 @@ CMakeFiles/cpp.dir/src/cstring.c.s: cmake_force
 
 CMakeFiles/cpp.dir/src/ctuple.c.o: CMakeFiles/cpp.dir/flags.make
 CMakeFiles/cpp.dir/src/ctuple.c.o: ../src/ctuple.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/cpp.dir/src/ctuple.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/cpp.dir/src/ctuple.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpp.dir/src/ctuple.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c
 
 CMakeFiles/cpp.dir/src/ctuple.c.i: cmake_force
@@ -130,7 +143,7 @@ CMakeFiles/cpp.dir/src/ctuple.c.s: cmake_force
 
 CMakeFiles/cpp.dir/src/cvector.c.o: CMakeFiles/cpp.dir/flags.make
 CMakeFiles/cpp.dir/src/cvector.c.o: ../src/cvector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/cpp.dir/src/cvector.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/cpp.dir/src/cvector.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpp.dir/src/cvector.c.o -c /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
 
 CMakeFiles/cpp.dir/src/cvector.c.i: cmake_force
@@ -144,6 +157,7 @@ CMakeFiles/cpp.dir/src/cvector.c.s: cmake_force
 # Object files for target cpp
 cpp_OBJECTS = \
 "CMakeFiles/cpp.dir/src/calgorithm.c.o" \
+"CMakeFiles/cpp.dir/src/cprinter.c.o" \
 "CMakeFiles/cpp.dir/src/cset.c.o" \
 "CMakeFiles/cpp.dir/src/cstring.c.o" \
 "CMakeFiles/cpp.dir/src/ctuple.c.o" \
@@ -153,13 +167,14 @@ cpp_OBJECTS = \
 cpp_EXTERNAL_OBJECTS =
 
 libcpp.a: CMakeFiles/cpp.dir/src/calgorithm.c.o
+libcpp.a: CMakeFiles/cpp.dir/src/cprinter.c.o
 libcpp.a: CMakeFiles/cpp.dir/src/cset.c.o
 libcpp.a: CMakeFiles/cpp.dir/src/cstring.c.o
 libcpp.a: CMakeFiles/cpp.dir/src/ctuple.c.o
 libcpp.a: CMakeFiles/cpp.dir/src/cvector.c.o
 libcpp.a: CMakeFiles/cpp.dir/build.make
 libcpp.a: CMakeFiles/cpp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libcpp.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libcpp.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/cpp.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cpp.dir/link.txt --verbose=$(VERBOSE)
 

@@ -13,6 +13,11 @@ CMakeFiles/main.dir/main.c.o: ../main.c
 CMakeFiles/main.dir/src/calgorithm.c.o: ../include/calgorithm.h
 CMakeFiles/main.dir/src/calgorithm.c.o: ../src/calgorithm.c
 
+CMakeFiles/main.dir/src/cprinter.c.o: ../include/calgorithm.h
+CMakeFiles/main.dir/src/cprinter.c.o: ../include/ctypes.h
+CMakeFiles/main.dir/src/cprinter.c.o: ../include/cvector.h
+CMakeFiles/main.dir/src/cprinter.c.o: ../src/cprinter.c
+
 CMakeFiles/main.dir/src/cset.c.o: ../include/calgorithm.h
 CMakeFiles/main.dir/src/cset.c.o: ../include/cset.h
 CMakeFiles/main.dir/src/cset.c.o: ../include/ctypes.h
