@@ -75,17 +75,6 @@ CMAKE_BINARY_DIR = /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.18.0/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -96,6 +85,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/local/Cellar/cmake/3.18.0/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -130,6 +130,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test_tuple
+
+# Build rule for target.
+test_tuple: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_tuple
+.PHONY : test_tuple
+
+# fast build rule for target.
+test_tuple/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/build
+.PHONY : test_tuple/fast
+
+#=============================================================================
 # Target rules for targets named test_set
 
 # Build rule for target.
@@ -141,19 +154,6 @@ test_set: cmake_check_build_system
 test_set/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/build
 .PHONY : test_set/fast
-
-#=============================================================================
-# Target rules for targets named test_pair
-
-# Build rule for target.
-test_pair: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_pair
-.PHONY : test_pair
-
-# fast build rule for target.
-test_pair/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/build
-.PHONY : test_pair/fast
 
 #=============================================================================
 # Target rules for targets named test_string
@@ -187,8 +187,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.o: Users/alikhudiyev
 
 # target to build an object file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o
@@ -199,8 +199,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.i: Users/alikhudiyev
 
 # target to preprocess a source file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.i
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.i
@@ -211,11 +211,47 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.s: Users/alikhudiyev
 
 # target to generate assembly for a file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.s
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.s
+
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.o: Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o
+
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.o
+
+# target to build an object file
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o
+
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.i: Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.i
+
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.i
+
+# target to preprocess a source file
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.i
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.i
+
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.s: Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.s
+
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.s
+
+# target to generate assembly for a file
+Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.s
+.PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.s
 
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.o: Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
 
@@ -223,8 +259,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.o: Users/alikhudiyev/Deskt
 
 # target to build an object file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
@@ -235,8 +271,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.i: Users/alikhudiyev/Deskt
 
 # target to preprocess a source file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.i
@@ -247,8 +283,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.s: Users/alikhudiyev/Deskt
 
 # target to generate assembly for a file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.s
@@ -259,8 +295,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.o: Users/alikhudiyev/De
 
 # target to build an object file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.o
@@ -271,8 +307,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.i: Users/alikhudiyev/De
 
 # target to preprocess a source file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.i
@@ -283,8 +319,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.s: Users/alikhudiyev/De
 
 # target to generate assembly for a file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cstring.c.s
@@ -295,8 +331,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.o: Users/alikhudiyev/Des
 
 # target to build an object file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.o
@@ -307,8 +343,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.i: Users/alikhudiyev/Des
 
 # target to preprocess a source file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.i
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.i
@@ -319,8 +355,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.s: Users/alikhudiyev/Des
 
 # target to generate assembly for a file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.s
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/ctuple.c.s
@@ -331,8 +367,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.o: Users/alikhudiyev/De
 
 # target to build an object file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o
@@ -343,8 +379,8 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.i: Users/alikhudiyev/De
 
 # target to preprocess a source file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.i
@@ -355,38 +391,11 @@ Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.s: Users/alikhudiyev/De
 
 # target to generate assembly for a file
 Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s
 .PHONY : Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.s
-
-test_pair.o: test_pair.c.o
-
-.PHONY : test_pair.o
-
-# target to build an object file
-test_pair.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/test_pair.c.o
-.PHONY : test_pair.c.o
-
-test_pair.i: test_pair.c.i
-
-.PHONY : test_pair.i
-
-# target to preprocess a source file
-test_pair.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/test_pair.c.i
-.PHONY : test_pair.c.i
-
-test_pair.s: test_pair.c.s
-
-.PHONY : test_pair.s
-
-# target to generate assembly for a file
-test_pair.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/test_pair.c.s
-.PHONY : test_pair.c.s
 
 test_set.o: test_set.c.o
 
@@ -442,6 +451,33 @@ test_string.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/test_string.c.s
 .PHONY : test_string.c.s
 
+test_tuple.o: test_tuple.c.o
+
+.PHONY : test_tuple.o
+
+# target to build an object file
+test_tuple.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/test_tuple.c.o
+.PHONY : test_tuple.c.o
+
+test_tuple.i: test_tuple.c.i
+
+.PHONY : test_tuple.i
+
+# target to preprocess a source file
+test_tuple.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/test_tuple.c.i
+.PHONY : test_tuple.c.i
+
+test_tuple.s: test_tuple.c.s
+
+.PHONY : test_tuple.s
+
+# target to generate assembly for a file
+test_tuple.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/test_tuple.c.s
+.PHONY : test_tuple.c.s
+
 test_vector.o: test_vector.c.o
 
 .PHONY : test_vector.o
@@ -477,13 +513,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test_pair"
 	@echo "... test_set"
 	@echo "... test_string"
+	@echo "... test_tuple"
 	@echo "... test_vector"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.o"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.i"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.s"
+	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.o"
+	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.i"
+	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.s"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.o"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.i"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.s"
@@ -496,15 +535,15 @@ help:
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.o"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.i"
 	@echo "... Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.s"
-	@echo "... test_pair.o"
-	@echo "... test_pair.i"
-	@echo "... test_pair.s"
 	@echo "... test_set.o"
 	@echo "... test_set.i"
 	@echo "... test_set.s"
 	@echo "... test_string.o"
 	@echo "... test_string.i"
 	@echo "... test_string.s"
+	@echo "... test_tuple.o"
+	@echo "... test_tuple.i"
+	@echo "... test_tuple.s"
 	@echo "... test_vector.o"
 	@echo "... test_vector.i"
 	@echo "... test_vector.s"

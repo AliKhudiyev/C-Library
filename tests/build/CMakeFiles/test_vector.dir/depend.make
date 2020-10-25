@@ -4,6 +4,11 @@
 CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o: ../../include/calgorithm.h
 CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c
 
+CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o: ../../include/calgorithm.h
+CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o: ../../include/ctypes.h
+CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o: ../../include/cvector.h
+CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c
+
 CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o: ../../include/calgorithm.h
 CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o: ../../include/cset.h
 CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o: ../../include/ctypes.h

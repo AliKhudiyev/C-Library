@@ -4,6 +4,11 @@
 CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o
  ../../include/calgorithm.h
  /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c
+CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o
+ ../../include/calgorithm.h
+ ../../include/ctypes.h
+ ../../include/cvector.h
+ /Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c
 CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
  ../../include/calgorithm.h
  ../../include/cset.h
@@ -28,4 +33,13 @@ CMakeFiles/test_set.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector
  ../../include/cvector.h
  /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
 CMakeFiles/test_set.dir/test_set.c.o
+ ../../include/calgorithm.h
+ ../../include/cset.h
+ ../../include/ctypes.h
+ ../../include/cvector.h
  /Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_set.c
+ /usr/local/include/CUnit/Basic.h
+ /usr/local/include/CUnit/CUError.h
+ /usr/local/include/CUnit/CUnit.h
+ /usr/local/include/CUnit/TestDB.h
+ /usr/local/include/CUnit/TestRun.h

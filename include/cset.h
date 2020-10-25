@@ -13,6 +13,13 @@ cset* CSet(size_t block_size, size_t n_block);
 void CSet_init(cset* set, size_t block_size, size_t n_block);
 void CSet_delete(cset* set);
 void CSet_destruct(void* set);
+
+#define MCSet(_type)                    \
+    CSet(sizeof(_type), 1);
+
+#define MCSet_init(set, _type)          \
+    cset set;                           \
+    CSet_init(&set, sizeof(_type), 1);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Iterators

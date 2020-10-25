@@ -5,25 +5,10 @@
 
 #include "cstring.h"
 
-double epsilon = 1e-6;
-
-typedef struct{
-    char name[30];
-    double weight;
-}Struct;
-
 cstring *s1, *s2;
 
-int my_sorter(Struct s1, Struct s2){
-    return s1.weight >= s2.weight;
-}
-
-int compare_doubles(const void* a, const void* b){
-    // return *(double*)a >= *(double*)b;
-    return *(double*)a - *(double*)b;
-}
-
 int init_suite(void){
+
     s1 = CString(0);
     s2 = CString(1);
 
@@ -31,8 +16,12 @@ int init_suite(void){
 }
 
 int clean_suite(void){
+
     CS_delete(s1);
     CS_delete(s2);
+
+    free(s1);
+    free(s2);
     
     return 0;
 }
@@ -45,6 +34,7 @@ void test_constructor_destructor(){
     CU_ASSERT_EQUAL(CS_capacity(str1), 1);
 
     CS_delete(str1);
+    free(str1);
     
     for(size_t i=0; i<10; ++i){
         cstring str2;
@@ -86,133 +76,505 @@ void test_size(){
     CS_init(&str, 1);
 
     CU_ASSERT_EQUAL(CS_size(&str), 0);
+    
     CS_append(&str, "ABC", 2);
     CU_ASSERT_EQUAL(CS_size(&str), 3);
+    
     CS_push_back(&str, 'D');
     CU_ASSERT_EQUAL(CS_size(&str), 4);
+    
     CS_append(&str, "EFG", -1);
     CU_ASSERT_EQUAL(CS_size(&str), 7);
+    
     CS_append(&str, "HK", 5);
     CU_ASSERT_EQUAL(CS_size(&str), 9);
+    
+    CS_erase(&str, 1);
+    CU_ASSERT_EQUAL(CS_size(&str), 8);
+
+    CS_replace(&str, 1, 1, "_B_");
+    CU_ASSERT_EQUAL(CS_size(&str), 10);
+
+    CS_assign(&str, "ABCDEFGH", 5);
+    CU_ASSERT_EQUAL(CS_size(&str), 6);
 
     CS_delete(&str);
 }
 
 void test_resize(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CU_ASSERT_EQUAL(CS_size(&str), 0);
+    CU_ASSERT_EQUAL(CS_capacity(&str), 1);
+
+    CS_resize(&str, 10);
+    CU_ASSERT_EQUAL(CS_size(&str), 0);
+    CU_ASSERT_EQUAL(CS_capacity(&str), 10);
+
+    CS_resize(&str, 5);
+    CU_ASSERT_EQUAL(CS_size(&str), 0);
+    CU_ASSERT_EQUAL(CS_capacity(&str), 10);
+
+    CS_resize(&str, 0);
+    CU_ASSERT_EQUAL(CS_size(&str), 0);
+    CU_ASSERT_EQUAL(CS_capacity(&str), 10);
+
+    CS_destruct(&str);
 }
 
 void test_capacity(){
-    ;
+    cstring str;
+    CS_init(&str, 0);
+
+    CU_ASSERT_EQUAL(CS_capacity(&str), 1);
+
+    CS_assign(&str, "ABCDEFGH", 2);
+    CU_ASSERT_EQUAL(CS_capacity(&str), 4);
+
+    CS_assign(&str, "ABCDEFGH", 7);
+    CU_ASSERT_EQUAL(CS_capacity(&str), 14);
+
+    CS_destruct(&str);
 }
 void test_reserve(){
-    ;
+    CU_ASSERT(1);
 }
 
 void test_clear(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CU_ASSERT(CS_empty(&str));
+
+    CS_clear(&str);
+    CU_ASSERT(CS_empty(&str));
+
+    CS_assign(&str, "Hello", -1);
+    CS_clear(&str);
+    CU_ASSERT(CS_empty(&str));
+
+    CS_append(&str, "Hello", -1);
+    CS_clear(&str);
+    CU_ASSERT(CS_empty(&str));
+
+    CS_destruct(&str);
 }
 
 void test_empty(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CU_ASSERT(CS_empty(&str));
+
+    CS_append(&str, "ABC", -1);
+    CU_ASSERT(!CS_empty(&str));
+
+    CS_assign(&str, "", -1);
+    CU_ASSERT(CS_empty(&str));
+
+    CS_delete(&str);
 }
 
 void test_shrink_to_fit(){
-    ;
+    cstring str;
+    CS_init(&str, 30);
+
+    CS_assign(&str, "Hello!", -1);
+    CS_replace(&str, 5, 1, ", World!");
+    CU_ASSERT_EQUAL(CS_capacity(&str), 30);
+    
+    CS_shrink_to_fit(&str);
+    CU_ASSERT_EQUAL(CS_capacity(&str), CS_size(&str));
+
+    CS_destruct(&str);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Element access
 void test_at(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CU_ASSERT_EQUAL(CS_at(&str, 0), 0);
+    CU_ASSERT_EQUAL(CS_at(&str, 1), 0);
+    CU_ASSERT_EQUAL(CS_at(&str, -1), 0);
+
+    CS_append(&str, "ABC", 3);
+    CU_ASSERT_EQUAL(CS_at(&str, 0), 'A');
+    CU_ASSERT_EQUAL(CS_at(&str, 1), 'B');
+    CU_ASSERT_EQUAL(CS_at(&str, 2), 'C');
+    CU_ASSERT_EQUAL(CS_at(&str, 3), 0);
+    CU_ASSERT_EQUAL(CS_at(&str, -1), 0);
+
+    CS_append(&str, "D", 3);
+    CU_ASSERT_EQUAL(CS_at(&str, 0), 'A');
+    CU_ASSERT_EQUAL(CS_at(&str, 1), 'B');
+    CU_ASSERT_EQUAL(CS_at(&str, 2), 'C');
+    CU_ASSERT_EQUAL(CS_at(&str, 3), 'D');
+    CU_ASSERT_EQUAL(CS_at(&str, 4), 0);
+    CU_ASSERT_EQUAL(CS_at(&str, -1), 0);
+
+    CS_destruct(&str);
 }
 
 void test_front(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CU_ASSERT_EQUAL(CS_front(&str), 0);
+
+    CS_assign(&str, "world", -1);
+    CU_ASSERT_EQUAL(CS_front(&str), 'w');
+
+    CS_insert(&str, 0, "Hello, ", -1);
+    CU_ASSERT_EQUAL(CS_front(&str), 'H');
+
+    CS_append(&str, "!", 1);
+    CU_ASSERT_EQUAL(CS_front(&str), 'H');
+
+    CS_destruct(&str);
 }
 
 void test_back(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CU_ASSERT_EQUAL(CS_back(&str), 0);
+
+    CS_assign(&str, "world", -1);
+    CU_ASSERT_EQUAL(CS_back(&str), 'd');
+
+    CS_insert(&str, 0, "Hello, ", -1);
+    CU_ASSERT_EQUAL(CS_front(&str), 'd');
+
+    CS_append(&str, "!", 1);
+    CU_ASSERT_EQUAL(CS_front(&str), '!');
+
+    CS_destruct(&str);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Modifiers
 void test_append(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_append(&str, "ABC", 2);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "AB"));
+
+    CS_append(&str, "ABC", 5);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "ABABC"));
+
+    CS_append(&str, "ABC", -1);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "ABABCABC"));
+
+    CS_destruct(&str);
 }
 
 void test_push_back(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_append(&str, "ABC", 2);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "AB"));
+
+    CS_push_back(&str, 'C');
+    CU_ASSERT(!strcmp(CS_c_str(&str), "ABC"));
+
+    CS_push_back(&str, 'D');
+    CU_ASSERT(!strcmp(CS_c_str(&str), "ABCD"));
+
+    CS_destruct(&str);
 }
 
 void test_assign(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_assign(&str, "Hello", -1);
+    CU_ASSERT(!strncmp("Hello", CS_c_str(&str), strlen("Hello")));
+
+    CS_assign(&str, "ABC", 2);
+    CU_ASSERT(!strncmp("ABC", CS_c_str(&str), 2));
+
+    CS_assign(&str, "DEF", 3);
+    CU_ASSERT(!strncmp("DEF", CS_c_str(&str), 3));
+
+    CS_assign(&str, "?", 2);
+    CU_ASSERT(!strncmp("?", CS_c_str(&str), strlen("?")));
+
+    CS_assign(&str, "", -1);
+    CU_ASSERT(CS_empty(&str));
+
+    CS_destruct(&str);
 }
 
 void test_insert(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_append(&str, "ABC", 2);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "AB"));
+
+    CS_insert(&str, 0, "CD", 5);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "CDAB"));
+
+    CS_insert(&str, 1, "EFG", -1);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "CEFGDAB"));
+
+    CS_destruct(&str);
 }
 
 void test_erase(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_erase(&str, 0);
+    CS_erase(&str, -1);
+
+    CS_append(&str, "ABCDEFGH", -1);
+
+    CS_erase(&str, 0);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "BCDEFGH"));
+
+    CS_erase(&str, 1);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "BDEFGH"));
+
+    CS_destruct(&str);
 }
 
 void test_replace(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_erase(&str, 0);
+    CS_erase(&str, -1);
+
+    CS_append(&str, "Hello, programmer!", -1);
+
+    CS_replace(&str, 6, 11, " World");
+    CU_ASSERT(!strcmp(CS_c_str(&str), "Hello, World!"));
+
+    CS_destruct(&str);
 }
 
 void test_swap(){
-    ;
+    cstring str1, str2;
+
+    CS_init(&str1, 1);
+    CS_init(&str2, 1);
+
+    CS_assign(&str1, "Hello", -1);
+    CS_assign(&str2, "C-Library", -1);
+
+    CS_swap(&str1, &str2);
+
+    CU_ASSERT(!strcmp(CS_c_str(&str1), "C-Library"));
+    CU_ASSERT(!strcmp(CS_c_str(&str2), "Hello"));
+
+    CS_destruct(&str1);
+    CS_destruct(&str2);
 }
 
 void test_pop_back(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_assign(&str, "ABC", -1);
+    CU_ASSERT_EQUAL(CS_size(&str), 4);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "ABC"));
+
+    CS_pop_back(&str);
+    CU_ASSERT_EQUAL(CS_size(&str), 3);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "AB"));
+
+    CS_pop_back(&str);
+    CU_ASSERT_EQUAL(CS_size(&str), 2);
+    CU_ASSERT(!strcmp(CS_c_str(&str), "A"));
+
+    CS_pop_back(&str);
+    CU_ASSERT_EQUAL(CS_size(&str), 1);
+    CU_ASSERT(!strcmp(CS_c_str(&str), ""));
+
+    CS_pop_back(&str);
+    CU_ASSERT_EQUAL(CS_size(&str), 0);
+    CU_ASSERT(CS_empty(&str));
+
+    CS_pop_back(&str);
+    CU_ASSERT_EQUAL(CS_size(&str), 0);
+    CU_ASSERT(CS_empty(&str));
+
+    CS_destruct(&str);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // String operations
 void test_c_str(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CU_ASSERT(!CS_c_str(&str));
+
+    CS_assign(&str, "ABC", -1);
+    CU_ASSERT_PTR_EQUAL(CS_begin(&str), CS_c_str(&str));
+
+    CS_destruct(&str);
 }
 
 void test_data(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_append(&str, "AB", -1);
+
+    char* iterator = CS_data(&str);
+
+    CU_ASSERT_EQUAL(CS_front(&str), iterator[0]);
+    CU_ASSERT_EQUAL(CS_at(&str, 1), iterator[1]);
+    CU_ASSERT_EQUAL(CS_back(&str), iterator[2]);
+    CU_ASSERT_EQUAL(iterator[2], 0);
+
+    CS_destruct(&str);
 }
 
 void test_copy(){
-    ;
+    cstring str, str_copy;
+    CS_init(&str, 1);
+    CS_init(&str_copy, 1);
+
+    CS_assign(&str, "Original", -1);
+    CS_assign(&str_copy, "Copy", -1);
+
+    CS_assign(&str_copy, CS_c_str(&str), -1);
+
+    CU_ASSERT_EQUAL(CS_size(&str_copy), CS_size(&str));
+    CU_ASSERT_EQUAL(CS_capacity(&str_copy), CS_capacity(&str));
+    CU_ASSERT(!strcmp(CS_c_str(&str_copy), CS_c_str(&str)));
+
+    CS_destruct(&str);
+    CS_destruct(&str_copy);
 }
 
 void test_find(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_assign(&str, "Hello, young programmer!", -1);
+
+    CU_ASSERT_EQUAL(CS_find(&str, "young ", 0), 7);
+    CU_ASSERT_EQUAL(CS_find(&str, " ", 0), 6);
+
+    CU_ASSERT_EQUAL(CS_find(&str, "young", 7), 0);
+    CU_ASSERT_EQUAL(CS_find(&str, " ", 5), 1);
+
+    CU_ASSERT_EQUAL(CS_find(&str, "young", 8), (size_t)-1);
+    CU_ASSERT_EQUAL(CS_find(&str, " ", 7), 5);
+
+    CU_ASSERT_EQUAL(CS_find(&str, "young  a", 0), (size_t)-1);
+    CU_ASSERT_EQUAL(CS_find(&str, " ", -1), (size_t)-1);
+
+    CS_destruct(&str);
 }
 
 void test_rfind(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_assign(&str, "Hello, young programmer!", -1);
+    
+    CU_ASSERT_EQUAL(CS_rfind(&str, "young ", 0), 16);
+    CU_ASSERT_EQUAL(CS_rfind(&str, " ", 0), 11);
+
+    CU_ASSERT_EQUAL(CS_rfind(&str, "young", 8), (size_t)-1);
+    CU_ASSERT_EQUAL(CS_rfind(&str, " ", 13), (size_t)-1);
+
+    CU_ASSERT_EQUAL(CS_rfind(&str, "young  ", 8), (size_t)-1);
+    CU_ASSERT_EQUAL(CS_rfind(&str, "!", 7), 0);
+
+    CU_ASSERT_EQUAL(CS_rfind(&str, "young  a", 0), (size_t)-1);
+    CU_ASSERT_EQUAL(CS_rfind(&str, " ", -1), (size_t)-1);
+
+    CS_destruct(&str);
 }
 
 void test_find_first_of(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    // TO DO
+
+    CS_destruct(&str);
 }
 
 void test_find_last_of(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    // TO DO
+
+    CS_destruct(&str);
 }
 
 void test_find_first_not_of(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    // TO DO
+
+    CS_destruct(&str);
 }
 
 void test_find_last_not_of(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    // TO DO
+
+    CS_destruct(&str);
 }
 
 void test_substr(){
-    ;
+    cstring str;
+    CS_init(&str, 1);
+
+    CS_assign(&str, "Hello, young programmer!", -1);
+
+    cstring* substr1 = CS_substr(&str, 7, 5);
+    cstring* substr2 = CS_substr(&str, 0, -1);
+    cstring* substr3 = CS_substr(&str, -1, 5);
+
+    CU_ASSERT(!strcmp(CS_c_str(substr1), "young"));
+    CU_ASSERT(!strcmp(CS_c_str(substr2), "Hello, young programmer!"));
+    CU_ASSERT_PTR_EQUAL(substr3, NULL);
+
+    CS_destruct(&str);
+
+    CS_destruct(substr1);
+    CS_destruct(substr2);
+    CS_destruct(substr3);
+
+    free(substr1);
+    free(substr2);
+    free(substr3);
 }
 
 void test_compare(){
-    ;
+    cstring str1, str2;
+
+    CS_init(&str1, 1);
+    CS_init(&str2, 1);
+
+    CS_assign(&str1, "Hello, C-Library!", -1);
+    CS_assign(&str2, "Hello, World!", -1);
+
+    CU_ASSERT_EQUAL(CS_compare(&str1, &str2, 0), 0);
+    CU_ASSERT_EQUAL(CS_compare(&str1, &str2, 7), 0);
+    CU_ASSERT_EQUAL(CS_compare(&str1, &str2, 8), -1);
+    CU_ASSERT_EQUAL(CS_compare(&str1, &str2, -1), 1);
+
+    CS_destruct(&str1);
+    CS_destruct(&str2);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 

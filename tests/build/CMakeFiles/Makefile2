@@ -72,8 +72,8 @@ CMAKE_BINARY_DIR = /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/test_tuple.dir/all
 all: CMakeFiles/test_set.dir/all
-all: CMakeFiles/test_pair.dir/all
 all: CMakeFiles/test_string.dir/all
 all: CMakeFiles/test_vector.dir/all
 
@@ -85,12 +85,39 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/test_tuple.dir/clean
 clean: CMakeFiles/test_set.dir/clean
-clean: CMakeFiles/test_pair.dir/clean
 clean: CMakeFiles/test_string.dir/clean
 clean: CMakeFiles/test_vector.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_tuple.dir
+
+# All Build rule for target.
+CMakeFiles/test_tuple.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=17,18,19,20,21,22,23,24 "Built target test_tuple"
+.PHONY : CMakeFiles/test_tuple.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_tuple.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 8
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_tuple.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_tuple.dir/rule
+
+# Convenience name for target.
+test_tuple: CMakeFiles/test_tuple.dir/rule
+
+.PHONY : test_tuple
+
+# clean rule for target.
+CMakeFiles/test_tuple.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_tuple.dir/build.make CMakeFiles/test_tuple.dir/clean
+.PHONY : CMakeFiles/test_tuple.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/test_set.dir
@@ -99,12 +126,12 @@ clean: CMakeFiles/test_vector.dir/clean
 CMakeFiles/test_set.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_set.dir/build.make CMakeFiles/test_set.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=8,9,10,11,12,13,14 "Built target test_set"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target test_set"
 .PHONY : CMakeFiles/test_set.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_set.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_set.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_set.dir/rule
@@ -120,45 +147,18 @@ CMakeFiles/test_set.dir/clean:
 .PHONY : CMakeFiles/test_set.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/test_pair.dir
-
-# All Build rule for target.
-CMakeFiles/test_pair.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target test_pair"
-.PHONY : CMakeFiles/test_pair.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/test_pair.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 7
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_pair.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 0
-.PHONY : CMakeFiles/test_pair.dir/rule
-
-# Convenience name for target.
-test_pair: CMakeFiles/test_pair.dir/rule
-
-.PHONY : test_pair
-
-# clean rule for target.
-CMakeFiles/test_pair.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pair.dir/build.make CMakeFiles/test_pair.dir/clean
-.PHONY : CMakeFiles/test_pair.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/test_string.dir
 
 # All Build rule for target.
 CMakeFiles/test_string.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_string.dir/build.make CMakeFiles/test_string.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=15,16,17,18,19,20,21 "Built target test_string"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=9,10,11,12,13,14,15,16 "Built target test_string"
 .PHONY : CMakeFiles/test_string.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_string.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_string.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_string.dir/rule
@@ -180,12 +180,12 @@ CMakeFiles/test_string.dir/clean:
 CMakeFiles/test_vector.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=22,23,24,25,26,27,28 "Built target test_vector"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles --progress-num=25,26,27,28,29,30,31,32 "Built target test_vector"
 .PHONY : CMakeFiles/test_vector.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_vector.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_vector.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alikhudiyev/Desktop/Projects/C-Library/tests/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_vector.dir/rule

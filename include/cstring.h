@@ -13,6 +13,13 @@ cstring* CString(size_t size);
 void CS_init(cstring* str, size_t size);
 void CS_delete(cstring* str);
 void CS_destruct(void* str);
+
+#define MCString(size)      \
+    CString(size);
+
+#define MCS_init(str)       \
+    cstring str;            \
+    CS_init(&str, 0);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Iterators
@@ -26,7 +33,7 @@ const char* CS_cend(const cstring* str);
 size_t CS_size(const cstring* str);
 void CS_resize(cstring* str, size_t n);
 size_t CS_capacity(const cstring* str);
-void CS_reserve(cstring* str);
+// void CS_reserve(cstring* str);
 void CS_clear(cstring* str);
 bool_t CS_empty(const cstring* str);
 void CS_shrink_to_fit(cstring* str);

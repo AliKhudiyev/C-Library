@@ -35,6 +35,9 @@ int clean_suite1(void){
 
     CV_delete(v1);
     CV_delete(v2);
+
+    free(v1);
+    free(v2);
     
     return 0;
 }
@@ -56,6 +59,8 @@ void test_constructor_destructor(){
     CU_ASSERT_EQUAL(vec->_size, 0);
     CU_ASSERT_EQUAL(vec->_capacity, 0);
     CU_ASSERT_EQUAL(vec->_block_size, 0);
+
+    free(vec);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -75,6 +80,7 @@ void test_size(){
     }
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_resize(){
@@ -89,6 +95,7 @@ void test_resize(){
     CU_ASSERT_EQUAL(CV_capacity(vec), 3);
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_capacity(){
@@ -102,6 +109,7 @@ void test_capacity(){
     }
     
     CV_delete(vec);
+    free(vec);
 }
 
 void test_empty(){
@@ -117,6 +125,7 @@ void test_empty(){
     CU_ASSERT(CV_empty(vec));
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_shrink_to_fit(){
@@ -131,6 +140,7 @@ void test_shrink_to_fit(){
     CU_ASSERT_EQUAL(CV_capacity(vec), 3);
 
     CV_delete(vec);
+    free(vec);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -145,6 +155,7 @@ void test_at(){
     }
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_front(){
@@ -157,6 +168,7 @@ void test_front(){
     CU_ASSERT_PTR_EQUAL(CV_front(vec), vec->_data);
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_back(){
@@ -169,6 +181,7 @@ void test_back(){
     CU_ASSERT_PTR_EQUAL(CV_back(vec), vec->_data+vec->_block_size);
 
     CV_delete(vec);
+    free(vec);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -184,6 +197,7 @@ void test_push_back(){
     }
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_pop_back(){
@@ -213,6 +227,7 @@ void test_pop_back(){
     CU_ASSERT_PTR_EQUAL(NULL, MCV_back(vec, char));
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_insert(){
@@ -257,6 +272,7 @@ void test_insert(){
     CU_ASSERT_PTR_EQUAL(MCV_at(vec, 4, double), NULL);
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_erase(){
@@ -286,6 +302,7 @@ void test_erase(){
     CU_ASSERT_PTR_EQUAL(MCV_at(vec, 2, char), NULL);
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_swap(){
@@ -319,6 +336,9 @@ void test_swap(){
 
     CV_delete(vec1);
     CV_delete(vec2);
+
+    free(vec1);
+    free(vec2);
 }
 
 void test_clear(){
@@ -332,6 +352,7 @@ void test_clear(){
     CU_ASSERT_EQUAL(CV_size(vec), 0);
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_emplace(){
@@ -356,6 +377,7 @@ void test_emplace(){
     CU_ASSERT_DOUBLE_EQUAL(MCV_back(vec, Struct)->weight, 4, epsilon);
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_emplace_back(){
@@ -367,6 +389,7 @@ void test_emplace_back(){
     CU_ASSERT_DOUBLE_EQUAL(MCV_front(vec, Struct)->weight, 2.3, epsilon);
 
     CV_delete(vec);
+    free(vec);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -392,6 +415,7 @@ void test_enlarge(){
     CU_ASSERT_EQUAL(CV_capacity(vec), 4);
 
     CV_delete(vec);
+    free(vec);
 }
 
 void test_sort(){
@@ -412,6 +436,7 @@ void test_sort(){
     }
     
     CV_delete(vec);
+    free(vec);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 

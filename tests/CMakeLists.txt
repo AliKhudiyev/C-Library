@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(Test_C-Library)
+project(Test_C-Library C)
 
 file(GLOB SRCS ../src/*)
 
@@ -11,4 +11,4 @@ include_directories(../include /usr/local/include)
 add_executable(test_vector test_vector.c ${SRCS})
 add_executable(test_string test_string.c ${SRCS})
 add_executable(test_set test_set.c ${SRCS})
-add_executable(test_pair test_pair.c ${SRCS})
+add_executable(test_tuple test_tuple.c ${SRCS})

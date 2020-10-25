@@ -4,6 +4,11 @@
 CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c.o
  ../../include/calgorithm.h
  /Users/alikhudiyev/Desktop/Projects/C-Library/src/calgorithm.c
+CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c.o
+ ../../include/calgorithm.h
+ ../../include/ctypes.h
+ ../../include/cvector.h
+ /Users/alikhudiyev/Desktop/Projects/C-Library/src/cprinter.c
 CMakeFiles/test_vector.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c.o
  ../../include/calgorithm.h
  ../../include/cset.h

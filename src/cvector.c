@@ -12,7 +12,8 @@ void __allocate(void** ptr, size_t size, size_t new_size){
         exit(1);
     }
     memcpy(*ptr, cptr, size);
-    if(size){ free(cptr); }
+    // if(size) free(cptr);
+    free(cptr);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -96,7 +97,7 @@ size_t CV_size(const cvector* vec){
 void CV_resize(cvector* vec, size_t n){
     if(vec->_capacity < n){
         vec->_capacity = n;
-        __allocate(&vec->_data, vec->_capacity, n);
+        __allocate(&vec->_data, vec->_size, n);
     }
 }
 
@@ -241,7 +242,7 @@ void CV_set_deep_copy(cvector* vec, void (*copy)(void* dest, const void* src, si
 
 void CV_swap_val(cvector* vec, size_t pos1, size_t pos2){
     if(pos1<vec->_size && pos2<vec->_size){
-        void* tmp;
+        void* tmp = NULL;
         __allocate(&tmp, 0, vec->_block_size);
         memcpy(tmp, vec->_data+pos1*vec->_block_size, vec->_block_size);
         memcpy(vec->_data+pos1*vec->_block_size, vec->_data+pos2*vec->_block_size, vec->_block_size);

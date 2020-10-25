@@ -1,6 +1,10 @@
 #include "cstring.h"
 #include <stdio.h>
 
+void __CS_append_null_char(cstring* str){
+    MCV_force_push_back(&str->_str, '\0', char);
+}
+
 // Constructor and Destructor
 cstring* CString(size_t size){
     cstring* str = NULL;
@@ -58,9 +62,9 @@ size_t CS_capacity(const cstring* str){
     return CV_capacity(&str->_str);
 }
 
-void CS_reserve(cstring* str){
-    // TO DO
-}
+// void CS_reserve(cstring* str){
+//     // TO DO
+// }
 
 void CS_clear(cstring* str){
     CV_clear(&str->_str);
@@ -94,23 +98,27 @@ char CS_back(const cstring* str){
 void CS_append(cstring* str, const char* chars, size_t size){
     size_t sz = (size <= strlen(chars)? size : strlen(chars));
     
-    if(str->_str._size){
-        CV_erase(&str->_str, str->_str._size-1);
-    }
     for(unsigned i=0; i<sz; ++i){
         CS_push_back(str, chars[i]);
-    }   CS_push_back(str, '\0');
+    }
 }
 
 void CS_push_back(cstring* str, char c){
+    size_t size = CS_size(str);
+    /* - - - - - - - - - - - - - - */
+    if(size && !CS_at(str, size-1)){
+        CV_erase(&str->_str, size-1);
+    }
     CV_push_back(&str->_str, &c);
+    __CS_append_null_char(str);
+    /* - - - - - - - - - - - - - - */
+    // Better solution: CV_insert(&str->_str, size-1, &c);
 }
 
 void CS_assign(cstring* str, const char* chars, size_t size){
     if(size == -1) size = strlen(chars);
 
     cstring str2;
-
     CS_init(&str2, size);
     CS_append(&str2, chars, size);
     CV_copy(&str->_str, &str2._str);
@@ -118,24 +126,28 @@ void CS_assign(cstring* str, const char* chars, size_t size){
 }
 
 void CS_insert(cstring* str, size_t position, const char* chars, size_t n){
-    if(n == -1) n = strlen(chars);
+    if(n > strlen(chars)) n = strlen(chars);
+    if(position > CS_size(str)) return ;
 
     for(size_t i=0; i<n; ++i){
-        CV_insert(&str->_str, position, chars+i);
+        CV_insert(&str->_str, position+i, chars+i);
     }
     // TO DO: Optimize this function!
 }
 
 void CS_erase(cstring* str, size_t position){
+    if(position != -1 && position + 1 == CS_size(str)){
+       fprintf(stderr, "%s", "WARNING[CS_erase]: Erasing \\0 from string!");
+    }
     CV_erase(&str->_str, position);
 }
 
 void CS_replace(cstring* str, size_t position, size_t size, const char* chars){
-    if(position >= CS_size(str) || strlen(chars) < size) return ;
     if(size == -1) size = CS_size(str) - position;
+    if(position >= CS_size(str) || position + size > CS_size(str)) return ;
 
     for(size_t i=0; i<size; ++i){
-        CS_erase(str, position+i);
+        CS_erase(str, position);
     }   CS_insert(str, position, chars, strlen(chars));
     // TO DO: Optimize this function!
 }
@@ -145,13 +157,14 @@ void CS_swap(cstring* str1, cstring* str2){
 }
 
 void CS_pop_back(cstring* str){
-    CV_pop_back(&str->_str);
+    CV_erase(&str->_str, CS_size(str)-2);
+    // CV_pop_back(&str->_str);
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // String operations
 const char* CS_c_str(const cstring* str){
-    return (const char*)str->_str._data;
+    return (CS_size(str)? (const char*)str->_str._data : NULL);
 }
 
 void* CS_data(const cstring* str){
@@ -176,7 +189,58 @@ size_t CS_find(const cstring* str, const char* chars, size_t position){
                       NULL);
 }
 
+size_t CS_rfind(const cstring* str, const char* chars, size_t position){
+    return CAlgo_rfind((const void*)CV_data(&str->_str), 
+                        CS_size(str), 
+                        sizeof(char), 
+                        chars, 
+                        position, 
+                        CS_size(str),
+                        NULL);
+}
+
+size_t CS_find_first_of(const cstring* str, const char* chars, size_t position){
+    return CAlgo_find_first_of((const void*)CV_data(&str->_str), 
+                                CS_size(str), 
+                                sizeof(char), 
+                                chars, 
+                                position, 
+                                CS_size(str),
+                                NULL);
+}
+
+size_t CS_find_last_of(const cstring* str, const char* chars, size_t position){
+    return CAlgo_find_last_of((const void*)CV_data(&str->_str), 
+                               CS_size(str), 
+                               sizeof(char), 
+                               chars, 
+                               position, 
+                               CS_size(str),
+                               NULL);
+}
+
+size_t CS_find_first_not_of(const cstring* str, const char* chars, size_t position){
+    return CAlgo_find_first_not_of((const void*)CV_data(&str->_str), 
+                                    CS_size(str), 
+                                    sizeof(char), 
+                                    chars, 
+                                    position, 
+                                    CS_size(str),
+                                    NULL);
+}
+
+size_t CS_find_last_not_of(const cstring* str, const char* chars, size_t position){
+    return CAlgo_find_last_not_of((const void*)CV_data(&str->_str), 
+                                   CS_size(str), 
+                                   sizeof(char), 
+                                   chars, 
+                                   position, 
+                                   CS_size(str),
+                                   NULL);
+}
+
 cstring* CS_substr(const cstring* str, size_t position, size_t size){
+    if(position < CS_size(str) && size == -1) size = CS_size(str) - position;
     if(position >= CS_size(str) || position + size > CS_size(str)) return NULL;
 
     cstring* string = CString(size);
@@ -197,13 +261,13 @@ char CS_compare(const cstring* str1, const cstring* str2, unsigned size){
         } else{
             for(size_t i=0; i<sz1; ++i){
                 if(CS_at(str1, i) < CS_at(str2, i)) return -1;
-                if(CS_at(str1, i) > CS_at(str2, i)) return -1;
+                if(CS_at(str1, i) > CS_at(str2, i)) return 1;
             }
             return 0;
         }
     }
 
-    for(size_t i=0; i<sz1; ++i){
+    for(size_t i=0; i<sz; ++i){
         if(CS_at(str1, i) < CS_at(str2, i)) return -1;
         if(CS_at(str1, i) > CS_at(str2, i)) return 1;
     }

@@ -1,12 +1,14 @@
 sudo: false
 
 language: c
-c:
-  - 11
-
 compiler:
  - gcc
  - clang
 
 script:
- - cmake .
+ - cd ${TRAVIS_BUILD_DIR}/build
+ - cmake .. && make && ./main
+ - cd ${TRAVIS_BUILD_DIR}/tests/build
+ - cmake .. && make
+ - ./test_vector && ./test_string && ./test_set && ./test_tuple
+

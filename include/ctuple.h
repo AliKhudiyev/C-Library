@@ -13,6 +13,13 @@ ctuple* CTuple();
 void CT_init(ctuple* tuple);
 void CT_delete(ctuple* tuple);
 void CT_destruct(void* tuple);
+
+#define MCTuple()       \
+    CTuple();
+
+#define MCT_init(tuple) \
+    ctuple tuple;       \
+    CT_init(&tuple);
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Modifiers
