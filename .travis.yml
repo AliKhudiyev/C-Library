@@ -6,9 +6,9 @@ compiler:
  - clang
 
 script:
- - cd ${TRAVIS_BUILD_DIR}/build
- - cmake .. && make && ./main
- - cd ${TRAVIS_BUILD_DIR}/tests/build
+ - cd ${TRAVIS_BUILD_DIR}
+ - cmake . && make && ./main
+ - cd ${TRAVIS_BUILD_DIR}/tests
  - cmake .. && make
  - ./test_vector && ./test_string && ./test_set && ./test_tuple
 
