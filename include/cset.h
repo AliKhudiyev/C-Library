@@ -61,11 +61,29 @@ void CSet_clear(cset* set);
         _type tmp = { __VA_ARGS__ };            \
         CSet_insert(set, (const void*)&tmp);    \
     }
+
+#define MCSet_force_erase(set, _type, ...)      \
+    {                                           \
+        _type tmp = { __VA_ARGS__ };            \
+        CSet_erase(set, (const void*)&tmp);     \
+    }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Operations
 size_t CSet_find(const cset* set, const void* element);
 size_t CSet_count(const cset* set, const void* element);
+
+#define MCSet_force_find(set, result, _type, ...)   \
+    {                                               \
+        _type tmp = { __VA_ARGS__ };                \
+        result = CSet_find(set, &tmp);              \
+    }
+
+#define MCSet_force_count(set, result, _type, ...)  \
+    {                                               \
+        _type tmp = { __VA_ARGS__ };                \
+        result = CSet_count(set, &tmp);             \
+    }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
 // Additional

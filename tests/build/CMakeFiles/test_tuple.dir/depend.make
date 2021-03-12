@@ -33,6 +33,7 @@ CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvect
 CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c.o: /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
 
 CMakeFiles/test_tuple.dir/test_tuple.c.o: ../../include/calgorithm.h
+CMakeFiles/test_tuple.dir/test_tuple.c.o: ../../include/cstring.h
 CMakeFiles/test_tuple.dir/test_tuple.c.o: ../../include/ctuple.h
 CMakeFiles/test_tuple.dir/test_tuple.c.o: ../../include/ctypes.h
 CMakeFiles/test_tuple.dir/test_tuple.c.o: ../../include/cvector.h

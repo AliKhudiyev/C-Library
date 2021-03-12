@@ -1,4 +1,5 @@
 #include "cset.h"
+#include <stdio.h>
 
 // Constructor and Destructor
 cset* CSet(size_t block_size, size_t n_block){
@@ -80,7 +81,7 @@ void CSet_insert(cset* set, const void* element){
 }
 
 void CSet_erase(cset* set, const void* element){
-    if(CSet_count((const cset*)&set, element)) return ;
+    if(!CSet_count((const cset*)set, element)) return ;
 
     size_t position = CSet_find(set, element);
     CV_erase(&set->_elems, position);

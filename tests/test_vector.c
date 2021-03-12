@@ -456,7 +456,6 @@ int main(){
     }
 
     /* add the tests to the suite */
-    /* NOTE - ORDER IS IMPORTANT - MUST TEST fread() AFTER fprintf() */
     if ((NULL == CU_add_test(pSuite, "test of constructor and destructor", test_constructor_destructor)) ||
         
         (NULL == CU_add_test(pSuite, "test of size()", test_size)) ||

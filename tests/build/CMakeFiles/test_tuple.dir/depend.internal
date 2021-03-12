@@ -34,6 +34,7 @@ CMakeFiles/test_tuple.dir/Users/alikhudiyev/Desktop/Projects/C-Library/src/cvect
  /Users/alikhudiyev/Desktop/Projects/C-Library/src/cvector.c
 CMakeFiles/test_tuple.dir/test_tuple.c.o
  ../../include/calgorithm.h
+ ../../include/cstring.h
  ../../include/ctuple.h
  ../../include/ctypes.h
  ../../include/cvector.h

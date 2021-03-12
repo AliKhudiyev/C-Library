@@ -77,7 +77,7 @@ void* CV_begin(const cvector* vec){
 }
 
 void* CV_end(const cvector* vec){
-    return vec->_data+vec->_block_size*(vec->_size-1);
+    return vec->_data+vec->_block_size*vec->_size;
 }
 
 const void* CV_cbegin(const cvector* vec){
@@ -85,7 +85,7 @@ const void* CV_cbegin(const cvector* vec){
 }
 
 const void* CV_cend(const cvector* vec){
-    return (const void*)vec->_data+vec->_block_size*(vec->_size-1);
+    return (const void*)vec->_data+vec->_block_size*vec->_size;
 }
 // = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -277,7 +277,7 @@ void CV_deep_copy(cvector* dest, const cvector* src){
 }
 
 size_t CV_find(const cvector* vec, const void* val){
-    for(unsigned i=0; i<vec->_size; ++i){
+    for(size_t i=0; i<vec->_size; ++i){
         if(!memcmp(vec->_data+vec->_block_size*i, val, vec->_block_size)) return i;
     }
     return -1;

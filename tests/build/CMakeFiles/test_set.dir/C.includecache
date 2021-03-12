@@ -34,10 +34,6 @@ memory.h
 ctypes.h
 ../../include/ctypes.h
 
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.c
-cset.h
-/Users/alikhudiyev/Desktop/Projects/C-Library/src/cset.h
-
 /Users/alikhudiyev/Desktop/Projects/C-Library/tests/test_set.c
 CUnit/CUnit.h
 -
